@@ -10,9 +10,8 @@ import Hosts from './components/Hosts';
 class App extends Component {
 	render() {
 		return (
-			<div className="container">
+			<div className="container-fluid">
 				<HashRouter>
-					<div className='main'>
 						<Switch>
 							<Route exact path='/' component={Home} />
 							<Route path='/dashboard' component={Dashboard} />
@@ -21,7 +20,6 @@ class App extends Component {
 							<Route path='/detailed-logs' component={DetailedLogs} />
 							<Route path='/hosts' component={Hosts} />
 						</Switch>
-					</div>
 				</HashRouter>
 			</div>
 		);
