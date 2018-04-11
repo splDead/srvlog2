@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Statistics = () => 
-    <div className='border'>
+    <div className='border mb-5'>
         <div className='d-flex justify-content-between align-items-center bg-light col-12 p-3 border-bottom'>
             <div>Logs statistics</div>
             <div className='btn-group btn-group-toggle'>
@@ -19,7 +19,7 @@ const Statistics = () =>
                 </label>
             </div>
         </div>
-        <div className='d-flex m-2'>
+        <div className='d-flex m-2 align-items-start'>
             <div className='col-4 border p-0 mr-2'>
                 <div className='p-2 bg-light'>Number of logs by severity</div>
                 <ul className='list-group list-group-flush'>
@@ -33,9 +33,9 @@ const Statistics = () =>
                     <li className='align-items-center d-flex justify-content-between list-group-item'>DEBUG<span className='badge badge-secondary'>0</span></li>
                 </ul>
             </div>
-            <div className='col-8 border'>
-                <div>Number of logs by date</div>
-                <div>something chart</div>
+            <div className='border w-100'>
+                <div className='p-2 bg-light'>Number of logs by date</div>
+                <div className='border-top'>something chart</div>
             </div>
         </div>
     </div>

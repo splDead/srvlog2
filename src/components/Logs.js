@@ -7,8 +7,10 @@ import Filters from './Filters';
 const Logs = () =>
     <PageTemplate>
         <Search />
-        <Table />
-        <Filters />
+        <div className='d-flex align-items-start mb-5'>
+            <Table />
+            <Filters />
+        </div>
     </PageTemplate>
 
 export default Logs;
