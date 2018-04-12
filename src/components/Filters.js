@@ -1,7 +1,7 @@
 import React from 'react';
 
 const styleFilters = {
-    'overflow-y' : 'auto'
+    overflowY : 'auto'
 };
 
 const Filters = () =>

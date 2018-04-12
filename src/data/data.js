@@ -1,0 +1,46 @@
+const data = {
+    messages : [
+        {
+            severity : 'WARN',
+            message : {
+                title : 'Warnings!',
+                text : 'There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?'
+            },
+            buttons : [
+                {
+                    url : '',
+                    text : 'Process unresolved logs',
+                    id : '1'
+                },
+                {
+                    url : '',
+                    text : 'Show unprocessed hosts',
+                    id : '2'
+                }
+            ],
+            id : '1'
+        },
+        {
+            severity : 'ALERT',
+            message : {
+                title : 'Warnings! Achtung',
+                text : 'There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?'
+            },
+            buttons : [
+                {
+                    url : '',
+                    text : 'Process unresolved logs',
+                    id : '1'
+                },
+                {
+                    url : '',
+                    text : 'Show unprocessed hosts',
+                    id : '2'
+                }
+            ],
+            id : '2'
+        }
+    ]
+}
+
+export default data;
