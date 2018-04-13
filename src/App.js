@@ -1,18 +1,18 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
-import Dashboard from './components/Dashboard';
+import { Dashboard } from './containers/Dashboard';
 import Logs from './components/Logs';
 import OnlineLogs from './components/OnlineLogs';
 import DetailedLogs from './components/DetailedLogs';
 import Hosts from './components/Hosts';
 import PageTemplate from './components/PageTemplate';
 
-const App = ({ store }) => {
+const App = () => {
 	return (
 		<div className="container-fluid">
 			<HashRouter>
-				<PageTemplate store={store}>
+				<PageTemplate>
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route path='/dashboard' component={Dashboard} />

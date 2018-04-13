@@ -10,7 +10,7 @@ const btnClose = {
     color : 'var(--gray)'
 }
 
-const Message = ({ severity, message, buttons, onClick = f => f }) =>
+const Message = ({ message, severity, buttons, onClick }) =>
     <div className={constants.messageSeverity[severity]}>
         <h5>{message.title}</h5>
         <button 

@@ -8,3 +8,7 @@ export const messages = (state = [], action) => {
             return state;
     }
 };
+
+export const statistics = (state = {}, action) => {
+    return state;
+}
