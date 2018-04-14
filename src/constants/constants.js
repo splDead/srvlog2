@@ -9,7 +9,8 @@ const constants = {
         INFO : 'alert alert-info pl-3',
         DEBUG : 'alert alert-info pl-3'
     },
-    READ_MESSAGE : 'READ_MESSAGE'
+    READ_MESSAGE : 'READ_MESSAGE',
+    CHANGE_PERIOD : 'CHANGE_PERIOD'
 }
 
 export default constants;

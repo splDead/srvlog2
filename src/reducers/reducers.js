@@ -10,5 +10,13 @@ export const messages = (state = [], action) => {
 };
 
 export const statistics = (state = {}, action) => {
-    return state;
+    switch (action.type) {
+        case constants.CHANGE_PERIOD:
+            return {
+                ...state,
+                selectedPeriod : action.period
+            }
+        default:
+            return state;
+    }
 }

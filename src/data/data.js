@@ -45,7 +45,7 @@ const data = {
         summary : [
             {
                 caption : 'EMERGENCY',
-                count : 0
+                count : 25
             },
             {
                 caption : 'ALERT',
@@ -57,7 +57,7 @@ const data = {
             },
             {
                 caption : 'ERROR',
-                count : 60431
+                count : 88626
             },
             {
                 caption : 'WARN',
@@ -79,33 +79,34 @@ const data = {
         logs : [
             {
                 date : '2018-04-09',
-                count : 100
+                count : 125895
             },
             {
                 date : '2018-04-10',
-                count : 110
+                count : 110000
             },
             {
                 date : '2018-04-11',
-                count : 150
+                count : 151000
             },
             {
                 date : '2018-04-12',
-                count : 135
+                count : 135000
             },
             {
                 date : '2018-04-13',
-                count : 105
+                count : 140226
             },
             {
                 date : '2018-04-14',
-                count : 144
+                count : 144000
             },
             {
                 date : '2018-04-15',
-                count : 90
-            },
-        ]
+                count : 180000
+            }
+        ],
+        selectedPeriod : 'thisWeek'
     }
 }
 
