@@ -1,0 +1,21 @@
+.custom-datepicker-position-with-time {
+    width: 313px;
+    right: -2px;
+}
+
+.custom-datepicker-position .react-datepicker__triangle,
+.custom-datepicker-position-with-time .react-datepicker__triangle {
+    left: 90%;
+}
+
+.custom-datepicker-position-with-time .react-datepicker__time-list {
+    padding-left: 8px;
+}
+
+.custom-react-input-datepicker {
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border-width: 1px;
+    padding: 0 5px;
+}

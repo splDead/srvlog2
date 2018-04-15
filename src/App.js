@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import { Dashboard } from './containers/Dashboard';
-import Logs from './components/Logs';
+import { LogsContainer } from './containers/LogsContainer';
 import OnlineLogs from './components/OnlineLogs';
 import DetailedLogs from './components/DetailedLogs';
 import Hosts from './components/Hosts';
@@ -16,7 +16,7 @@ const App = () => {
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route path='/dashboard' component={Dashboard} />
-						<Route path='/logs' component={Logs} />
+						<Route path='/logs' component={LogsContainer} />
 						<Route path='/online-logs' component={OnlineLogs} />
 						<Route path='/detailed-logs' component={DetailedLogs} />
 						<Route path='/hosts' component={Hosts} />

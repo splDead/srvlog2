@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import React from 'react';
 
 export class LinearChart extends React.Component {
-    componentDidMount() {
+    showChart = () => {
         let group;
         const { logs } = this.props;
         const { target } = this.refs;
@@ -77,6 +77,15 @@ export class LinearChart extends React.Component {
                 .tickFormat(d3.format('.2s'))
             )
             .attr('transform', `translate(-10, 0)`);
+    }
+
+    componentDidMount() {
+        this.showChart();        
+    }
+
+    componentDidUpdate() {
+        d3.select('svg').remove();
+        this.showChart();
     }
 
     render() {
