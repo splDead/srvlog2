@@ -173,6 +173,42 @@ export const logsTable = (state = {}, action) => {
                     host : state.filters.host
                 }
             }
+        case constants.CHANGE_SEVERITY_FILTERS:
+            return {
+                ...state,
+                filters : {
+                    dateRange : state.filters.dateRange,
+                    dateStart : state.filters.dateStart,
+                    dateEnd : state.filters.dateEnd,
+                    severity : action.severity,
+                    facility : state.filters.facility,
+                    host : state.filters.host
+                }
+            }
+        case constants.CHANGE_FACILITY_FILTERS:
+            return {
+                ...state,
+                filters : {
+                    dateRange : state.filters.dateRange,
+                    dateStart : state.filters.dateStart,
+                    dateEnd : state.filters.dateEnd,
+                    severity : state.filters.severity,
+                    facility : action.facility,
+                    host : state.filters.host
+                }
+            }
+        case constants.CHANGE_HOST_FILTERS:
+            return {
+                ...state,
+                filters : {
+                    dateRange : state.filters.dateRange,
+                    dateStart : state.filters.dateStart,
+                    dateEnd : state.filters.dateEnd,
+                    severity : state.filters.severity,
+                    facility : state.filters.facility,
+                    host : action.host
+                }
+            }
         default:
             return state;
     }

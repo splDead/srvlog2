@@ -9,7 +9,10 @@ import {
     changeExactlyDateRangeFrom,
     changeExactlyDateRangeTo,
     changeExactlyTimeRangeFrom,
-    changeExactlyTimeRangeTo } from '../actions/actions';
+    changeExactlyTimeRangeTo,
+    changeSeverityFilters,
+    changeFacilityFilters,
+    changeHostFilters } from '../actions/actions';
 
 export const LogsContainer = connect(
     state =>
@@ -44,6 +47,15 @@ export const LogsContainer = connect(
             },
             onChangeExactlyTimeRangeTo(date) {
                 dispatch(changeExactlyTimeRangeTo(date))
+            },
+            onChangeSeverityFilters(severity) {
+                dispatch(changeSeverityFilters(severity))
+            },
+            onChangeFacilityFilters(facility) {
+                dispatch(changeFacilityFilters(facility))
+            },
+            onChangeHostFilters(host) {
+                dispatch(changeHostFilters(host))
             }
         })
 )(Logs);

@@ -65,3 +65,21 @@ export const changeExactlyTimeRangeTo = date =>
         type : constants.CHANGE_EXACTLY_TIME_RANGE_TO,
         date
     });
+
+export const changeSeverityFilters = severity =>
+    ({
+        type : constants.CHANGE_SEVERITY_FILTERS,
+        severity
+    });
+
+export const changeFacilityFilters = facility =>
+    ({
+        type : constants.CHANGE_FACILITY_FILTERS,
+        facility
+    });
+
+export const changeHostFilters = host =>
+    ({
+        type : constants.CHANGE_HOST_FILTERS,
+        host
+    });

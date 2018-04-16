@@ -11,13 +11,21 @@ const styleFilters = {
 };
 
 const Filters = ({ 
-    filters, 
+    filters,
+    severity,
+    facility,
+    host,
     onChangeDateRange, 
     onChangeExactlyDateRangeFrom,
     onChangeExactlyDateRangeTo,
     onChangeExactlyTimeRangeFrom,
-    onChangeExactlyTimeRangeTo }) => {
+    onChangeExactlyTimeRangeTo,
+    onChangeSeverityFilters,
+    onChangeFacilityFilters,
+    onChangeHostFilters }) => {
     const { dateRange } = constants;
+    const dateStart = filters.dateStart !== '' ? moment(filters.dateStart) : moment();
+    const dateEnd = filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
 
     return (
         <div className='col-3 border rounded bg-light ml-3 pt-2'>
@@ -42,7 +50,7 @@ const Filters = ({
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>From:</span>
                         <DatePicker 
-                            selected={moment(filters.dateStart)} 
+                            selected={dateStart} 
                             onChange={onChangeExactlyDateRangeFrom}
                             dateFormat='YYYY-MM-DD'
                             maxDate={moment()}
@@ -50,13 +58,13 @@ const Filters = ({
                             calendarClassName='custom-datepicker-position'
                             className='custom-react-input-datepicker'
                             selectsStart
-                            startDate={moment(filters.dateStart)}
-                            endDate={moment(filters.dateEnd)} />
+                            startDate={dateStart}
+                            endDate={dateEnd} />
                     </div>
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>To:</span>
                         <DatePicker 
-                            selected={moment(filters.dateEnd)} 
+                            selected={dateEnd} 
                             onChange={onChangeExactlyDateRangeTo}
                             dateFormat='YYYY-MM-DD'
                             maxDate={moment()}
@@ -64,8 +72,8 @@ const Filters = ({
                             calendarClassName='custom-datepicker-position'
                             className='custom-react-input-datepicker' 
                             selectsEnd
-                            startDate={moment(filters.dateStart)}
-                            endDate={moment(filters.dateEnd)} />
+                            startDate={dateStart}
+                            endDate={dateEnd} />
                     </div>
                 </div> :
                 ''}
@@ -74,7 +82,7 @@ const Filters = ({
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>From:</span>
                         <DatePicker 
-                            selected={moment(filters.dateStart)} 
+                            selected={dateStart} 
                             onChange={onChangeExactlyTimeRangeFrom}
                             showTimeSelect
                             timeFormat='HH:mm'
@@ -85,13 +93,13 @@ const Filters = ({
                             dateFormat='YYYY-MM-DD HH:mm'
                             maxDate={moment()}
                             selectsStart
-                            startDate={moment(filters.dateStart)}
-                            endDate={moment(filters.dateEnd)} />
+                            startDate={dateStart}
+                            endDate={dateEnd} />
                     </div>
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>To:</span>
                         <DatePicker 
-                            selected={moment(filters.dateEnd)}
+                            selected={dateEnd}
                             onChange={onChangeExactlyTimeRangeTo}
                             showTimeSelect
                             timeFormat='HH:mm'
@@ -102,48 +110,51 @@ const Filters = ({
                             dateFormat='YYYY-MM-DD HH:mm'
                             maxDate={moment()}
                             selectsEnd
-                            startDate={moment(filters.dateStart)}
-                            endDate={moment(filters.dateEnd)} />
+                            startDate={dateStart}
+                            endDate={dateEnd} />
                     </div>
                 </div> :
                 ''}
             <div className='mb-2'>
                 Severity:
-                <select className='custom-select custom-select-sm p-2' size='8' multiple style={styleFilters}>
-                    <option>EMERGENCY</option>
-                    <option>ALERT</option>
-                    <option>CRITICAL</option>
-                    <option>ERROR</option>
-                    <option>WARN</option>
-                    <option>NOTICE</option>
-                    <option>INFO</option>
-                    <option>DEBUG</option>
+                <select 
+                    className='custom-select custom-select-sm p-2' 
+                    size='8' 
+                    multiple 
+                    style={styleFilters}
+                    value={filters.severity}
+                    onChange={e => onChangeSeverityFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
+                    {severity.map((elem, i) =>
+                        <option key={i} value={elem}>{elem}</option>
+                    )}
                 </select>
             </div>
             <div className='mb-2'>
                 Facility:
-                <select className='custom-select custom-select-sm p-2' size='8' multiple style={styleFilters}>
-                    <option>kern</option>
-                    <option>user</option>
-                    <option>mail</option>
-                    <option>daemon</option>
-                    <option>auth</option>
-                    <option>syslog</option>
-                    <option>ipr</option>
-                    <option>news</option>
+                <select 
+                    className='custom-select custom-select-sm p-2' 
+                    size='8' 
+                    multiple 
+                    style={styleFilters}
+                    value={filters.facility}
+                    onChange={e => onChangeFacilityFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
+                    {facility.map((elem, i) =>
+                        <option key={i} value={elem}>{elem}</option>
+                    )}
                 </select>
             </div>
             <div className='mb-2'>
                 Host:
-                <select className='custom-select custom-select-sm p-2' size='8' multiple style={styleFilters}>
-                    <option>10.2.26.21</option>
-                    <option>10.2.26.22</option>
-                    <option>detc-1</option>
-                    <option>detc-2</option>
-                    <option>dout-1</option>
-                    <option>dout-2</option>
-                    <option>dpub-1</option>
-                    <option>dpub-2</option>
+                <select 
+                    className='custom-select custom-select-sm p-2' 
+                    size='8' 
+                    multiple 
+                    style={styleFilters}
+                    value={filters.host}
+                    onChange={e => onChangeHostFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
+                    {host.map((elem, i) =>
+                        <option key={i} value={elem}>{elem}</option>
+                    )}
                 </select>
             </div>
         </div>

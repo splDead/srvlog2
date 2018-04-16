@@ -3207,7 +3207,10 @@ const data = {
             { date: '2018-04-13 16:10:01', facility: 'news', severity: 'NOTICE', host: 'dpub-1', id: '537', program: 'CROND', message: '[1]: Starting User Slice of root.' },
             { date: '2018-04-14 16:10:01', facility: 'daemon', severity: 'INFO', host: 'dpub-2', id: '538', program: 'CROND', message: '[1]: Starting User Slice of root.' },
             { date: '2018-04-15 16:10:01', facility: 'news', severity: 'DEBUG', host: '10.2.26.21', id: '539', program: 'CROND', message: '[1]: Starting User Slice of root.' },
-            { date: '2018-04-15 16:10:01', facility: 'daemon', severity: 'INFO', host: '10.2.26.22', id: '540', program: 'CROND', message: '[1]: Starting User Slice of root.' }
+            { date: '2018-04-15 16:10:01', facility: 'daemon', severity: 'INFO', host: '10.2.26.22', id: '540', program: 'CROND', message: '[1]: Starting User Slice of root.' },
+            { date: '2018-04-16 16:10:01', facility: 'daemon', severity: 'INFO', host: 'dpub-2', id: '538', program: 'CROND', message: '[1]: Starting User Slice of root.' },
+            { date: '2018-04-17 16:10:01', facility: 'news', severity: 'DEBUG', host: '10.2.26.21', id: '539', program: 'CROND', message: '[1]: Starting User Slice of root.' },
+            { date: '2018-04-18 16:10:01', facility: 'daemon', severity: 'INFO', host: '10.2.26.22', id: '540', program: 'CROND', message: '[1]: Starting User Slice of root.' }
         ],
         selectedTableSize : 25,
         indexShowRow : {
@@ -3216,12 +3219,41 @@ const data = {
         },
         filters : {
             dateRange : 'TODAY',
-            dateStart : '2018-04-15 00:00',
-            dateEnd : '2018-04-15 23:59',
+            dateStart : '',
+            dateEnd : '',
             severity : [],
             facility : [],
             host : []
-        }
+        },
+        severity : [
+            'EMERGENCY', 
+            'ALERT', 
+            'CRITICAL', 
+            'ERROR', 
+            'WARN', 
+            'NOTICE',
+            'DEBUG',
+            'INFO'],
+        facility : [
+            'kern',
+            'user',
+            'mail',
+            'daemon',
+            'auth',
+            'syslog',
+            'ipr',
+            'news'
+        ],
+        host : [
+            '10.2.26.21',
+            '10.2.26.22',
+            'detc-1',
+            'detc-2',
+            'dout-1',
+            'dout-2',
+            'dpub-1',
+            'dpub-2'
+        ]
     }
 }
 

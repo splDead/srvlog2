@@ -4,7 +4,7 @@ import Table from './Table';
 import Filters from './Filters';
 
 const Logs = ({ 
-    logsTable, 
+    logsTable,
     onChangeTableSizeView, 
     onClickPaginationFirst, 
     onClickPaginationNext,
@@ -13,7 +13,10 @@ const Logs = ({
     onChangeExactlyDateRangeFrom,
     onChangeExactlyDateRangeTo,
     onChangeExactlyTimeRangeFrom,
-    onChangeExactlyTimeRangeTo }) => {
+    onChangeExactlyTimeRangeTo,
+    onChangeSeverityFilters,
+    onChangeFacilityFilters,
+    onChangeHostFilters }) => {
     return (
         <div>
         <Search />
@@ -25,12 +28,15 @@ const Logs = ({
                 onClickPaginationNext={onClickPaginationNext}
                 onClickPaginationPrev={onClickPaginationPrev} />
             <Filters 
-                filters={logsTable.filters} 
+                {...logsTable} 
                 onChangeDateRange={onChangeDateRange}
                 onChangeExactlyDateRangeFrom={onChangeExactlyDateRangeFrom}
                 onChangeExactlyDateRangeTo={onChangeExactlyDateRangeTo}
                 onChangeExactlyTimeRangeFrom={onChangeExactlyTimeRangeFrom}
-                onChangeExactlyTimeRangeTo={onChangeExactlyTimeRangeTo} />
+                onChangeExactlyTimeRangeTo={onChangeExactlyTimeRangeTo}
+                onChangeSeverityFilters={onChangeSeverityFilters}
+                onChangeFacilityFilters={onChangeFacilityFilters}
+                onChangeHostFilters={onChangeHostFilters} />
         </div>
     </div>
     )    

@@ -12,7 +12,7 @@ const Table = ({
         onClickPaginationNext,
         onClickPaginationPrev }) => {
     const { tableSize, dateRange } = constants;
-
+debugger
     let start, end;
     switch (filters.dateRange) {
         case dateRange.TODAY:
@@ -38,17 +38,42 @@ const Table = ({
             end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
             break;
         case dateRange.EXACTLY_DATE:
-        case dateRange.EXACYLY_TIME:
+            start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+            end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+            break;
+        case dateRange.EXACTLY_TIME:
+            start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+            end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+            break;
         default:
             start = end = moment().format('YYYY-MM-DD');
     }
-
+    
     const filteredLogs = logs.filter(log => {
-        let include = false;
+        let date = false, severity = true, facility = true, host = true;
+        let logDate = filters.dateRange === constants.dateRange.EXACTLY_TIME ? 
+                        moment(log.date, 'YYYY-MM-DD HH:mm') : 
+                        moment(log.date, 'YYYY-MM-DD');
 
         if (filters.dateRange) {
-            
+            if (logDate.isSameOrAfter(start) && logDate.isSameOrBefore(end)) {
+                date = true;
+            }
         }
+
+        if (filters.severity.length > 0) {
+            severity = filters.severity.includes(log.severity);
+        }
+
+        if (filters.facility.length > 0) {
+            facility = filters.facility.includes(log.facility);
+        }
+
+        if (filters.host.length > 0) {
+            host = filters.host.includes(log.host);
+        }
+
+        return date && severity && facility && host;
     });
 
     return (
@@ -100,7 +125,7 @@ const Table = ({
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
-                            disabled={indexShowRow.end === logs.length}
+                            disabled={indexShowRow.end === filteredLogs.length}
                             onClick={() => onClickPaginationNext(selectedTableSize)}>Next</button>
                     </div>
                 </div>
@@ -117,7 +142,7 @@ const Table = ({
                     </tr>
                 </thead>
                 <tbody>
-                    {logs.slice(indexShowRow.start - 1, indexShowRow.end).map(elem =>
+                    {filteredLogs.slice(indexShowRow.start - 1, indexShowRow.end).map(elem =>
                         <tr key={elem.id}>
                             <td>{elem.date}</td>
                             <td>{elem.facility}</td>
