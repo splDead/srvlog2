@@ -10,29 +10,28 @@ const styleFilters = {
     overflowY : 'auto'
 };
 
-const Filters = ({ 
-    filters,
-    severity,
-    facility,
-    host,
-    onChangeDateRange, 
-    onChangeExactlyDateRangeFrom,
-    onChangeExactlyDateRangeTo,
-    onChangeExactlyTimeRangeFrom,
-    onChangeExactlyTimeRangeTo,
-    onChangeSeverityFilters,
-    onChangeFacilityFilters,
-    onChangeHostFilters }) => {
+const Filters = (props) => {
     const { dateRange } = constants;
-    const dateStart = filters.dateStart !== '' ? moment(filters.dateStart) : moment();
-    const dateEnd = filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
+    const { 
+        logsTable,
+        onChangeDateRange, 
+        onChangeExactlyDateRangeFrom,
+        onChangeExactlyDateRangeTo,
+        onChangeExactlyTimeRangeFrom,
+        onChangeExactlyTimeRangeTo,
+        onChangeSeverityFilters,
+        onChangeFacilityFilters,
+        onChangeHostFilters } = props;
+    const { filters, severity, facility, host } = logsTable;
+    const dateStart = filters && filters.dateStart !== '' ? moment(filters.dateStart) : moment();
+    const dateEnd = filters && filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
 
     return (
         <div className='col-3 border rounded bg-light ml-3 pt-2'>
             <div className='mb-2'>
                 Date range:
                 <select 
-                    value={filters.dateRange} 
+                    value={filters && filters.dateRange} 
                     className='custom-select custom-select-sm'
                     onChange={e => onChangeDateRange(e.target.value)}>
                     <option value={dateRange.TODAY}>{dateRange.TODAY}</option>
@@ -45,7 +44,7 @@ const Filters = ({
                     <option value={dateRange.EXACTLY_TIME}>{dateRange.EXACTLY_TIME}</option>
                 </select>
             </div>
-            {filters.dateRange === dateRange.EXACTLY_DATE ?
+            {filters && filters.dateRange === dateRange.EXACTLY_DATE ?
                 <div className='mb-2'>
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>From:</span>
@@ -77,7 +76,7 @@ const Filters = ({
                     </div>
                 </div> :
                 ''}
-            {filters.dateRange === dateRange.EXACTLY_TIME ?
+            {filters && filters.dateRange === dateRange.EXACTLY_TIME ?
                 <div className='mb-2'>
                     <div className='d-flex align-items-center mb-2'>
                         <span className='pr-2 w-25'>From:</span>
@@ -122,9 +121,9 @@ const Filters = ({
                     size='8' 
                     multiple 
                     style={styleFilters}
-                    value={filters.severity}
+                    value={filters && filters.severity}
                     onChange={e => onChangeSeverityFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
-                    {severity.map((elem, i) =>
+                    {severity && severity.map((elem, i) =>
                         <option key={i} value={elem}>{elem}</option>
                     )}
                 </select>
@@ -136,9 +135,9 @@ const Filters = ({
                     size='8' 
                     multiple 
                     style={styleFilters}
-                    value={filters.facility}
+                    value={filters && filters.facility}
                     onChange={e => onChangeFacilityFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
-                    {facility.map((elem, i) =>
+                    {facility && facility.map((elem, i) =>
                         <option key={i} value={elem}>{elem}</option>
                     )}
                 </select>
@@ -150,9 +149,9 @@ const Filters = ({
                     size='8' 
                     multiple 
                     style={styleFilters}
-                    value={filters.host}
+                    value={filters && filters.host}
                     onChange={e => onChangeHostFilters([].slice.call(e.target.selectedOptions).map(o => o.value))}>
-                    {host.map((elem, i) =>
+                    {host && host.map((elem, i) =>
                         <option key={i} value={elem}>{elem}</option>
                     )}
                 </select>

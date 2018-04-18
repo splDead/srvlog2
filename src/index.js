@@ -7,11 +7,10 @@ import { messages, statistics, logsTable } from './reducers/reducers';
 import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-import data from './data/data';
+// import data from './data/data';
 
 const store = createStore(
-	combineReducers({ messages, statistics, logsTable }),
-    data
+	combineReducers({ messages, statistics, logsTable })
 );
 
 ReactDOM.render(

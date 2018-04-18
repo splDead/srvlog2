@@ -6,10 +6,28 @@ export const readMessage = id =>
         id
     });
 
+export const loadMessages = messages =>
+    ({
+        type : constants.LOAD_MESSAGES,
+        messages
+    });
+
+export const loadStatistics = statistics =>
+    ({
+        type : constants.LOAD_STATISTICS,
+        statistics
+    })
+
 export const changePeriodLogs = period =>
     ({
         type : constants.CHANGE_PERIOD,
         period
+    });
+
+export const loadLogs = logs =>
+    ({
+        type : constants.LOAD_LOGS,
+        logs 
     });
 
 export const changeTableSize = size =>

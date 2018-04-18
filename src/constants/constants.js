@@ -43,7 +43,10 @@ const constants = {
         LAST_MONTH : 'LAST_MONTH',
         EXACTLY_DATE : 'EXACTLY_DATE',
         EXACTLY_TIME : 'EXACTLY_TIME'
-    }
+    },
+    LOAD_MESSAGES : 'LOAD_MESSAGES',
+    LOAD_STATISTICS : 'LOAD_STATISTICS',
+    LOAD_LOGS : 'LOAD_LOGS'
 }
 
 export default constants;

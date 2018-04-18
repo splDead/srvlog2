@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Home = () =>
-    <section className='home'>
-        SRVLOG
-    </section>
+    <h1>SRVLOG</h1>
 
 export default Home;

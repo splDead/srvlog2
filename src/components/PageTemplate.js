@@ -1,11 +1,11 @@
 import React from 'react';
 import MainMenu from './MainMenu';
-import { MessageContainer } from '../containers/MessageContainer';
+import Messages from '../components/Messages';
 
 const PageTemplate = ({ children }) =>
     <React.Fragment>
         <MainMenu />
-        <MessageContainer />
+        <Messages />
         {children}
     </React.Fragment>
 

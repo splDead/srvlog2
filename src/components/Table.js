@@ -2,79 +2,83 @@ import React from 'react';
 import constants from '../constants/constants';
 import moment from 'moment';
 
-const Table = ({ 
-        logs, 
-        selectedTableSize, 
-        indexShowRow,
-        filters,
+const Table = (props) => {
+    const { tableSize, dateRange } = constants;
+    const { 
+        logsTable,
         onChangeTableSizeView, 
         onClickPaginationFirst,
         onClickPaginationNext,
-        onClickPaginationPrev }) => {
-    const { tableSize, dateRange } = constants;
-debugger
-    let start, end;
-    switch (filters.dateRange) {
-        case dateRange.TODAY:
-            start = end = moment().format('YYYY-MM-DD');
-            break;
-        case dateRange.YESTERDAY:
-            start = end = moment().subtract(1, 'day').format('YYYY-MM-DD');
-            break;
-        case dateRange.THIS_WEEK:
-            start = moment().isoWeekday(1).format('YYYY-MM-DD');
-            end = moment().format('YYYY-MM-DD');
-            break;
-        case dateRange.LAST_WEEK:
-            start = moment().isoWeekday(1).subtract(7, 'days').format('YYYY-MM-DD');
-            end = moment().isoWeekday(7).subtract(7, 'days').format('YYYY-MM-DD');
-            break;
-        case dateRange.THIS_MONTH:
-            start = moment().date(1).format('YYYY-MM-DD');
-            end = moment().format('YYYY-MM-DD');
-            break;
-        case dateRange.LAST_MONTH:
-            start = moment().date(1).subtract(1, 'month').format('YYYY-MM-DD');
-            end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
-            break;
-        case dateRange.EXACTLY_DATE:
-            start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
-            end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
-            break;
-        case dateRange.EXACTLY_TIME:
-            start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
-            end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
-            break;
-        default:
-            start = end = moment().format('YYYY-MM-DD');
+        onClickPaginationPrev } = props;
+    const { logs = [], selectedTableSize = '', indexShowRow = {}, filters = {} } = logsTable;
+
+    let start, end, filteredLogs;
+
+    if (filters) {
+        switch (filters.dateRange) {
+            case dateRange.TODAY:
+                start = end = moment().format('YYYY-MM-DD');
+                break;
+            case dateRange.YESTERDAY:
+                start = end = moment().subtract(1, 'day').format('YYYY-MM-DD');
+                break;
+            case dateRange.THIS_WEEK:
+                start = moment().isoWeekday(1).format('YYYY-MM-DD');
+                end = moment().format('YYYY-MM-DD');
+                break;
+            case dateRange.LAST_WEEK:
+                start = moment().isoWeekday(1).subtract(7, 'days').format('YYYY-MM-DD');
+                end = moment().isoWeekday(7).subtract(7, 'days').format('YYYY-MM-DD');
+                break;
+            case dateRange.THIS_MONTH:
+                start = moment().date(1).format('YYYY-MM-DD');
+                end = moment().format('YYYY-MM-DD');
+                break;
+            case dateRange.LAST_MONTH:
+                start = moment().date(1).subtract(1, 'month').format('YYYY-MM-DD');
+                end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
+                break;
+            case dateRange.EXACTLY_DATE:
+                start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                break;
+            case dateRange.EXACTLY_TIME:
+                start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                break;
+            default:
+                start = end = moment().format('YYYY-MM-DD');
+        }
     }
     
-    const filteredLogs = logs.filter(log => {
-        let date = false, severity = true, facility = true, host = true;
-        let logDate = filters.dateRange === constants.dateRange.EXACTLY_TIME ? 
-                        moment(log.date, 'YYYY-MM-DD HH:mm') : 
-                        moment(log.date, 'YYYY-MM-DD');
+    if (logs) {
+        filteredLogs = logs.filter(log => {
+            let date = false, severity = true, facility = true, host = true;
+            let logDate = filters.dateRange === constants.dateRange.EXACTLY_TIME ? 
+                            moment(log.date, 'YYYY-MM-DD HH:mm') : 
+                            moment(log.date, 'YYYY-MM-DD');
 
-        if (filters.dateRange) {
-            if (logDate.isSameOrAfter(start) && logDate.isSameOrBefore(end)) {
-                date = true;
+            if (filters.dateRange) {
+                if (logDate.isSameOrAfter(start) && logDate.isSameOrBefore(end)) {
+                    date = true;
+                }
             }
-        }
 
-        if (filters.severity.length > 0) {
-            severity = filters.severity.includes(log.severity);
-        }
+            if (filters.severity.length > 0) {
+                severity = filters.severity.includes(log.severity);
+            }
 
-        if (filters.facility.length > 0) {
-            facility = filters.facility.includes(log.facility);
-        }
+            if (filters.facility.length > 0) {
+                facility = filters.facility.includes(log.facility);
+            }
 
-        if (filters.host.length > 0) {
-            host = filters.host.includes(log.host);
-        }
+            if (filters.host.length > 0) {
+                host = filters.host.includes(log.host);
+            }
 
-        return date && severity && facility && host;
-    });
+            return date && severity && facility && host;
+        });
+    }    
 
     return (
         <div className='w-100'>
@@ -142,7 +146,7 @@ debugger
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredLogs.slice(indexShowRow.start - 1, indexShowRow.end).map(elem =>
+                    {filteredLogs ? filteredLogs.slice(indexShowRow.start - 1, indexShowRow.end).map(elem =>
                         <tr key={elem.id}>
                             <td>{elem.date}</td>
                             <td>{elem.facility}</td>
@@ -151,7 +155,7 @@ debugger
                             <td>{elem.program}</td>
                             <td>{elem.message}</td>
                         </tr>
-                    )}
+                    ) : ''}
                 </tbody>
             </table>
         </div>

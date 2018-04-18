@@ -1,10 +1,24 @@
 import constants from '../constants/constants';
 import moment from 'moment';
 
-export const messages = (state = {}, action) => {
+const initialState = {
+    messages : [],
+    statistics : {},
+    logsTable : {}
+}
+
+export const messages = (state = initialState, action) => {
     switch (action.type) {
         case constants.READ_MESSAGE:
-            return state.filter(m => m.id !== action.id);
+            return {
+                ...state,
+                messages : state.messages.filter(m => m.id !== action.id)
+            }
+        case constants.LOAD_MESSAGES:
+            return {
+                ...state,
+                messages : action.messages
+            }
         default:
             return state;
     }
@@ -34,7 +48,7 @@ const filterLogs = (state = {}, period = constants.period.THIS_WEEK) => {
             return state.logs;
     }
 
-    let filteredLogs = state.logs.filter(log => 
+    let filteredLogs = state.statistics.logs.filter(log => 
         moment(log.date).isSameOrAfter(startDate) && moment(log.date).isSameOrBefore(endDate)
     );
 
@@ -53,21 +67,40 @@ const filterLogs = (state = {}, period = constants.period.THIS_WEEK) => {
     return {filteredLogs, summary};
 }
 
-export const statistics = (state = {}, action) => {
+export const statistics = (state = initialState, action) => {
     switch (action.type) {
         case constants.CHANGE_PERIOD:
-            return Object.assign({}, state, filterLogs(state, action.period), {
-                selectedPeriod : action.period
-            });
+            return {
+                ...state,
+                statistics : {
+                    logs : state.statistics.logs,
+                    selectedPeriod : action.period,
+                    ...filterLogs(state, action.period)
+                }
+            }
+        case constants.LOAD_STATISTICS:
+            return {
+                ...state,
+                statistics : {
+                    logs : action.statistics.logs,
+                    selectedPeriod : action.statistics.selectedPeriod,
+                    ...filterLogs(action, action.statistics.selectedPeriod)
+                }
+            }
         default:
             return state;
     }
 }
 
-export const logsTable = (state = {}, action) => {
+export const logsTable = (state = initialState, action) => {
     let start, end;
     
     switch (action.type) {
+        case constants.LOAD_LOGS:
+            return {
+                ...state,
+                logsTable : action.logs
+            }
         case constants.TABLE_SIZE:
             return {
                 ...state,
