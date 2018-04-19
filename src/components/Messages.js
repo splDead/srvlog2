@@ -20,9 +20,11 @@ class Messages extends React.Component {
     }
     
     render() {
+        const { messages = [] } = this.props;
+
         return (
-            this.props.messages.length > 0 ?
-                this.props.messages.map(message => 
+            messages.length > 0 ?
+                messages.map(message => 
                     <Message 
                         key={message.id} 
                         {...message} 

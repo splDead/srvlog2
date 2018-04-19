@@ -6,9 +6,9 @@ import Logs from './components/Logs';
 import OnlineLogs from './components/OnlineLogs';
 import DetailedLogs from './components/DetailedLogs';
 import Hosts from './components/Hosts';
-import PageTemplate from './components/PageTemplate';
+import { PageTemplate } from './components/PageTemplate';
 
-const App = () => {
+export const App = () => {
 	return (
 		<div className="container-fluid">
 			<HashRouter>
@@ -26,5 +26,3 @@ const App = () => {
 		</div>
 	);
 }
-
-export default App;
