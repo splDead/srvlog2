@@ -2,6 +2,7 @@
   "name": "srvlog2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://spldead.github.io/srvlog2/",
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
