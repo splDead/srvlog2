@@ -2,16 +2,9 @@ import React from 'react';
 import constants from '../constants/constants';
 import moment from 'moment';
 
-const Table = (props) => {
+const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }) => {
     const { tableSize, dateRange } = constants;
-    const { 
-        logsTable,
-        onChangeTableSizeView, 
-        onClickPaginationFirst,
-        onClickPaginationNext,
-        onClickPaginationPrev } = props;
     const { logs = [], selectedTableSize = '', indexShowRow = {}, filters = {} } = logsTable;
-
     let start, end, filteredLogs;
 
     if (filters) {
@@ -84,7 +77,7 @@ const Table = (props) => {
         <div className='w-100'>
             <div className='d-flex justify-content-between mb-3'>
                 <div className='btn-group-toggle'>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.SMALL ? 'acive' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.SMALL ? ' active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.SMALL} 
@@ -92,7 +85,7 @@ const Table = (props) => {
                             onChange={e => onChangeTableSizeView(Number(e.target.value))} 
                             />{tableSize.SMALL}
                     </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.MEDIUM ? 'acive' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.MEDIUM ? 'active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.MEDIUM} 
@@ -100,7 +93,7 @@ const Table = (props) => {
                             onChange={e => onChangeTableSizeView(Number(e.target.value))}
                             />{tableSize.MEDIUM}
                     </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.LARGE ? 'acive' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.LARGE ? 'active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.LARGE} 
@@ -111,11 +104,13 @@ const Table = (props) => {
                 </div>
                 <div>
                     <div className='d-flex align-items-center'>
-                        <div className='mr-3'>
-                            <span className='badge badge-pill badge-secondary'>{indexShowRow.start}</span>
-                            <span> - </span>
-                            <span className='badge badge-pill badge-secondary'>{indexShowRow.end}</span>
-                        </div>
+                        {filteredLogs.length > 0 ?
+                            <div className='mr-3'>                            
+                                <span className='badge badge-pill badge-secondary'>{indexShowRow.start}</span>
+                                <span> - </span>
+                                <span className='badge badge-pill badge-secondary'>{indexShowRow.end > filteredLogs.length ? filteredLogs.length : indexShowRow.end}</span>
+                            </div> : <div className='mr-3'><span className='badge badge-pill badge-secondary'>0</span></div>
+                        }
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
@@ -129,7 +124,7 @@ const Table = (props) => {
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
-                            disabled={indexShowRow.end === filteredLogs.length}
+                            disabled={indexShowRow.end >= filteredLogs.length}
                             onClick={() => onClickPaginationNext(selectedTableSize)}>Next</button>
                     </div>
                 </div>

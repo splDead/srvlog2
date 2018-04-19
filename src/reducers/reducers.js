@@ -104,143 +104,147 @@ export const logsTable = (state = initialState, action) => {
         case constants.TABLE_SIZE:
             return {
                 ...state,
-                selectedTableSize : action.size,
-                indexShowRow : {
-                    start : 1,
-                    end : action.size
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    selectedTableSize : action.size,
+                    indexShowRow : {
+                        start : 1,
+                        end : action.size
+                    }
+                }                
             }
         case constants.PAGINATION_FIRST:
             return {
                 ...state,
-                indexShowRow : {
-                    start : 1,
-                    end : action.selectedTableSize
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    indexShowRow : {
+                        start : 1,
+                        end : action.selectedTableSize
+                    }
+                }                
             }
         case constants.PAGINATION_PREV:
-            start = state.indexShowRow.start - action.selectedTableSize < 1 ? 
+            start = state.logsTable.indexShowRow.start - action.selectedTableSize < 1 ? 
                         1 : 
-                        state.indexShowRow.start - action.selectedTableSize;
-            end = state.indexShowRow.end - action.selectedTableSize < action.selectedTableSize ? 
+                        state.logsTable.indexShowRow.start - action.selectedTableSize;
+            end = state.logsTable.indexShowRow.end - action.selectedTableSize < action.selectedTableSize ? 
                         action.selectedTableSize : 
-                        state.indexShowRow.end - action.selectedTableSize;
+                        state.logsTable.indexShowRow.end - action.selectedTableSize;
             return {
                 ...state,
-                indexShowRow : {
-                    start,
-                    end
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    indexShowRow : {
+                        start,
+                        end
+                    }
+                }                
             }
         case constants.PAGINATION_NEXT:
-            start = state.indexShowRow.start + action.selectedTableSize > state.logs.length - action.selectedTableSize ? 
-                    state.logs.length - action.selectedTableSize : 
-                    state.indexShowRow.start + action.selectedTableSize;
-            end = state.indexShowRow.end + action.selectedTableSize > state.logs.length ? 
-                    state.logs.length : 
-                    state.indexShowRow.end + action.selectedTableSize;
+            start = state.logsTable.indexShowRow.start + action.selectedTableSize > state.logsTable.logs.length - action.selectedTableSize ? 
+                    state.logsTable.logs.length - action.selectedTableSize : 
+                    state.logsTable.indexShowRow.start + action.selectedTableSize;
+            end = state.logsTable.indexShowRow.end + action.selectedTableSize > state.logsTable.logs.length ? 
+                    state.logsTable.logs.length : 
+                    state.logsTable.indexShowRow.end + action.selectedTableSize;
             return {
                 ...state,
-                indexShowRow : {
-                    start,
-                    end
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    indexShowRow : {
+                        start,
+                        end
+                    }
+                }                
             }
         case constants.CHANGE_DATE_RANGE:
             return {
                 ...state,
-                filters : {
-                    dateRange : action.range,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : state.filters.dateEnd,
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        dateRange : action.range
+                    }
+                }                
             }
         case constants.CHANGE_EXACTLY_DATE_RANGE_FROM:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : action.date.format('YYYY-MM-DD'),
-                    dateEnd : state.filters.dateEnd,
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        dateStart : action.date.format('YYYY-MM-DD')
+                    }
+                }                
             }
         case constants.CHANGE_EXACTLY_DATE_RANGE_TO:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : action.date.format('YYYY-MM-DD'),
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        dateEnd : action.date.format('YYYY-MM-DD')
+                    }
+                }                
             }
         case constants.CHANGE_EXACTLY_TIME_RANGE_FROM:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : action.date.format('YYYY-MM-DD HH:mm'),
-                    dateEnd : state.filters.dateEnd,
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        dateStart : action.date.format('YYYY-MM-DD HH:mm')
+                    }
+                }                
             }
         case constants.CHANGE_EXACTLY_TIME_RANGE_TO:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : action.date.format('YYYY-MM-DD HH:mm'),
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        dateEnd : action.date.format('YYYY-MM-DD HH:mm')
+                    }
+                }                
             }
         case constants.CHANGE_SEVERITY_FILTERS:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : state.filters.dateEnd,
-                    severity : action.severity,
-                    facility : state.filters.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        severity : action.severity
+                    }
+                }                
             }
         case constants.CHANGE_FACILITY_FILTERS:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : state.filters.dateEnd,
-                    severity : state.filters.severity,
-                    facility : action.facility,
-                    host : state.filters.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        facility : action.facility
+                    }
+                }                
             }
         case constants.CHANGE_HOST_FILTERS:
             return {
                 ...state,
-                filters : {
-                    dateRange : state.filters.dateRange,
-                    dateStart : state.filters.dateStart,
-                    dateEnd : state.filters.dateEnd,
-                    severity : state.filters.severity,
-                    facility : state.filters.facility,
-                    host : action.host
-                }
+                logsTable : {
+                    ...state.logsTable,
+                    filters : {
+                        ...state.logsTable.filters,
+                        host : action.host
+                    }
+                }                
             }
         default:
             return state;

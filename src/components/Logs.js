@@ -4,7 +4,6 @@ import axios from 'axios';
 import Search from './Search';
 import Table from './Table';
 import Filters from './Filters';
-import constants from '../constants/constants';
 import { 
     changeTableSize,
     paginationFirst,
@@ -35,27 +34,17 @@ class Logs extends React.Component {
     componentDidMount() {
         this.loadData();
     }
+
+    handleSearch = (input) => {
+        
+        axios.get(`http://p1703.mocklab.io/search?q=${input.value}`)
+            .then(response => alert(response.data));
+    }
     
     render() {
-        const {
-            logsTable,
-            onChangeTableSizeView,
-            onClickPaginationFirst,
-            onClickPaginationNext,
-            onClickPaginationPrev,
-            onChangeDateRange,
-            onChangeExactlyDateRangeFrom,
-            onChangeExactlyDateRangeTo,
-            onChangeExactlyTimeRangeFrom,
-            onChangeExactlyTimeRangeTo,
-            onChangeSeverityFilters,
-            onChangeFacilityFilters,
-            onChangeHostFilters
-        } = this.props;
-
         return (
             <div>
-            <Search />
+            <Search onSearch={this.handleSearch} />
             <div className='d-flex align-items-start mb-5'>
                 <Table {...this.props} />
                 <Filters {...this.props} />
