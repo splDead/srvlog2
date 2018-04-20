@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { LinearChart } from './LinearChart';
 import constants from '../constants/constants';
-import { changePeriodLogs, loadStatistics } from '../actions/actions';
+import { changePeriodLogs, fetctStatistics } from '../actions/actions';
 
 const styleLogsBySeverity = {
     EMERGENCY : {
@@ -34,18 +33,8 @@ const styleLogsBySeverity = {
 
 class Statistics extends React.Component {
     
-    loadData() {
-        let { onLoad } = this.props;
-
-        axios.get('http://p1703.mocklab.io/dashboard')
-            .then(response => {
-                onLoad(response.data.statistics)
-            })
-            .catch(error => console.log(error));
-    }
-
     componentDidMount() {
-        this.loadData();
+        this.props.onLoad();
     }            
     
     render() {
@@ -101,8 +90,8 @@ export default connect(
             onChangePediod(period) {
                 dispatch(changePeriodLogs(period))
             },
-            onLoad(statistics) {
-                dispatch(loadStatistics(statistics))
+            onLoad() {
+                dispatch(fetctStatistics())
             }
         })
 )(Statistics);

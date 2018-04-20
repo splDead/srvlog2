@@ -1,22 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Message from './Message';
-import { loadMessages, readMessage } from '../actions/actions';
+import { readMessage, fetchMessages } from '../actions/actions';
 
-class Messages extends React.Component {
-    loadData() {
-        let { onLoad } = this.props;
-
-        axios.get('http://p1703.mocklab.io/messages')
-            .then(response => {
-                onLoad(response.data.messages)
-            })
-            .catch(error => console.log(error));
-    }
-
+export class Messages extends React.Component {
+    
     componentDidMount() {
-        this.loadData();
+        this.props.onLoad();
     }
     
     render() {
@@ -43,8 +33,8 @@ export default connect(
             onClose(id) {
                 dispatch(readMessage(id))
             },
-            onLoad(messages) {
-                dispatch(loadMessages(messages))
+            onLoad() {
+                dispatch(fetchMessages())
             }
         })
 )(Messages);

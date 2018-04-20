@@ -1,4 +1,5 @@
 import constants from '../constants/constants';
+import axios from 'axios';
 
 export const readMessage = id =>
     ({
@@ -12,11 +13,27 @@ export const loadMessages = messages =>
         messages
     });
 
+export const fetchMessages = () => dispatch => {
+    return axios.get('http://p1703.mocklab.io/messages')
+            .then(response => {
+                dispatch(loadMessages(response.data.messages))
+            })
+            .catch(error => console.log(error));
+}
+
 export const loadStatistics = statistics =>
     ({
         type : constants.LOAD_STATISTICS,
         statistics
-    })
+    });
+
+export const fetctStatistics = () => dispatch => {
+    return axios.get('http://p1703.mocklab.io/dashboard')
+            .then(response => {
+                dispatch(loadStatistics(response.data.statistics))
+            })
+            .catch(error => console.log(error));
+}
 
 export const changePeriodLogs = period =>
     ({
@@ -29,6 +46,14 @@ export const loadLogs = logs =>
         type : constants.LOAD_LOGS,
         logs 
     });
+
+export const fetchLogs = () => dispatch => {
+    return axios.get('http://p1703.mocklab.io/logs')
+            .then(response => {
+                dispatch(loadLogs(response.data.logsTable))
+            })
+            .catch(error => console.log(error));
+}
 
 export const changeTableSize = size =>
     ({

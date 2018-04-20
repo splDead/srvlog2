@@ -17,26 +17,15 @@ import {
     changeSeverityFilters,
     changeFacilityFilters,
     changeHostFilters, 
-    loadLogs } from '../actions/actions';
+    fetchLogs } from '../actions/actions';
 
 class Logs extends React.Component {
-    
-    loadData() {
-        let { onLoad } = this.props;
-
-        axios.get('http://p1703.mocklab.io/logs')
-            .then(response => {
-                onLoad(response.data.logsTable)
-            })
-            .catch(error => console.log(error));
-    }
 
     componentDidMount() {
-        this.loadData();
+        this.props.onLoad();
     }
 
-    handleSearch = (input) => {
-        
+    handleSearch = (input) => {        
         axios.get(`http://p1703.mocklab.io/search?q=${input.value}`)
             .then(response => alert(response.data));
     }
@@ -44,12 +33,12 @@ class Logs extends React.Component {
     render() {
         return (
             <div>
-            <Search onSearch={this.handleSearch} />
-            <div className='d-flex align-items-start mb-5'>
-                <Table {...this.props} />
-                <Filters {...this.props} />
+                <Search onSearch={this.handleSearch} />
+                <div className='d-flex align-items-start mb-5'>
+                    <Table {...this.props} />
+                    <Filters {...this.props} />
+                </div>
             </div>
-        </div>
         )    
     }    
 }
@@ -58,8 +47,8 @@ export default connect(
     state => state.logsTable,
     dispatch =>
         ({
-            onLoad(logs) {
-                dispatch(loadLogs(logs))
+            onLoad() {
+                dispatch(fetchLogs())
             },
             onChangeTableSizeView(tableSize) {
                 dispatch(changeTableSize(tableSize))
