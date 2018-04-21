@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://spldead.github.io/srvlog2/",
   "devDependencies": {
+    "eslint-plugin-flowtype-errors": "^3.5.1",
+    "flow-bin": "^0.70.0",
     "react-scripts": "1.1.4"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "flow": "flow"
   }
 }

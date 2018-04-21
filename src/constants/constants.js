@@ -1,3 +1,4 @@
+// @flow
 const constants = {
     messageSeverity : {
         EMERGENCY : 'alert alert-danger pl-3',
