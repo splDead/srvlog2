@@ -1,31 +1,29 @@
 // @flow
+
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Message from './Message';
 import { readMessage, fetchMessages } from '../actions/actions';
-import type { MessageType } from '../types/types';
+import type { StateType, MessageType, Dispatch } from '../types/types';
 
 type Props = {
     messages: MessageType[],
-    onload: void
+    onClose: Function,
+    onLoad: Function
 };
 
-type State = {
-    onLoad: any
-};
-
-export class Messages extends React.Component<Props, State> {
+export class Messages extends React.Component<Props, StateType> {
     
     componentDidMount() {
         this.props.onLoad();
     }
 
     render() {        
-        const messages: MessageType[] = this.props.messages;
+        const { messages } = this.props;
 
         return (
             messages.length > 0 ?
-                messages.map((message: MessageType) => 
+                messages.map(message => 
                     <Message 
                         key={message.id} 
                         {...message} 
@@ -37,13 +35,13 @@ export class Messages extends React.Component<Props, State> {
 }
 
 export default connect(
-    (state: {}) => state.messages,
-    (dispatch: Function) =>
+    (state): any => state.messages,
+    (dispatch: Dispatch) =>
         ({
-            onClose: (id: string): void => {
+            onClose(id: string) {
                 dispatch(readMessage(id))
             },
-            onLoad: (): void => {
+            onLoad() {
                 dispatch(fetchMessages())
             }
         })

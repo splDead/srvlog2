@@ -1,21 +1,21 @@
 // @flow
+
 import constants from '../constants/constants';
 import axios from 'axios';
-import { type MessageType, type StatisticsType, type LogsType, type LogsTableType} from '../types/types';
+import type { MessageType, StatisticsType, LogsTableType, ActionType, Dispatch } from '../types/types';
+import type moment from 'moment';
 
-export const readMessage = (id: string) =>
-    ({
+export const readMessage = (id: string): ActionType => ({
         type : constants.READ_MESSAGE,
         id
     });
 
-export const loadMessages = (messages: MessageType[]) =>
-    ({
+export const loadMessages = (messages: MessageType[]): ActionType => ({
         type : constants.LOAD_MESSAGES,
         messages
     });
 
-export const fetchMessages = () => (dispatch: any) => {
+export const fetchMessages = () => (dispatch: Dispatch) => {
     return axios.get('http://p1703.mocklab.io/messages')
             .then(response => {
                 dispatch(loadMessages(response.data.messages))
@@ -23,13 +23,12 @@ export const fetchMessages = () => (dispatch: any) => {
             .catch(error => console.log(error));
 }
 
-export const loadStatistics = (statistics: StatisticsType[]) =>
-    ({
+export const loadStatistics = (statistics: StatisticsType): ActionType => ({
         type : constants.LOAD_STATISTICS,
         statistics
     });
 
-export const fetctStatistics = () => (dispatch: any) => {
+export const fetctStatistics = () => (dispatch: Dispatch) => {
     return axios.get('http://p1703.mocklab.io/dashboard')
             .then(response => {
                 dispatch(loadStatistics(response.data.statistics))
@@ -37,19 +36,17 @@ export const fetctStatistics = () => (dispatch: any) => {
             .catch(error => console.log(error));
 }
 
-export const changePeriodLogs = (period: string) =>
-    ({
+export const changePeriodLogs = (period: string): ActionType => ({
         type : constants.CHANGE_PERIOD,
         period
     });
 
-export const loadLogs = (logs: LogsType) =>
-    ({
+export const loadLogs = (logs: LogsTableType): ActionType => ({
         type : constants.LOAD_LOGS,
         logs 
     });
 
-export const fetchLogs = () => (dispatch: any) => {
+export const fetchLogs = () => (dispatch: Dispatch) => {
     return axios.get('http://p1703.mocklab.io/logs')
             .then(response => {
                 dispatch(loadLogs(response.data.logsTable))
@@ -57,74 +54,62 @@ export const fetchLogs = () => (dispatch: any) => {
             .catch(error => console.log(error));
 }
 
-export const changeTableSize = (size: number) =>
-    ({
+export const changeTableSize = (size: number): ActionType => ({
         type : constants.TABLE_SIZE,
         size
     });
 
-export const paginationFirst = (selectedTableSize: number) =>
-    ({
+export const paginationFirst = (selectedTableSize: number): ActionType => ({
         type : constants.PAGINATION_FIRST,
         selectedTableSize
     });
 
-export const paginationNext = (selectedTableSize: number) =>
-    ({
+export const paginationNext = (selectedTableSize: number): ActionType => ({
         type : constants.PAGINATION_NEXT,
         selectedTableSize
     });
 
-export const paginationPrev = (selectedTableSize: number) =>
-    ({
+export const paginationPrev = (selectedTableSize: number): ActionType => ({
         type : constants.PAGINATION_PREV,
         selectedTableSize
     });
 
-export const changeDateRange = (range: string) =>
-    ({
+export const changeDateRange = (range: string): ActionType => ({
         type : constants.CHANGE_DATE_RANGE,
         range
     });
 
-export const changeExactlyDateRangeFrom = (date: string) =>
-    ({
+export const changeExactlyDateRangeFrom = (date: moment): ActionType => ({
         type : constants.CHANGE_EXACTLY_DATE_RANGE_FROM,
         date
     });
 
-export const changeExactlyDateRangeTo = (date: string) =>
-    ({
+export const changeExactlyDateRangeTo = (date: moment): ActionType => ({
         type : constants.CHANGE_EXACTLY_DATE_RANGE_TO,
         date
     });
 
-export const changeExactlyTimeRangeFrom = (date: string) =>
-    ({
+export const changeExactlyTimeRangeFrom = (date: moment): ActionType => ({
         type : constants.CHANGE_EXACTLY_TIME_RANGE_FROM,
         date
     });
 
-export const changeExactlyTimeRangeTo = (date: string) =>
-    ({
+export const changeExactlyTimeRangeTo = (date: moment): ActionType => ({
         type : constants.CHANGE_EXACTLY_TIME_RANGE_TO,
         date
     });
 
-export const changeSeverityFilters = (severity: string[]) =>
-    ({
+export const changeSeverityFilters = (severity: string[]): ActionType => ({
         type : constants.CHANGE_SEVERITY_FILTERS,
         severity
     });
 
-export const changeFacilityFilters = (facility: string[]) =>
-    ({
+export const changeFacilityFilters = (facility: string[]): ActionType => ({
         type : constants.CHANGE_FACILITY_FILTERS,
         facility
     });
 
-export const changeHostFilters = (host: string[]) =>
-    ({
+export const changeHostFilters = (host: string[]): ActionType => ({
         type : constants.CHANGE_HOST_FILTERS,
         host
     });

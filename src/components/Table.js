@@ -1,11 +1,25 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import constants from '../constants/constants';
 import moment from 'moment';
+import type { LogsTableType, LogsType, IndexPaginationType, FiltersType } from '../types/types';
 
-const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }) => {
+type Props = {
+    logsTable: LogsTableType,
+    onChangeTableSizeView: Function,
+    onClickPaginationFirst: Function,
+    onClickPaginationNext: Function,
+    onClickPaginationPrev: Function
+};
+
+const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }: Props) => {
     const { tableSize, dateRange } = constants;
-    const { logs = [], selectedTableSize = '', indexShowRow = {}, filters = {} } = logsTable;
-    let start, end, filteredLogs;
+    let logs: LogsType[] = logsTable.logs ? logsTable.logs : [];
+    let selectedTableSize: number = logsTable.selectedTableSize ? logsTable.selectedTableSize : tableSize.SMALL;
+    let indexShowRow: IndexPaginationType = logsTable.indexShowRow ? logsTable.indexShowRow : {};
+    let filters: FiltersType = logsTable.filters ? logsTable.filters : {};
+    let start: string, end: string, filteredLogs;
 
     if (filters) {
         switch (filters.dateRange) {
@@ -36,8 +50,8 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                 end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
                 break;
             case dateRange.EXACTLY_TIME:
-                start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
-                end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
                 break;
             default:
                 start = end = moment().format('YYYY-MM-DD');
@@ -57,15 +71,15 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                 }
             }
 
-            if (filters.severity.length > 0) {
+            if (filters.severity && filters.severity.length > 0) {
                 severity = filters.severity.includes(log.severity);
             }
 
-            if (filters.facility.length > 0) {
+            if (filters.facility && filters.facility.length > 0) {
                 facility = filters.facility.includes(log.facility);
             }
 
-            if (filters.host.length > 0) {
+            if (filters.host && filters.host.length > 0) {
                 host = filters.host.includes(log.host);
             }
 
@@ -73,7 +87,11 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
         });
     }    
 
-    return (
+    let paginationStart: number = indexShowRow.start ? indexShowRow.start : 1;
+    let paginationEnd: number = indexShowRow.end ? indexShowRow.end : 25;
+    let filteredLenghth: number = filteredLogs && filteredLogs.length > 0 ? filteredLogs.length : 0;
+
+    return (        
         <div className='w-100'>
             <div className='d-flex justify-content-between mb-3'>
                 <div className='btn-group-toggle'>
@@ -104,11 +122,11 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                 </div>
                 <div>
                     <div className='d-flex align-items-center'>
-                        {filteredLogs.length > 0 ?
+                        {filteredLenghth > 0 ?
                             <div className='mr-3'>                            
-                                <span className='badge badge-pill badge-secondary'>{indexShowRow.start}</span>
+                                <span className='badge badge-pill badge-secondary'>{paginationStart}</span>
                                 <span> - </span>
-                                <span className='badge badge-pill badge-secondary'>{indexShowRow.end > filteredLogs.length ? filteredLogs.length : indexShowRow.end}</span>
+                                <span className='badge badge-pill badge-secondary'>{paginationEnd > filteredLenghth ? filteredLenghth : paginationEnd}</span>
                             </div> : <div className='mr-3'><span className='badge badge-pill badge-secondary'>0</span></div>
                         }
                         <button 
@@ -124,7 +142,7 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
-                            disabled={indexShowRow.end >= filteredLogs.length}
+                            disabled={paginationEnd >= filteredLenghth}
                             onClick={() => onClickPaginationNext(selectedTableSize)}>Next</button>
                     </div>
                 </div>
@@ -141,7 +159,7 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredLogs ? filteredLogs.slice(indexShowRow.start - 1, indexShowRow.end).map(elem =>
+                    {filteredLogs ? filteredLogs.slice(paginationStart - 1, paginationEnd).map(elem =>
                         <tr key={elem.id}>
                             <td>{elem.date}</td>
                             <td>{elem.facility}</td>

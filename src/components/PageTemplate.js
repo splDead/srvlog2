@@ -1,8 +1,14 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import MainMenu from './MainMenu';
 import Messages from '../components/Messages';
 
-export const PageTemplate = ({ children }) =>
+type Props = {
+    children: React.Element<any>
+}
+
+export const PageTemplate = ({ children }: Props) =>
     <React.Fragment>
         <MainMenu />
         <Messages />

@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Search from './Search';
@@ -18,8 +20,26 @@ import {
     changeFacilityFilters,
     changeHostFilters, 
     fetchLogs } from '../actions/actions';
+import type { LogsTableType, Dispatch } from '../types/types';
 
-class Logs extends React.Component {
+type Props = {
+    logsTable: LogsTableType,
+    onLoad: Function,
+    onChangeTableSizeView: Function,
+    onClickPaginationFirst: Function,
+    onClickPaginationNext: Function,
+    onClickPaginationPrev: Function,
+    onChangeDateRange: Function,
+    onChangeExactlyDateRangeFrom: Function,
+    onChangeExactlyDateRangeTo: Function,
+    onChangeExactlyTimeRangeFrom: Function,
+    onChangeExactlyTimeRangeTo: Function,
+    onChangeSeverityFilters: Function,
+    onChangeFacilityFilters: Function,
+    onChangeHostFilters: Function
+};
+
+class Logs extends React.Component<Props> {
 
     componentDidMount() {
         this.props.onLoad();
@@ -44,8 +64,8 @@ class Logs extends React.Component {
 }
 
 export default connect(
-    state => state.logsTable,
-    dispatch =>
+    (state): any => state.logsTable,
+    (dispatch: Dispatch) =>
         ({
             onLoad() {
                 dispatch(fetchLogs())

@@ -1,7 +1,10 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import constants from '../constants/constants';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import type { LogsTableType } from '../types/types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Filters.css';
@@ -10,9 +13,19 @@ const styleFilters = {
     overflowY : 'auto'
 };
 
-const Filters = (props) => {
-    const { dateRange } = constants;
-    const { 
+type Props = {
+    logsTable: LogsTableType,
+    onChangeDateRange: Function,
+    onChangeExactlyDateRangeFrom: Function,
+    onChangeExactlyDateRangeTo: Function,
+    onChangeExactlyTimeRangeFrom: Function,
+    onChangeExactlyTimeRangeTo: Function,
+    onChangeSeverityFilters: Function,
+    onChangeFacilityFilters: Function,
+    onChangeHostFilters: Function
+};
+
+const Filters = ({ 
         logsTable,
         onChangeDateRange, 
         onChangeExactlyDateRangeFrom,
@@ -21,7 +34,8 @@ const Filters = (props) => {
         onChangeExactlyTimeRangeTo,
         onChangeSeverityFilters,
         onChangeFacilityFilters,
-        onChangeHostFilters } = props;
+        onChangeHostFilters }: Props) => {
+    const { dateRange } = constants;
     const { filters, severity, facility, host } = logsTable;
     const dateStart = filters && filters.dateStart !== '' ? moment(filters.dateStart) : moment();
     const dateEnd = filters && filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();

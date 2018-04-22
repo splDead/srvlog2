@@ -1,13 +1,16 @@
+// @flow
+
 import constants from '../constants/constants';
 import moment from 'moment';
+import type { StateType, ActionType } from '../types/types';
 
-const initialState = {
-    messages : [],
-    statistics : {},
-    logsTable : {}
-}
+const initialState: StateType = {
+    messages: [],
+    statistics: {},
+    logsTable: {}
+};
 
-export const messages = (state = initialState, action) => {
+export const messages = (state: StateType = initialState, action: ActionType): StateType => {
     switch (action.type) {
         case constants.READ_MESSAGE:
             return {
@@ -24,7 +27,7 @@ export const messages = (state = initialState, action) => {
     }
 };
 
-const filterLogs = (state = {}, period = constants.period.THIS_WEEK) => {
+const filterLogs = (state, period = constants.period.THIS_WEEK) => {
     let startDate, endDate;
 
     switch (period) {
@@ -45,15 +48,16 @@ const filterLogs = (state = {}, period = constants.period.THIS_WEEK) => {
             endDate = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
             break;
         default:
-            return state.logs;
+            startDate = moment().isoWeekday(1).format('YYYY-MM-DD');
+            endDate = moment().format('YYYY-MM-DD');
     }
 
-    let filteredLogs = state.statistics.logs.filter(log => 
+    let filteredLogs = state.statistics.logs && state.statistics.logs.filter(log => 
         moment(log.date).isSameOrAfter(startDate) && moment(log.date).isSameOrBefore(endDate)
     );
 
     let summary = [];
-    filteredLogs.forEach(log => {
+    filteredLogs && filteredLogs.forEach(log => {
         log.severity.forEach(s => {
             let index = summary.findIndex(el => el.caption === s.caption);
             if (index !== -1) {
@@ -67,7 +71,7 @@ const filterLogs = (state = {}, period = constants.period.THIS_WEEK) => {
     return {filteredLogs, summary};
 }
 
-export const statistics = (state = initialState, action) => {
+export const statistics = (state: StateType = initialState, action: ActionType): StateType => {
     switch (action.type) {
         case constants.CHANGE_PERIOD:
             return {
@@ -92,7 +96,7 @@ export const statistics = (state = initialState, action) => {
     }
 }
 
-export const logsTable = (state = initialState, action) => {
+export const logsTable = (state: StateType = initialState, action: ActionType): StateType => {
     let start, end;
     
     switch (action.type) {
@@ -125,12 +129,14 @@ export const logsTable = (state = initialState, action) => {
                 }                
             }
         case constants.PAGINATION_PREV:
-            start = state.logsTable.indexShowRow.start - action.selectedTableSize < 1 ? 
+            let paginationIndexStart = state.logsTable.indexShowRow && state.logsTable.indexShowRow.start ? state.logsTable.indexShowRow.start : 1;
+            let paginationIndexEnd = state.logsTable.indexShowRow && state.logsTable.indexShowRow.end ? state.logsTable.indexShowRow.end : 25;
+            start = paginationIndexStart - action.selectedTableSize < 1 ? 
                         1 : 
-                        state.logsTable.indexShowRow.start - action.selectedTableSize;
-            end = state.logsTable.indexShowRow.end - action.selectedTableSize < action.selectedTableSize ? 
+                        paginationIndexStart - action.selectedTableSize;
+            end = paginationIndexEnd - action.selectedTableSize < action.selectedTableSize ? 
                         action.selectedTableSize : 
-                        state.logsTable.indexShowRow.end - action.selectedTableSize;
+                        paginationIndexEnd - action.selectedTableSize;
             return {
                 ...state,
                 logsTable : {
@@ -142,12 +148,12 @@ export const logsTable = (state = initialState, action) => {
                 }                
             }
         case constants.PAGINATION_NEXT:
-            start = state.logsTable.indexShowRow.start + action.selectedTableSize > state.logsTable.logs.length - action.selectedTableSize ? 
-                    state.logsTable.logs.length - action.selectedTableSize : 
-                    state.logsTable.indexShowRow.start + action.selectedTableSize;
-            end = state.logsTable.indexShowRow.end + action.selectedTableSize > state.logsTable.logs.length ? 
-                    state.logsTable.logs.length : 
-                    state.logsTable.indexShowRow.end + action.selectedTableSize;
+            start = state.logsTable.indexShowRow && state.logsTable.indexShowRow.start && state.logsTable.logs && state.logsTable.logs.length && state.logsTable.indexShowRow.start + action.selectedTableSize > state.logsTable.logs.length - action.selectedTableSize ?
+                        state.logsTable.logs.length - action.selectedTableSize :
+                        state.logsTable.indexShowRow && state.logsTable.indexShowRow.start + action.selectedTableSize;
+            end = state.logsTable.indexShowRow && state.logsTable.indexShowRow.end && state.logsTable.logs && state.logsTable.logs.length && state.logsTable.indexShowRow.end + action.selectedTableSize > state.logsTable.logs.length ?
+                    state.logsTable.logs.length :
+                    state.logsTable.indexShowRow && state.logsTable.indexShowRow.end + action.selectedTableSize;
             return {
                 ...state,
                 logsTable : {

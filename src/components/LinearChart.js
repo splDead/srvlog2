@@ -1,7 +1,14 @@
+// @flow
+
 import * as d3 from 'd3';
 import React from 'react';
+import type { StatisticsLogType } from '../types/types';
 
-export class LinearChart extends React.Component {
+type Props = {
+    logs: Array<StatisticsLogType>
+};
+
+export class LinearChart extends React.Component<Props> {
     showChart = () => {
         let group;
         const { logs } = this.props;

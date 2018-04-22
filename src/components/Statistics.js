@@ -1,8 +1,11 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { LinearChart } from './LinearChart';
 import constants from '../constants/constants';
 import { changePeriodLogs, fetctStatistics } from '../actions/actions';
+import type { StateType, StatisticsType, Dispatch } from '../types/types';
 
 const styleLogsBySeverity = {
     EMERGENCY : {
@@ -31,7 +34,13 @@ const styleLogsBySeverity = {
     }
 };
 
-class Statistics extends React.Component {
+type Props = {
+    statistics: StatisticsType,
+    onLoad: Function,
+    onChangePediod: Function
+};
+
+class Statistics extends React.Component<Props, StateType> {
     
     componentDidMount() {
         this.props.onLoad();
@@ -84,10 +93,10 @@ class Statistics extends React.Component {
 }
 
 export default connect(
-    state => state.statistics,
-    dispatch =>
+    (state): any => state.statistics,
+    (dispatch: Dispatch) =>
         ({
-            onChangePediod(period) {
+            onChangePediod(period: string) {
                 dispatch(changePeriodLogs(period))
             },
             onLoad() {

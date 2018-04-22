@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Statistics from './components/Statistics';

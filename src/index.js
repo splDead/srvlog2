@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -13,11 +15,16 @@ const store = createStore(
     applyMiddleware(thunk)
 );
 
+const root = document.getElementById('root');
+if (root == null) {
+    throw new Error('No Root Element');
+}
+
 ReactDOM.render(
         <Provider store={store}>
             <App />
         </Provider>, 
-        document.getElementById('root')
+        root
     );
 
 registerServiceWorker();

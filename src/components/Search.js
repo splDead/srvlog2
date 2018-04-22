@@ -1,12 +1,20 @@
-import React from 'react';
+// @flow
 
-const Search = ({ onSearch = f => f }) => {
-    let _inputValue = '';
+import * as React from 'react';
 
-    const search = e => {
+type Props = {
+    onSearch: Function
+};
+
+const Search = ({ onSearch }: Props) => {
+    let _inputValue: ?HTMLInputElement;
+
+    const search = (e: SyntheticInputEvent<HTMLInputElement>) => {
         e.preventDefault();
         onSearch(_inputValue);
-        _inputValue.value = '';
+        if (_inputValue) {
+            _inputValue.value = '';
+        }
     }
 
     return (

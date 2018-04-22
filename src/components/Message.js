@@ -1,5 +1,8 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import constants from '../constants/constants';
+import type { MessageType } from '../types/types';
 
 const btnClose = {
     top : 0,
@@ -10,7 +13,7 @@ const btnClose = {
     color : 'var(--gray)'
 }
 
-const Message = ({ message, severity, buttons, onClick }) =>
+const Message = ({ message, severity, buttons, onClick }: MessageType & {onClick: Function}) =>
     <div className={constants.messageSeverity[severity]}>
         <h5>{message.title}</h5>
         <button 
