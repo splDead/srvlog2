@@ -46,7 +46,7 @@ class Logs extends React.Component<Props> {
     }
 
     handleSearch = (input) => {        
-        axios.get(`http://p1703.mocklab.io/search?q=${input.value}`)
+        axios.get(`https://p1703.mocklab.io/search?q=${input.value}`)
             .then(response => alert(response.data));
     }
     
