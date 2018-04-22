@@ -16,7 +16,7 @@ export const loadMessages = (messages: MessageType[]): ActionType => ({
     });
 
 export const fetchMessages = () => (dispatch: Dispatch) => {
-    return axios.get('http://p1703.mocklab.io/messages')
+    return axios.get('https://p1703.mocklab.io/messages')
             .then(response => {
                 dispatch(loadMessages(response.data.messages))
             })
@@ -29,7 +29,7 @@ export const loadStatistics = (statistics: StatisticsType): ActionType => ({
     });
 
 export const fetctStatistics = () => (dispatch: Dispatch) => {
-    return axios.get('http://p1703.mocklab.io/dashboard')
+    return axios.get('https://p1703.mocklab.io/dashboard')
             .then(response => {
                 dispatch(loadStatistics(response.data.statistics))
             })
@@ -47,7 +47,7 @@ export const loadLogs = (logs: LogsTableType): ActionType => ({
     });
 
 export const fetchLogs = () => (dispatch: Dispatch) => {
-    return axios.get('http://p1703.mocklab.io/logs')
+    return axios.get('https://p1703.mocklab.io/logs')
             .then(response => {
                 dispatch(loadLogs(response.data.logsTable))
             })
