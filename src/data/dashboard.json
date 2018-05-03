@@ -36,1186 +36,8 @@
         ],
         "logs": [
             {
-                "date": "2018-03-01",
-                "count": 125895,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-02",
-                "count": 110000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-03",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-04",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-05",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-06",
-                "count": 125895,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-07",
-                "count": 110000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-08",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-09",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-10",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-11",
-                "count": 144000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-12",
-                "count": 180000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-13",
-                "count": 125895,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-14",
-                "count": 110000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-15",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-16",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-17",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-18",
-                "count": 144000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-19",
-                "count": 125895,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-20",
-                "count": 110000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-21",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-22",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-23",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-24",
-                "count": 144000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-25",
-                "count": 180000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-26",
-                "count": 125895,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-27",
-                "count": 110000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-28",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-29",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-30",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-03-31",
-                "count": 144000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
                 "date": "2018-04-01",
-                "count": 180000,
+                "count": 125895,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1253,83 +75,83 @@
             },
             {
                 "date": "2018-04-02",
-                "count": 125895,
+                "count": 110000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
-                        "count": 35
+                        "count": 7
                     },
                     {
                         "caption": "ALERT",
-                        "count": 66
+                        "count": 56
                     },
                     {
                         "caption": "CRITICAL",
-                        "count": 46
+                        "count": 31
                     },
                     {
                         "caption": "ERROR",
-                        "count": 654
+                        "count": 313
                     },
                     {
                         "caption": "WARN",
-                        "count": 315136
+                        "count": 31513
                     },
                     {
                         "caption": "NOTICE",
-                        "count": 254
+                        "count": 53189
                     },
                     {
                         "caption": "INFO",
-                        "count": 546698
+                        "count": 135136
                     },
                     {
                         "caption": "DEBUG",
-                        "count": 65
+                        "count": 3
                     }
                 ]
             },
             {
                 "date": "2018-04-03",
-                "count": 110000,
+                "count": 151000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
-                        "count": 35
+                        "count": 7
                     },
                     {
                         "caption": "ALERT",
-                        "count": 66
+                        "count": 56
                     },
                     {
                         "caption": "CRITICAL",
-                        "count": 46
+                        "count": 31
                     },
                     {
                         "caption": "ERROR",
-                        "count": 654
+                        "count": 313
                     },
                     {
                         "caption": "WARN",
-                        "count": 315136
+                        "count": 31513
                     },
                     {
                         "caption": "NOTICE",
-                        "count": 254
+                        "count": 53189
                     },
                     {
                         "caption": "INFO",
-                        "count": 546698
+                        "count": 135136
                     },
                     {
                         "caption": "DEBUG",
-                        "count": 65
+                        "count": 3
                     }
                 ]
             },
             {
                 "date": "2018-04-04",
-                "count": 151000,
+                "count": 135000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1367,45 +189,45 @@
             },
             {
                 "date": "2018-04-05",
-                "count": 135000,
+                "count": 140226,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
-                        "count": 35
+                        "count": 7
                     },
                     {
                         "caption": "ALERT",
-                        "count": 66
+                        "count": 56
                     },
                     {
                         "caption": "CRITICAL",
-                        "count": 46
+                        "count": 31
                     },
                     {
                         "caption": "ERROR",
-                        "count": 654
+                        "count": 313
                     },
                     {
                         "caption": "WARN",
-                        "count": 315136
+                        "count": 31513
                     },
                     {
                         "caption": "NOTICE",
-                        "count": 254
+                        "count": 53189
                     },
                     {
                         "caption": "INFO",
-                        "count": 546698
+                        "count": 135136
                     },
                     {
                         "caption": "DEBUG",
-                        "count": 65
+                        "count": 3
                     }
                 ]
             },
             {
                 "date": "2018-04-06",
-                "count": 140226,
+                "count": 125895,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1443,83 +265,83 @@
             },
             {
                 "date": "2018-04-07",
-                "count": 144000,
+                "count": 110000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
-                        "count": 35
+                        "count": 7
                     },
                     {
                         "caption": "ALERT",
-                        "count": 66
+                        "count": 56
                     },
                     {
                         "caption": "CRITICAL",
-                        "count": 46
+                        "count": 31
                     },
                     {
                         "caption": "ERROR",
-                        "count": 654
+                        "count": 313
                     },
                     {
                         "caption": "WARN",
-                        "count": 315136
+                        "count": 31513
                     },
                     {
                         "caption": "NOTICE",
-                        "count": 254
+                        "count": 53189
                     },
                     {
                         "caption": "INFO",
-                        "count": 546698
+                        "count": 135136
                     },
                     {
                         "caption": "DEBUG",
-                        "count": 65
+                        "count": 3
                     }
                 ]
             },
             {
                 "date": "2018-04-08",
-                "count": 180000,
+                "count": 151000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
-                        "count": 35
+                        "count": 7
                     },
                     {
                         "caption": "ALERT",
-                        "count": 66
+                        "count": 56
                     },
                     {
                         "caption": "CRITICAL",
-                        "count": 46
+                        "count": 31
                     },
                     {
                         "caption": "ERROR",
-                        "count": 654
+                        "count": 313
                     },
                     {
                         "caption": "WARN",
-                        "count": 315136
+                        "count": 31513
                     },
                     {
                         "caption": "NOTICE",
-                        "count": 254
+                        "count": 53189
                     },
                     {
                         "caption": "INFO",
-                        "count": 546698
+                        "count": 135136
                     },
                     {
                         "caption": "DEBUG",
-                        "count": 65
+                        "count": 3
                     }
                 ]
             },
             {
                 "date": "2018-04-09",
-                "count": 125895,
+                "count": 135000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1557,7 +379,7 @@
             },
             {
                 "date": "2018-04-10",
-                "count": 110000,
+                "count": 140226,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1595,7 +417,7 @@
             },
             {
                 "date": "2018-04-11",
-                "count": 151000,
+                "count": 144000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1633,7 +455,7 @@
             },
             {
                 "date": "2018-04-12",
-                "count": 135000,
+                "count": 180000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1671,7 +493,7 @@
             },
             {
                 "date": "2018-04-13",
-                "count": 140226,
+                "count": 125895,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1709,7 +531,7 @@
             },
             {
                 "date": "2018-04-14",
-                "count": 144000,
+                "count": 110000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1747,7 +569,7 @@
             },
             {
                 "date": "2018-04-15",
-                "count": 180000,
+                "count": 151000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1785,7 +607,7 @@
             },
             {
                 "date": "2018-04-16",
-                "count": 180000,
+                "count": 135000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1823,7 +645,7 @@
             },
             {
                 "date": "2018-04-17",
-                "count": 125895,
+                "count": 140226,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1861,7 +683,7 @@
             },
             {
                 "date": "2018-04-18",
-                "count": 110000,
+                "count": 144000,
                 "severity": [
                     {
                         "caption": "EMERGENCY",
@@ -1899,196 +721,6 @@
             },
             {
                 "date": "2018-04-19",
-                "count": 151000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-04-20",
-                "count": 135000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-04-21",
-                "count": 140226,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-04-22",
-                "count": 144000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-04-23",
-                "count": 180000,
-                "severity": [
-                    {
-                        "caption": "EMERGENCY",
-                        "count": 7
-                    },
-                    {
-                        "caption": "ALERT",
-                        "count": 56
-                    },
-                    {
-                        "caption": "CRITICAL",
-                        "count": 31
-                    },
-                    {
-                        "caption": "ERROR",
-                        "count": 313
-                    },
-                    {
-                        "caption": "WARN",
-                        "count": 31513
-                    },
-                    {
-                        "caption": "NOTICE",
-                        "count": 53189
-                    },
-                    {
-                        "caption": "INFO",
-                        "count": 135136
-                    },
-                    {
-                        "caption": "DEBUG",
-                        "count": 3
-                    }
-                ]
-            },
-            {
-                "date": "2018-04-24",
                 "count": 125895,
                 "severity": [
                     {
@@ -2126,7 +758,7 @@
                 ]
             },
             {
-                "date": "2018-04-25",
+                "date": "2018-04-20",
                 "count": 110000,
                 "severity": [
                     {
@@ -2164,7 +796,7 @@
                 ]
             },
             {
-                "date": "2018-04-26",
+                "date": "2018-04-21",
                 "count": 151000,
                 "severity": [
                     {
@@ -2202,7 +834,7 @@
                 ]
             },
             {
-                "date": "2018-04-27",
+                "date": "2018-04-22",
                 "count": 135000,
                 "severity": [
                     {
@@ -2240,7 +872,7 @@
                 ]
             },
             {
-                "date": "2018-04-28",
+                "date": "2018-04-23",
                 "count": 140226,
                 "severity": [
                     {
@@ -2278,7 +910,7 @@
                 ]
             },
             {
-                "date": "2018-04-29",
+                "date": "2018-04-24",
                 "count": 144000,
                 "severity": [
                     {
@@ -2316,7 +948,1336 @@
                 ]
             },
             {
+                "date": "2018-04-25",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-04-26",
+                "count": 125895,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-04-27",
+                "count": 110000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-04-28",
+                "count": 151000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-04-29",
+                "count": 135000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
                 "date": "2018-04-30",
+                "count": 140226,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-01",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-02",
+                "count": 125895,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 35
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 66
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 46
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 654
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 315136
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 254
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 546698
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 65
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-03",
+                "count": 110000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 35
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 66
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 46
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 654
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 315136
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 254
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 546698
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 65
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-04",
+                "count": 151000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-05",
+                "count": 135000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 35
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 66
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 46
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 654
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 315136
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 254
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 546698
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 65
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-06",
+                "count": 140226,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-07",
+                "count": 144000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 35
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 66
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 46
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 654
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 315136
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 254
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 546698
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 65
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-08",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 35
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 66
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 46
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 654
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 315136
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 254
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 546698
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 65
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-09",
+                "count": 125895,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-10",
+                "count": 110000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-11",
+                "count": 151000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-12",
+                "count": 135000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-13",
+                "count": 140226,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-14",
+                "count": 144000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-15",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-16",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-17",
+                "count": 125895,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-18",
+                "count": 110000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189                  },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-19",
+                "count": 151000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-20",
+                "count": 135000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-21",
+                "count": 140226,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-22",
+                "count": 144000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-23",
+                "count": 180000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-24",
+                "count": 125895,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-25",
+                "count": 110000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-26",
+                "count": 151000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-27",
+                "count": 135000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-28",
+                "count": 140226,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-29",
+                "count": 144000,
+                "severity": [
+                    {
+                        "caption": "EMERGENCY",
+                        "count": 7
+                    },
+                    {
+                        "caption": "ALERT",
+                        "count": 56
+                    },
+                    {
+                        "caption": "CRITICAL",
+                        "count": 31
+                    },
+                    {
+                        "caption": "ERROR",
+                        "count": 313
+                    },
+                    {
+                        "caption": "WARN",
+                        "count": 31513
+                    },
+                    {
+                        "caption": "NOTICE",
+                        "count": 53189
+                    },
+                    {
+                        "caption": "INFO",
+                        "count": 135136
+                    },
+                    {
+                        "caption": "DEBUG",
+                        "count": 3
+                    }
+                ]
+            },
+            {
+                "date": "2018-05-30",
                 "count": 180000,
                 "severity": [
                     {
@@ -2356,7 +2317,7 @@
         ],
         "filteredLogs": [
             {
-                "date": "2018-04-09",
+                "date": "2018-05-09",
                 "count": 125895,
                 "severity": [
                     {
@@ -2394,7 +2355,7 @@
                 ]
             },
             {
-                "date": "2018-04-10",
+                "date": "2018-05-10",
                 "count": 110000,
                 "severity": [
                     {
@@ -2432,7 +2393,7 @@
                 ]
             },
             {
-                "date": "2018-04-11",
+                "date": "2018-05-11",
                 "count": 151000,
                 "severity": [
                     {
@@ -2470,7 +2431,7 @@
                 ]
             },
             {
-                "date": "2018-04-12",
+                "date": "2018-05-12",
                 "count": 135000,
                 "severity": [
                     {
@@ -2508,7 +2469,7 @@
                 ]
             },
             {
-                "date": "2018-04-13",
+                "date": "2018-05-13",
                 "count": 140226,
                 "severity": [
                     {
@@ -2546,7 +2507,7 @@
                 ]
             },
             {
-                "date": "2018-04-14",
+                "date": "2018-05-14",
                 "count": 144000,
                 "severity": [
                     {
@@ -2584,7 +2545,7 @@
                 ]
             },
             {
-                "date": "2018-04-15",
+                "date": "2018-05-15",
                 "count": 180000,
                 "severity": [
                     {

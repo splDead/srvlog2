@@ -4,8 +4,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { LinearChart } from './LinearChart';
 import constants from '../constants/constants';
-import { changePeriodLogs, fetctStatistics } from '../actions/actions';
-import type { StateType, StatisticsType, Dispatch } from '../types/types';
+import { fetctStatistics } from '../actions/actions';
+import { getDateRange } from '../utils/MiscUtils';
+import type { StateType, StatisticsType, Dispatch, DateRangeType } from '../types/types';
 
 const styleLogsBySeverity = {
     EMERGENCY : {
@@ -43,8 +44,10 @@ type Props = {
 class Statistics extends React.Component<Props, StateType> {
     
     componentDidMount() {
-        this.props.onLoad();
-    }            
+        let period: string = this.props.statistics.selectedPeriod || constants.period.THIS_MONTH;
+        let dateRange: DateRangeType = getDateRange(period);
+        this.props.onLoad(dateRange);
+    }
     
     render() {
         const { summary = [], filteredLogs = [], selectedPeriod = '' } = this.props.statistics;
@@ -97,10 +100,10 @@ export default connect(
     (dispatch: Dispatch) =>
         ({
             onChangePediod(period: string) {
-                dispatch(changePeriodLogs(period))
+                dispatch(fetctStatistics(getDateRange(period), period))
             },
-            onLoad() {
-                dispatch(fetctStatistics())
+            onLoad(dateRange: DateRangeType) {
+                dispatch(fetctStatistics(dateRange))
             }
         })
 )(Statistics);

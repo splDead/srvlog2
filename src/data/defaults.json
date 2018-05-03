@@ -1,0 +1,25 @@
+{
+    "statistics" : {
+        "selectedPeriod": "THIS_MONTH"
+    },
+    "logsTable" : {
+        "filters": {
+            "dateRange": "TODAY",
+            "dateStart": "",
+            "dateEnd": "",
+            "severity": [],
+            "facility": [],
+            "host": []
+        },
+        "severity": [
+            "EMERGENCY",
+            "ALERT",
+            "CRITICAL",
+            "ERROR",
+            "WARN",
+            "NOTICE",
+            "DEBUG",
+            "INFO"
+        ]
+    }
+}

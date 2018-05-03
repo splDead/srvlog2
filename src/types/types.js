@@ -41,6 +41,11 @@ export type StatisticsType = {
     selectedPeriod?: string
 };
 
+export type DateRangeType = {
+    startDate: string,
+    endDate: string
+};
+
 export type LogsType = {
     date: string,
     facility: string,

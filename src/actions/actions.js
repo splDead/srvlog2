@@ -2,7 +2,7 @@
 
 import constants from '../constants/constants';
 import axios from 'axios';
-import type { MessageType, StatisticsType, LogsTableType, ActionType, Dispatch } from '../types/types';
+import type { MessageType, StatisticsType, LogsTableType, ActionType, Dispatch, DateRangeType } from '../types/types';
 import type moment from 'moment';
 
 export const readMessage = (id: string): ActionType => ({
@@ -16,25 +16,29 @@ export const loadMessages = (messages: MessageType[]): ActionType => ({
     });
 
 export const fetchMessages = () => (dispatch: Dispatch) => {
-    return axios.get('https://p1703.mocklab.io/messages')
+    return axios.get('https://demo0073537.mockable.io/messages')
             .then(response => {
                 dispatch(loadMessages(response.data.messages))
             })
             .catch(error => console.log(error));
-}
+};
 
 export const loadStatistics = (statistics: StatisticsType): ActionType => ({
         type : constants.LOAD_STATISTICS,
         statistics
     });
 
-export const fetctStatistics = () => (dispatch: Dispatch) => {
-    return axios.get('https://p1703.mocklab.io/dashboard')
+export const fetctStatistics = (dateRange: DateRangeType, period?: string) => (dispatch: Dispatch) => {
+    return axios.post('https://demo0073537.mockable.io/dashboard', dateRange)
             .then(response => {
-                dispatch(loadStatistics(response.data.statistics))
+                if (period) {
+                    dispatch(changePeriodLogs(period));
+                } else {
+                    dispatch(loadStatistics(response.data.statistics))
+                }
             })
             .catch(error => console.log(error));
-}
+};
 
 export const changePeriodLogs = (period: string): ActionType => ({
         type : constants.CHANGE_PERIOD,
@@ -47,12 +51,12 @@ export const loadLogs = (logs: LogsTableType): ActionType => ({
     });
 
 export const fetchLogs = () => (dispatch: Dispatch) => {
-    return axios.get('https://p1703.mocklab.io/logs')
+    return axios.get('https://demo0073537.mockable.io/logs')
             .then(response => {
                 dispatch(loadLogs(response.data.logsTable))
             })
             .catch(error => console.log(error));
-}
+};
 
 export const changeTableSize = (size: number): ActionType => ({
         type : constants.TABLE_SIZE,

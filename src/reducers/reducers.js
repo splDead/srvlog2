@@ -2,12 +2,15 @@
 
 import constants from '../constants/constants';
 import moment from 'moment';
+import { getDateRange } from '../utils/MiscUtils';
 import type { StateType, ActionType } from '../types/types';
+import defaults from '../data/defaults';
 
 const initialState: StateType = {
     messages: [],
     statistics: {},
-    logsTable: {}
+    logsTable: {},
+    ...defaults
 };
 
 export const messages = (state: StateType = initialState, action: ActionType): StateType => {
@@ -27,31 +30,8 @@ export const messages = (state: StateType = initialState, action: ActionType): S
     }
 };
 
-const filterLogs = (state, period = constants.period.THIS_WEEK) => {
-    let startDate, endDate;
-
-    switch (period) {
-        case constants.period.THIS_WEEK:
-            startDate = moment().isoWeekday(1).format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
-            break;
-        case constants.period.LAST_WEEK:
-            startDate = moment().isoWeekday(1).subtract(7, 'days').format('YYYY-MM-DD');
-            endDate = moment().isoWeekday(7).subtract(7, 'days').format('YYYY-MM-DD');
-            break;
-        case constants.period.THIS_MONTH:
-            startDate = moment().date(1).format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
-            break;
-        case constants.period.LAST_MONTH:
-            startDate = moment().date(1).subtract(1, 'month').format('YYYY-MM-DD');
-            endDate = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
-            break;
-        default:
-            startDate = moment().isoWeekday(1).format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
-    }
-
+const filterLogs = (state, period = constants.period.THIS_MONTH) => {
+    let { startDate, endDate } = getDateRange(period);
     let filteredLogs = state.statistics.logs && state.statistics.logs.filter(log => 
         moment(log.date).isSameOrAfter(startDate) && moment(log.date).isSameOrBefore(endDate)
     );
@@ -87,8 +67,8 @@ export const statistics = (state: StateType = initialState, action: ActionType):
                 ...state,
                 statistics : {
                     logs : action.statistics.logs,
-                    selectedPeriod : action.statistics.selectedPeriod,
-                    ...filterLogs(action, action.statistics.selectedPeriod)
+                    selectedPeriod : state.statistics.selectedPeriod,
+                    ...filterLogs(action, state.statistics.selectedPeriod)
                 }
             }
         default:
