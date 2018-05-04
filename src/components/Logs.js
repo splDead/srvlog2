@@ -52,12 +52,10 @@ class Logs extends React.Component<Props> {
     
     render() {
         return (
-            <div>
+            <div className='mb-5'>
                 <Search onSearch={this.handleSearch} />
-                <div className='d-flex align-items-start mb-5'>
-                    <Table {...this.props} />
-                    <Filters {...this.props} />
-                </div>
+                <Filters {...this.props} />
+                <Table {...this.props} />
             </div>
         )    
     }    
