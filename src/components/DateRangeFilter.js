@@ -10,10 +10,6 @@ import type { LogsTableType } from '../types/types';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Filters.css';
 
-const styleFilters = {
-    overflowY : 'auto'
-};
-
 const { dateRange } = constants;
 
 const options = [
@@ -47,20 +43,24 @@ const DateRangeFilter = (props: Props) => {
     const dateEnd = filters && filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
 
     return (
-        <React.Fragment>
-            Date range:
-            <Select closeOnSelect={true}
-                    onChange={onChangeDateRange}
-                    options={options}
-                    placeholder='Select severity'
-                    removeSelected={true}
-                    simpleValue
-                    value={filters && filters.dateRange}
-                />
+        <div className='d-flex mb-3 align-items-end'>
+            <div className='col-4'>
+                Date range:
+                <Select closeOnSelect={true}
+                        onChange={onChangeDateRange}
+                        options={options}
+                        placeholder='Select severity'
+                        removeSelected={true}
+                        clearable={false}
+                        simpleValue
+                        value={filters && filters.dateRange}
+                    />
+            </div>
+            <div className='col-8'>
             {filters && filters.dateRange === dateRange.EXACTLY_DATE ?
-                <div className='mt-3'>
-                    <div className='d-flex align-items-center mb-2'>
-                        <span className='pr-2 w-25'>From:</span>
+                <div className='d-flex'>
+                    <div className='w-50'>
+                        From:
                         <DatePicker 
                             selected={dateStart} 
                             onChange={onChangeExactlyDateRangeFrom}
@@ -73,8 +73,8 @@ const DateRangeFilter = (props: Props) => {
                             startDate={dateStart}
                             endDate={dateEnd} />
                     </div>
-                    <div className='d-flex align-items-center mb-2'>
-                        <span className='pr-2 w-25'>To:</span>
+                    <div className='col-6 custom-input-container'>
+                        To:
                         <DatePicker 
                             selected={dateEnd} 
                             onChange={onChangeExactlyDateRangeTo}
@@ -90,9 +90,9 @@ const DateRangeFilter = (props: Props) => {
                 </div> :
                 ''}
             {filters && filters.dateRange === dateRange.EXACTLY_TIME ?
-                <div className='mt-3'>
-                    <div className='d-flex align-items-center mb-2'>
-                        <span className='pr-2 w-25'>From:</span>
+                <div className='d-flex'>
+                    <div className='w-50'>
+                        From:
                         <DatePicker 
                             selected={dateStart} 
                             onChange={onChangeExactlyTimeRangeFrom}
@@ -108,8 +108,8 @@ const DateRangeFilter = (props: Props) => {
                             startDate={dateStart}
                             endDate={dateEnd} />
                     </div>
-                    <div className='d-flex align-items-center mb-2'>
-                        <span className='pr-2 w-25'>To:</span>
+                    <div className='col-6 custom-input-container'>
+                        To:
                         <DatePicker 
                             selected={dateEnd}
                             onChange={onChangeExactlyTimeRangeTo}
@@ -127,7 +127,8 @@ const DateRangeFilter = (props: Props) => {
                     </div>
                 </div> :
                 ''}
-        </React.Fragment>
+            </div>
+        </div>
     )
 };
 

@@ -7,10 +7,6 @@ import type { LogsTableType } from '../types/types';
 
 import 'react-select/dist/react-select.css';
 
-const styleFilters = {
-    overflowY : 'auto'
-};
-
 type Props = {
     logsTable: LogsTableType,
     onChangeDateRange: Function,
@@ -31,10 +27,10 @@ const Filters = (props: Props) => {
     const hostOptions = host && host.map(el => ({value: el, label: el}));
 
     return (
-        <div className='border rounded bg-light mb-3 pt-2 pb-2'>
-            <div className='col-3 mb-3'><DateRangeFilter {...props} /></div>
+        <div className='border rounded bg-light mb-3 pt-2 pb-4'>
+            <DateRangeFilter {...props} />
             <div className='d-flex'>
-                <div className='col-3'>
+                <div className='col-4'>
                     Severity:
                     <Select closeOnSelect={true}
                             multi
@@ -46,7 +42,7 @@ const Filters = (props: Props) => {
                             value={filters && filters.severity}
                         />
                 </div>
-                <div className='col-3'>
+                <div className='col-4'>
                     Facility:
                     <Select closeOnSelect={true}
                             multi
@@ -58,7 +54,7 @@ const Filters = (props: Props) => {
                             value={filters && filters.facility}
                         />
                 </div>
-                <div className='col-3'>
+                <div className='col-4'>
                     Host:
                     <Select closeOnSelect={true}
                             multi

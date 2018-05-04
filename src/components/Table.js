@@ -141,7 +141,7 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                             onClick={() => onClickPaginationPrev(selectedTableSize)}>Previous</button>
                         <button 
                             type='button' 
-                            className='btn btn-outline-secondary mr-2 btn-sm'
+                            className='btn btn-outline-secondary btn-sm'
                             disabled={paginationEnd >= filteredLenghth}
                             onClick={() => onClickPaginationNext(selectedTableSize)}>Next</button>
                     </div>
