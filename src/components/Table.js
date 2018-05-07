@@ -5,6 +5,8 @@ import constants from '../constants/constants';
 import moment from 'moment';
 import type { LogsTableType, LogsType, IndexPaginationType, FiltersType } from '../types/types';
 
+import './Table.css';
+
 type Props = {
     logsTable: LogsTableType,
     onChangeTableSizeView: Function,
@@ -160,7 +162,7 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                 </thead>
                 <tbody>
                     {filteredLogs ? filteredLogs.slice(paginationStart - 1, paginationEnd).map(elem =>
-                        <tr key={elem.id}>
+                        <tr key={elem.id} className={`${elem.severity}-LEVEL`}>
                             <td>{elem.date}</td>
                             <td>{elem.facility}</td>
                             <td>{elem.severity}</td>

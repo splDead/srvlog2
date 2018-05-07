@@ -1,0 +1,105 @@
+/* SEVERITY COLORS from higher to lowest */
+
+.EMERGENGY-LEVEL {
+    color: #ba1e20;
+}
+
+tr.EMERGENGY-LEVEL {
+    background-color: #ba1e20; 
+    color: #ffffff;
+}
+
+tr.EMERGENGY-LEVEL:hover td {
+    background-color: #961919;
+}
+
+.ALERT-LEVEL {
+    color: #fa603d; 
+}
+
+tr.ALERT-LEVEL {
+    background-color: #fa603d; 
+    color: #ffffff;
+}
+
+tr.ALERT-LEVEL:hover td {
+    background-color: #e55839;
+}
+
+.CRITICAL-LEVEL {
+    color: #ff5454; 
+}
+
+tr.CRITICAL-LEVEL {
+    background-color: #ff5454; 
+    color: #ffffff;
+}
+
+tr.CRITICAL-LEVEL:hover td {
+    background-color: #d84545;
+}
+
+.ERROR-LEVEL {
+    color: #ff9900;
+}
+
+tr.ERROR-LEVEL {
+    background-color: #ff9900;
+    color: #ffffff;
+}
+
+tr.ERROR-LEVEL:hover td {
+    background-color: #e28904;
+}
+
+.WARN-LEVEL {
+    color: #c09853;
+}
+
+tr.WARN-LEVEL {
+    background-color: #c09853;
+    color: #ffffff;
+}
+
+tr.WARN-LEVEL:hover td {
+    background-color: #a58248;
+}
+
+.NOTICE-LEVEL {
+    color: #000000;
+}
+
+tr.NOTICE-LEVEL {
+    background-color: #ffffff; 
+    color: #000000;
+}
+
+tr.NOTICE-LEVEL:hover td {
+    background-color: #e5e3e3;
+}
+
+.DEBUG-LEVEL {
+    color: #86b76e; 
+}
+
+tr.DEBUG-LEVEL {
+    background-color: #86b76e; 
+    color: #ffffff;
+}
+
+tr.DEBUG-LEVEL:hover td {
+    background-color: #6b9357;
+}
+
+.INFO-LEVEL {
+    color: #bce8f1;
+}
+
+tr.INFO-LEVEL {
+    background-color: #bce8f1;
+    color: #000000;
+}
+
+tr.INFO-LEVEL:hover td {
+    background-color: #9bc1c9;
+}

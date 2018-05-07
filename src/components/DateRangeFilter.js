@@ -8,7 +8,7 @@ import moment from 'moment';
 import type { LogsTableType } from '../types/types';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import './Filters.css';
+import './DateRangeFilter.css';
 
 const { dateRange } = constants;
 
