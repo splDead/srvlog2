@@ -228,32 +228,8 @@ definitions:
         type: string
         format: date
         example: 2018-05-07T00:00:00.000Z
-      severity:
-        type: array
-        items:
-          type: string
-          example: ALERT
-      facility:
-        type: array
-        items:
-          type: string
-          example: kern
-      host:
-        type: array
-        items:
-          type: string
-          example: dout-1
     example:
-      severity:
-      - ALERT
-      - ALERT
       endDate: 2018-05-07T00:00:00.000Z
-      host:
-      - dout-1
-      - dout-1
-      facility:
-      - kern
-      - kern
       startDate: 2018-05-01T00:00:00.000Z
   Statistics_summary:
     properties:
