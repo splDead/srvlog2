@@ -1,0 +1,319 @@
+---
+swagger: "2.0"
+info:
+  description: srvlog API
+  version: 1.0.0
+  title: SRVLOG API
+  contact:
+    email: sgoryachev@payneteasy.com
+host: virtserver.swaggerhub.com
+basePath: /spld/srvlog/1.0.0
+schemes:
+- https
+- http
+paths:
+  /dashboard:
+    post:
+      summary: statistics and graph
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: DashboardRequest
+        description: date range
+        required: false
+        schema:
+          $ref: '#/definitions/DashboardRequest'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Statistics'
+  /messages:
+    get:
+      summary: messages
+      description: messages
+      parameters: []
+      responses:
+        200:
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Message'
+  /logs:
+    post:
+      summary: logs table
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: LogsRequest
+        description: data for logs table
+        required: false
+        schema:
+          $ref: '#/definitions/LogsRequest'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/LogsTable'
+definitions:
+  Statistics:
+    type: object
+    properties:
+      summary:
+        type: array
+        items:
+          $ref: '#/definitions/Statistics_summary'
+      logs:
+        type: array
+        items:
+          $ref: '#/definitions/Statistics_logs'
+    example:
+      summary:
+      - count: 0
+        caption: caption
+      - count: 0
+        caption: caption
+      logs:
+      - date: date
+        severity:
+        - count: 0
+          caption: caption
+        - count: 0
+          caption: caption
+        count: 6
+      - date: date
+        severity:
+        - count: 0
+          caption: caption
+        - count: 0
+          caption: caption
+        count: 6
+  Message:
+    type: object
+    properties:
+      severity:
+        type: string
+        example: WARN
+      message:
+        $ref: '#/definitions/Message_message'
+      buttons:
+        type: array
+        items:
+          $ref: '#/definitions/Message_buttons'
+      id:
+        type: string
+    example:
+      severity: WARN
+      buttons:
+      - text: Process unresolved logs
+        id: id
+        url: url
+      - text: Process unresolved logs
+        id: id
+        url: url
+      id: id
+      message:
+        text: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
+        title: Warnings!
+  LogsTable:
+    type: object
+    properties:
+      logs:
+        type: array
+        items:
+          $ref: '#/definitions/Log'
+      selectedTableSize:
+        type: integer
+        example: 25
+      indexShowRow:
+        $ref: '#/definitions/LogsTable_indexShowRow'
+      facility:
+        type: array
+        items:
+          type: string
+      host:
+        type: array
+        items:
+          type: string
+    example:
+      indexShowRow:
+        start: 1
+        end: 25
+      selectedTableSize: 25
+      host:
+      - host
+      - host
+      logs:
+      - date: 2018-03-01 16:10:01
+        severity: INFO
+        host: idao-2
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        program: clamd
+        message: '[1]: Starting User Slice of root.'
+        facility: daemon
+      - date: 2018-03-01 16:10:01
+        severity: INFO
+        host: idao-2
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        program: clamd
+        message: '[1]: Starting User Slice of root.'
+        facility: daemon
+      facility:
+      - facility
+      - facility
+  Log:
+    type: object
+    properties:
+      date:
+        type: string
+        example: 2018-03-01 16:10:01
+      facility:
+        type: string
+        example: daemon
+      severity:
+        type: string
+        example: INFO
+      host:
+        type: string
+        example: idao-2
+      id:
+        type: string
+        format: uuid
+      program:
+        type: string
+        example: clamd
+      message:
+        type: string
+        example: '[1]: Starting User Slice of root.'
+    example:
+      date: 2018-03-01 16:10:01
+      severity: INFO
+      host: idao-2
+      id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      program: clamd
+      message: '[1]: Starting User Slice of root.'
+      facility: daemon
+  DashboardRequest:
+    type: object
+    required:
+    - endDate
+    - startDate
+    properties:
+      startDate:
+        type: string
+        format: date
+        example: 2018-05-01T00:00:00.000Z
+      endDate:
+        type: string
+        format: date
+        example: 2018-05-07T00:00:00.000Z
+    example:
+      endDate: 2018-05-07T00:00:00.000Z
+      startDate: 2018-05-01T00:00:00.000Z
+  LogsRequest:
+    type: object
+    properties:
+      startDate:
+        type: string
+        format: date
+        example: 2018-05-01T00:00:00.000Z
+      endDate:
+        type: string
+        format: date
+        example: 2018-05-07T00:00:00.000Z
+      severity:
+        type: array
+        items:
+          type: string
+          example: ALERT
+      facility:
+        type: array
+        items:
+          type: string
+          example: kern
+      host:
+        type: array
+        items:
+          type: string
+          example: dout-1
+    example:
+      severity:
+      - ALERT
+      - ALERT
+      endDate: 2018-05-07T00:00:00.000Z
+      host:
+      - dout-1
+      - dout-1
+      facility:
+      - kern
+      - kern
+      startDate: 2018-05-01T00:00:00.000Z
+  Statistics_summary:
+    properties:
+      caption:
+        type: string
+      count:
+        type: integer
+    example:
+      count: 0
+      caption: caption
+  Statistics_logs:
+    properties:
+      date:
+        type: string
+      count:
+        type: integer
+      severity:
+        type: array
+        items:
+          $ref: '#/definitions/Statistics_summary'
+    example:
+      date: date
+      severity:
+      - count: 0
+        caption: caption
+      - count: 0
+        caption: caption
+      count: 6
+  Message_message:
+    properties:
+      title:
+        type: string
+        example: Warnings!
+      text:
+        type: string
+        example: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
+    example:
+      text: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
+      title: Warnings!
+  Message_buttons:
+    properties:
+      url:
+        type: string
+      text:
+        type: string
+        example: Process unresolved logs
+      id:
+        type: string
+    example:
+      text: Process unresolved logs
+      id: id
+      url: url
+  LogsTable_indexShowRow:
+    properties:
+      start:
+        type: integer
+        example: 1
+      end:
+        type: integer
+        example: 25
+    example:
+      start: 1
+      end: 25
