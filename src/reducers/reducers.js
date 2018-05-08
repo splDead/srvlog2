@@ -19,12 +19,12 @@ export const messages = (state: StateType = initialState, action: ActionType): S
             return {
                 ...state,
                 messages : state.messages.filter(m => m.id !== action.id)
-            }
+            };
         case constants.LOAD_MESSAGES:
             return {
                 ...state,
                 messages : action.messages
-            }
+            };
         default:
             return state;
     }
@@ -49,7 +49,7 @@ const filterLogs = (state, period = constants.period.THIS_MONTH) => {
     });
 
     return {filteredLogs, summary};
-}
+};
 
 export const statistics = (state: StateType = initialState, action: ActionType): StateType => {
     switch (action.type) {
@@ -61,7 +61,7 @@ export const statistics = (state: StateType = initialState, action: ActionType):
                     selectedPeriod : action.period,
                     ...filterLogs(state, action.period)
                 }
-            }
+            };
         case constants.LOAD_STATISTICS:
             return {
                 ...state,
@@ -70,11 +70,11 @@ export const statistics = (state: StateType = initialState, action: ActionType):
                     selectedPeriod : state.statistics.selectedPeriod,
                     ...filterLogs(action, state.statistics.selectedPeriod)
                 }
-            }
+            };
         default:
             return state;
     }
-}
+};
 
 export const logsTable = (state: StateType = initialState, action: ActionType): StateType => {
     let start, end;
@@ -84,7 +84,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
             return {
                 ...state,
                 logsTable : action.logs
-            }
+            };
         case constants.TABLE_SIZE:
             return {
                 ...state,
@@ -96,7 +96,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         end : action.size
                     }
                 }                
-            }
+            };
         case constants.PAGINATION_FIRST:
             return {
                 ...state,
@@ -107,7 +107,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         end : action.selectedTableSize
                     }
                 }                
-            }
+            };
         case constants.PAGINATION_PREV:
             let paginationIndexStart = state.logsTable.indexShowRow && state.logsTable.indexShowRow.start ? state.logsTable.indexShowRow.start : 1;
             let paginationIndexEnd = state.logsTable.indexShowRow && state.logsTable.indexShowRow.end ? state.logsTable.indexShowRow.end : 25;
@@ -126,7 +126,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         end
                     }
                 }                
-            }
+            };
         case constants.PAGINATION_NEXT:
             start = state.logsTable.indexShowRow && state.logsTable.indexShowRow.start && state.logsTable.logs && state.logsTable.logs.length && state.logsTable.indexShowRow.start + action.selectedTableSize > state.logsTable.logs.length - action.selectedTableSize ?
                         state.logsTable.logs.length - action.selectedTableSize :
@@ -143,62 +143,62 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         end
                     }
                 }                
-            }
+            };
         case constants.CHANGE_DATE_RANGE:
             return {
                 ...state,
                 logsTable : {
-                    ...state.logsTable,
+                    ...action.logs,
                     filters : {
                         ...state.logsTable.filters,
                         dateRange : action.range
                     }
                 }                
-            }
+            };
         case constants.CHANGE_EXACTLY_DATE_RANGE_FROM:
             return {
                 ...state,
                 logsTable : {
-                    ...state.logsTable,
+                    ...action.logs,
                     filters : {
                         ...state.logsTable.filters,
                         dateStart : action.date.format('YYYY-MM-DD')
                     }
                 }                
-            }
+            };
         case constants.CHANGE_EXACTLY_DATE_RANGE_TO:
             return {
                 ...state,
                 logsTable : {
-                    ...state.logsTable,
+                    ...action.logs,
                     filters : {
                         ...state.logsTable.filters,
                         dateEnd : action.date.format('YYYY-MM-DD')
                     }
                 }                
-            }
+            };
         case constants.CHANGE_EXACTLY_TIME_RANGE_FROM:
             return {
                 ...state,
                 logsTable : {
-                    ...state.logsTable,
+                    ...action.logs,
                     filters : {
                         ...state.logsTable.filters,
                         dateStart : action.date.format('YYYY-MM-DD HH:mm')
                     }
                 }                
-            }
+            };
         case constants.CHANGE_EXACTLY_TIME_RANGE_TO:
             return {
                 ...state,
                 logsTable : {
-                    ...state.logsTable,
+                    ...action.logs,
                     filters : {
                         ...state.logsTable.filters,
                         dateEnd : action.date.format('YYYY-MM-DD HH:mm')
                     }
                 }                
-            }
+            };
         case constants.CHANGE_SEVERITY_FILTERS:
             return {
                 ...state,
@@ -209,7 +209,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         severity : action.severity
                     }
                 }                
-            }
+            };
         case constants.CHANGE_FACILITY_FILTERS:
             return {
                 ...state,
@@ -220,7 +220,7 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         facility : action.facility
                     }
                 }                
-            }
+            };
         case constants.CHANGE_HOST_FILTERS:
             return {
                 ...state,
@@ -231,8 +231,8 @@ export const logsTable = (state: StateType = initialState, action: ActionType): 
                         host : action.host
                     }
                 }                
-            }
+            };
         default:
             return state;
     }
-}
+};

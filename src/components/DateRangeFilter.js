@@ -10,17 +10,17 @@ import type { LogsTableType } from '../types/types';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateRangeFilter.css';
 
-const { dateRange } = constants;
+const { period } = constants;
 
 const options = [
-    {label: dateRange.TODAY, value: dateRange.TODAY},
-    {label: dateRange.YESTERDAY, value: dateRange.YESTERDAY},
-    {label: dateRange.THIS_WEEK, value: dateRange.THIS_WEEK},
-    {label: dateRange.LAST_WEEK, value: dateRange.LAST_WEEK},
-    {label: dateRange.THIS_MONTH, value: dateRange.THIS_MONTH},
-    {label: dateRange.LAST_MONTH, value: dateRange.LAST_MONTH},
-    {label: dateRange.EXACTLY_DATE, value: dateRange.EXACTLY_DATE},
-    {label: dateRange.EXACTLY_TIME, value: dateRange.EXACTLY_TIME}
+    {label: period.TODAY, value: period.TODAY},
+    {label: period.YESTERDAY, value: period.YESTERDAY},
+    {label: period.THIS_WEEK, value: period.THIS_WEEK},
+    {label: period.LAST_WEEK, value: period.LAST_WEEK},
+    {label: period.THIS_MONTH, value: period.THIS_MONTH},
+    {label: period.LAST_MONTH, value: period.LAST_MONTH},
+    {label: period.EXACTLY_DATE, value: period.EXACTLY_DATE},
+    {label: period.EXACTLY_TIME, value: period.EXACTLY_TIME}
 ];
 
 type Props = {
@@ -43,7 +43,7 @@ const DateRangeFilter = (props: Props) => {
     const dateEnd = filters && filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
 
     return (
-        <div className='d-flex mb-3 align-items-end'>
+        <form className='d-flex mb-3 align-items-end'>
             <div className='col-4'>
                 Date range:
                 <Select closeOnSelect={true}
@@ -57,7 +57,7 @@ const DateRangeFilter = (props: Props) => {
                     />
             </div>
             <div className='col-8'>
-            {filters && filters.dateRange === dateRange.EXACTLY_DATE ?
+            {filters && filters.dateRange === period.EXACTLY_DATE ?
                 <div className='d-flex'>
                     <div className='w-50'>
                         From:
@@ -89,7 +89,7 @@ const DateRangeFilter = (props: Props) => {
                     </div>
                 </div> :
                 ''}
-            {filters && filters.dateRange === dateRange.EXACTLY_TIME ?
+            {filters && filters.dateRange === period.EXACTLY_TIME ?
                 <div className='d-flex'>
                     <div className='w-50'>
                         From:
@@ -128,7 +128,7 @@ const DateRangeFilter = (props: Props) => {
                 </div> :
                 ''}
             </div>
-        </div>
+        </form>
     )
 };
 

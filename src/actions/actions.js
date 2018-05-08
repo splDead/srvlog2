@@ -2,8 +2,8 @@
 
 import constants from '../constants/constants';
 import axios from 'axios';
+import moment from 'moment';
 import type { MessageType, StatisticsType, LogsTableType, ActionType, Dispatch, DateRangeType } from '../types/types';
-import type moment from 'moment';
 
 export const readMessage = (id: string): ActionType => ({
         type : constants.READ_MESSAGE,
@@ -50,10 +50,25 @@ export const loadLogs = (logs: LogsTableType): ActionType => ({
         logs 
     });
 
-export const fetchLogs = () => (dispatch: Dispatch) => {
-    return axios.get('https://demo0073537.mockable.io/logs')
+export const fetchLogs = (dateRange: DateRangeType, range?: string) => (dispatch: Dispatch) => {
+    return axios.post('https://demo0073537.mockable.io/logs', dateRange)
             .then(response => {
-                dispatch(loadLogs(response.data.logsTable))
+                if (range) {
+                    let date = moment(range.split('/')[1]);
+                    if (range.startsWith('EXACTLY_DATE_FROM')) {
+                        dispatch(changeExactlyDateRangeFrom(date, response.data.logsTable))
+                    } else if (range.startsWith('EXACTLY_DATE_TO')) {
+                        dispatch(changeExactlyDateRangeTo(date, response.data.logsTable))
+                    } else if (range.startsWith('EXACTLY_TIME_FROM')) {
+                        dispatch(changeExactlyTimeRangeFrom(date, response.data.logsTable))
+                    } else if (range.startsWith('EXACTLY_TIME_TO')) {
+                        dispatch(changeExactlyTimeRangeTo(date, response.data.logsTable))
+                    } else {
+                        dispatch(changeDateRange(range, response.data.logsTable))
+                    }
+                } else {
+                    dispatch(loadLogs(response.data.logsTable))
+                }
             })
             .catch(error => console.log(error));
 };
@@ -78,29 +93,34 @@ export const paginationPrev = (selectedTableSize: number): ActionType => ({
         selectedTableSize
     });
 
-export const changeDateRange = (range: string): ActionType => ({
+export const changeDateRange = (range: string, logs: LogsTableType): ActionType => ({
         type : constants.CHANGE_DATE_RANGE,
-        range
+        range,
+        logs
     });
 
-export const changeExactlyDateRangeFrom = (date: moment): ActionType => ({
+export const changeExactlyDateRangeFrom = (date: moment, logs: LogsTableType): ActionType => ({
         type : constants.CHANGE_EXACTLY_DATE_RANGE_FROM,
-        date
+        date,
+        logs
     });
 
-export const changeExactlyDateRangeTo = (date: moment): ActionType => ({
+export const changeExactlyDateRangeTo = (date: moment, logs: LogsTableType): ActionType => ({
         type : constants.CHANGE_EXACTLY_DATE_RANGE_TO,
-        date
+        date,
+        logs
     });
 
-export const changeExactlyTimeRangeFrom = (date: moment): ActionType => ({
+export const changeExactlyTimeRangeFrom = (date: moment, logs: LogsTableType): ActionType => ({
         type : constants.CHANGE_EXACTLY_TIME_RANGE_FROM,
-        date
+        date,
+        logs
     });
 
-export const changeExactlyTimeRangeTo = (date: moment): ActionType => ({
+export const changeExactlyTimeRangeTo = (date: moment, logs: LogsTableType): ActionType => ({
         type : constants.CHANGE_EXACTLY_TIME_RANGE_TO,
-        date
+        date,
+        logs
     });
 
 export const changeSeverityFilters = (severity: string[]): ActionType => ({

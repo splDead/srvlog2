@@ -136,30 +136,35 @@ export type PaginationPrevActionType = {
 export type ChangeDateRangeActionType = {
     type: 'CHANGE_DATE_RANGE',
     range: string,
+    logs: LogsTableType,
     id?: string
 };
 
 export type ChangeExactlyDateRangeFromActionType = {
     type: 'CHANGE_EXACTLY_DATE_RANGE_FROM',
     date: moment,
+    logs: LogsTableType,
     id?: string
 };
 
 export type ChangeExactlyDateRangeToActionType = {
     type: 'CHANGE_EXACTLY_DATE_RANGE_TO',
     date: moment,
+    logs: LogsTableType,
     id?: string
 };
 
 export type ChangeExactlyTimeRangeFromActionType = {
     type: 'CHANGE_EXACTLY_TIME_RANGE_FROM',
     date: moment,
+    logs: LogsTableType,
     id?: string
 };
 
 export type ChangeExactlyTimeRangeToActionType = {
     type: 'CHANGE_EXACTLY_TIME_RANGE_TO',
     date: moment,
+    logs: LogsTableType,
     id?: string
 };
 

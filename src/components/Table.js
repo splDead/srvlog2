@@ -16,7 +16,7 @@ type Props = {
 };
 
 const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }: Props) => {
-    const { tableSize, dateRange } = constants;
+    const { tableSize, period } = constants;
     let logs: LogsType[] = logsTable.logs ? logsTable.logs : [];
     let selectedTableSize: number = logsTable.selectedTableSize ? logsTable.selectedTableSize : tableSize.SMALL;
     let indexShowRow: IndexPaginationType = logsTable.indexShowRow ? logsTable.indexShowRow : {};
@@ -25,33 +25,33 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
 
     if (filters) {
         switch (filters.dateRange) {
-            case dateRange.TODAY:
+            case period.TODAY:
                 start = end = moment().format('YYYY-MM-DD');
                 break;
-            case dateRange.YESTERDAY:
+            case period.YESTERDAY:
                 start = end = moment().subtract(1, 'day').format('YYYY-MM-DD');
                 break;
-            case dateRange.THIS_WEEK:
+            case period.THIS_WEEK:
                 start = moment().isoWeekday(1).format('YYYY-MM-DD');
                 end = moment().format('YYYY-MM-DD');
                 break;
-            case dateRange.LAST_WEEK:
+            case period.LAST_WEEK:
                 start = moment().isoWeekday(1).subtract(7, 'days').format('YYYY-MM-DD');
                 end = moment().isoWeekday(7).subtract(7, 'days').format('YYYY-MM-DD');
                 break;
-            case dateRange.THIS_MONTH:
+            case period.THIS_MONTH:
                 start = moment().date(1).format('YYYY-MM-DD');
                 end = moment().format('YYYY-MM-DD');
                 break;
-            case dateRange.LAST_MONTH:
+            case period.LAST_MONTH:
                 start = moment().date(1).subtract(1, 'month').format('YYYY-MM-DD');
                 end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
                 break;
-            case dateRange.EXACTLY_DATE:
+            case period.EXACTLY_DATE:
                 start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
                 end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
                 break;
-            case dateRange.EXACTLY_TIME:
+            case period.EXACTLY_TIME:
                 start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
                 end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
                 break;
@@ -63,7 +63,7 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
     if (logs) {
         filteredLogs = logs.filter(log => {
             let date = false, severity = true, facility = true, host = true;
-            let logDate = filters.dateRange === constants.dateRange.EXACTLY_TIME ? 
+            let logDate = filters.dateRange === constants.period.EXACTLY_TIME ? 
                             moment(log.date, 'YYYY-MM-DD HH:mm') : 
                             moment(log.date, 'YYYY-MM-DD');
 

@@ -25,17 +25,6 @@ const constants = {
     CHANGE_FACILITY_FILTERS : 'CHANGE_FACILITY_FILTERS',
     CHANGE_HOST_FILTERS : 'CHANGE_HOST_FILTERS',
     period : {
-        THIS_WEEK : 'THIS_WEEK',
-        LAST_WEEK : 'LAST_WEEK',
-        THIS_MONTH : 'THIS_MONTH',
-        LAST_MONTH : 'LAST_MONTH'
-    },
-    tableSize : {
-        SMALL : 25,
-        MEDIUM : 50,
-        LARGE : 100
-    },
-    dateRange : {
         TODAY : 'TODAY',
         YESTERDAY : 'YESTERDAY',
         THIS_WEEK : 'THIS_WEEK',
@@ -44,6 +33,11 @@ const constants = {
         LAST_MONTH : 'LAST_MONTH',
         EXACTLY_DATE : 'EXACTLY_DATE',
         EXACTLY_TIME : 'EXACTLY_TIME'
+    },
+    tableSize : {
+        SMALL : 25,
+        MEDIUM : 50,
+        LARGE : 100
     },
     LOAD_MESSAGES : 'LOAD_MESSAGES',
     LOAD_STATISTICS : 'LOAD_STATISTICS',
