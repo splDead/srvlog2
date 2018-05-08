@@ -1,0 +1,29 @@
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: darkgreen;
+    border: 0;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+div.tooltip .tooltip__title {
+    color: #ffffff;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+}
+
+div.tooltip .tooltip__count {
+    color: orange;
+    margin-top: 3px;
+}
+
+circle.tooltip__circle:hover {
+    fill: white !important;
+    stroke-width: 2px;
+    stroke: orange;
+    transition: all .2s;
+}
