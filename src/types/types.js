@@ -186,6 +186,13 @@ export type ChangeHostFiltersActionType = {
     id?: string
 };
 
+export type ClickSeverityFromDashboardType = {
+    type: 'SEVERITY_CLICK_FROM_DASHBOARD',
+    severity: string[],
+    selectedPeriod: string,
+    id?: string
+}
+
 export type ActionType = 
     | ReadMessageActionType
     | LoadMessagesActionType
@@ -203,7 +210,8 @@ export type ActionType =
     | ChangeExactlyTimeRangeToActionType
     | ChangeSeverityFiltersActionType
     | ChangeFacilityFiltersActionType
-    | ChangeHostFiltersActionType;
+    | ChangeHostFiltersActionType
+    | ClickSeverityFromDashboardType;
 
 export type GetState = () => StateType;
 export type PromiseAction = Promise<ActionType>;

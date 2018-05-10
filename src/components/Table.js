@@ -3,28 +3,34 @@
 import * as React from 'react';
 import constants from '../constants/constants';
 import moment from 'moment';
-import type { LogsTableType, LogsType, IndexPaginationType, FiltersType } from '../types/types';
+import type { LogsType, IndexPaginationType, FiltersType } from '../types/types';
 
 import './Table.css';
 
 type Props = {
-    logsTable: LogsTableType,
+    logs?: Array<LogsType>,
+    selectedTableSize?: number,
+    indexShowRow?: IndexPaginationType,
+    filters?: FiltersType,
+    severity?: string[],
+    facility?: string[],
+    host?: string[],
     onChangeTableSizeView: Function,
     onClickPaginationFirst: Function,
     onClickPaginationNext: Function,
     onClickPaginationPrev: Function
 };
 
-const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }: Props) => {
+const Table = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTableSizeView, onClickPaginationFirst, onClickPaginationNext, onClickPaginationPrev }: Props) => {
     const { tableSize, period } = constants;
-    let logs: LogsType[] = logsTable.logs ? logsTable.logs : [];
-    let selectedTableSize: number = logsTable.selectedTableSize ? logsTable.selectedTableSize : tableSize.SMALL;
-    let indexShowRow: IndexPaginationType = logsTable.indexShowRow ? logsTable.indexShowRow : {};
-    let filters: FiltersType = logsTable.filters ? logsTable.filters : {};
+    let log: LogsType[] = logs ? logs : [];
+    let selectedSize: number = selectedTableSize ? selectedTableSize : tableSize.SMALL;
+    let indexShow: IndexPaginationType = indexShowRow ? indexShowRow : {};
+    let filter: FiltersType = filters ? filters : {};
     let start: string, end: string, filteredLogs;
 
-    if (filters) {
-        switch (filters.dateRange) {
+    if (filter) {
+        switch (filter.dateRange) {
             case period.TODAY:
                 start = end = moment().format('YYYY-MM-DD');
                 break;
@@ -48,12 +54,12 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                 end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
                 break;
             case period.EXACTLY_DATE:
-                start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
-                end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                start = filter.dateStart !== '' ? moment(filter.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                end = filter.dateEnd !== '' ? moment(filter.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
                 break;
             case period.EXACTLY_TIME:
-                start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
-                end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                start = filter.dateStart !== '' ? moment(filter.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                end = filter.dateEnd !== '' ? moment(filter.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
                 break;
             default:
                 start = end = moment().format('YYYY-MM-DD');
@@ -61,63 +67,63 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
     }
     
     if (logs) {
-        filteredLogs = logs.filter(log => {
+        filteredLogs = log.filter(log => {
             let date = false, severity = true, facility = true, host = true;
-            let logDate = filters.dateRange === constants.period.EXACTLY_TIME ? 
+            let logDate = filter.dateRange === constants.period.EXACTLY_TIME ?
                             moment(log.date, 'YYYY-MM-DD HH:mm') : 
                             moment(log.date, 'YYYY-MM-DD');
 
-            if (filters.dateRange) {
+            if (filter.dateRange) {
                 if (logDate.isSameOrAfter(start) && logDate.isSameOrBefore(end)) {
                     date = true;
                 }
             }
 
-            if (filters.severity && filters.severity.length > 0) {
-                severity = filters.severity.includes(log.severity);
+            if (filter.severity && filter.severity.length > 0) {
+                severity = filter.severity.includes(log.severity);
             }
 
-            if (filters.facility && filters.facility.length > 0) {
-                facility = filters.facility.includes(log.facility);
+            if (filter.facility && filter.facility.length > 0) {
+                facility = filter.facility.includes(log.facility);
             }
 
-            if (filters.host && filters.host.length > 0) {
-                host = filters.host.includes(log.host);
+            if (filter.host && filter.host.length > 0) {
+                host = filter.host.includes(log.host);
             }
 
             return date && severity && facility && host;
         });
     }    
 
-    let paginationStart: number = indexShowRow.start ? indexShowRow.start : 1;
-    let paginationEnd: number = indexShowRow.end ? indexShowRow.end : 25;
+    let paginationStart: number = indexShow.start ? indexShow.start : 1;
+    let paginationEnd: number = indexShow.end ? indexShow.end : 25;
     let filteredLenghth: number = filteredLogs && filteredLogs.length > 0 ? filteredLogs.length : 0;
 
     return (        
         <div className='w-100'>
             <div className='d-flex justify-content-between mb-3'>
                 <div className='btn-group-toggle'>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.SMALL ? ' active' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.SMALL ? ' active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.SMALL} 
-                            checked={selectedTableSize === tableSize.SMALL} 
+                            checked={selectedSize === tableSize.SMALL}
                             onChange={e => onChangeTableSizeView(Number(e.target.value))} 
                             />{tableSize.SMALL}
                     </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.MEDIUM ? 'active' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.MEDIUM ? 'active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.MEDIUM} 
-                            checked={selectedTableSize === tableSize.MEDIUM} 
+                            checked={selectedSize === tableSize.MEDIUM}
                             onChange={e => onChangeTableSizeView(Number(e.target.value))}
                             />{tableSize.MEDIUM}
                     </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedTableSize === tableSize.LARGE ? 'active' : ''}`}>
+                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.LARGE ? 'active' : ''}`}>
                         <input 
                             type='radio' 
                             value={tableSize.LARGE} 
-                            checked={selectedTableSize === tableSize.LARGE}
+                            checked={selectedSize === tableSize.LARGE}
                             onChange={e => onChangeTableSizeView(Number(e.target.value))}
                             />{tableSize.LARGE}
                     </label>
@@ -134,12 +140,12 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
-                            disabled={indexShowRow.start === 1}
+                            disabled={indexShow.start === 1}
                             onClick={() => onClickPaginationFirst(selectedTableSize)}>First</button>
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary mr-2 btn-sm'
-                            disabled={indexShowRow.start === 1}
+                            disabled={indexShow.start === 1}
                             onClick={() => onClickPaginationPrev(selectedTableSize)}>Previous</button>
                         <button 
                             type='button' 
@@ -170,11 +176,17 @@ const Table = ({ logsTable, onChangeTableSizeView, onClickPaginationFirst, onCli
                             <td>{elem.program}</td>
                             <td>{elem.message}</td>
                         </tr>
-                    ) : ''}
+                    ) :
+                    <tr>
+                        <td colSpan='6'>
+                            No found data
+                        </td>
+                    </tr>
+                    }
                 </tbody>
             </table>
         </div>
     )
-}
+};
 
 export default Table;    

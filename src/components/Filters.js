@@ -3,12 +3,18 @@
 import * as React from 'react';
 import Select from 'react-select';
 import DateRangeFilter from './DateRangeFilter';
-import type { LogsTableType } from '../types/types';
+import type {FiltersType, IndexPaginationType, LogsType} from '../types/types';
 
 import 'react-select/dist/react-select.css';
 
 type Props = {
-    logsTable: LogsTableType,
+    logs?: Array<LogsType>,
+    selectedTableSize?: number,
+    indexShowRow?: IndexPaginationType,
+    filters?: FiltersType,
+    severity?: string[],
+    facility?: string[],
+    host?: string[],
     onChangeDateRange: Function,
     onChangeExactlyDateRangeFrom: Function,
     onChangeExactlyDateRangeTo: Function,
@@ -20,7 +26,7 @@ type Props = {
 };
 
 const Filters = (props: Props) => {
-    const { filters, severity, facility, host } = props.logsTable;
+    const { filters, severity, facility, host } = props;
     const { onChangeSeverityFilters, onChangeFacilityFilters, onChangeHostFilters } = props;
     const severityOptions = severity && severity.map(el => ({value: el, label: el}));
     const facilityOptions = facility && facility.map(el => ({value: el, label: el}));

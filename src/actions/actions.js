@@ -137,3 +137,9 @@ export const changeHostFilters = (host: string[]): ActionType => ({
         type : constants.CHANGE_HOST_FILTERS,
         host
     });
+
+export const clickSeverityFromDashboard = (severity: string[], selectedPeriod: string): ActionType => ({
+    type: constants.SEVERITY_CLICK_FROM_DASHBOARD,
+    severity,
+    selectedPeriod
+});

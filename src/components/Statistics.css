@@ -1,0 +1,40 @@
+.severity-link:hover {
+    text-decoration: none;
+}
+
+.severity-link:hover .severity-link__item {
+    background-color: #eeeeee;
+    transition: all .2s;
+}
+
+.severity-link__item-EMERGENCY {
+    color : #bb1e21;
+}
+
+.severity-link__item-ALERT {
+    color: #fa6943;
+}
+
+.severity-link__item-CRITICAL {
+    color: #ff5458;
+}
+
+.severity-link__item-ERROR {
+    color: #fea019;
+}
+
+.severity-link__item-WARN {
+    color: #c09852;
+}
+
+.severity-link__item-NOTICE {
+    color: #020100;
+}
+
+.severity-link__item-INFO {
+    color: #c2ebf4;
+}
+
+.severity-link__item-DEBUG {
+    color: #8bba79;
+}

@@ -5,14 +5,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { App } from './App';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { messages, statistics, logsTable } from './reducers/reducers';
+import { createStore, applyMiddleware } from 'redux';
+import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+const middleware = [ thunk ];
+
 const store = createStore(
-    combineReducers({ messages, statistics, logsTable }),
-    applyMiddleware(thunk)
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(...middleware)
 );
 
 const root = document.getElementById('root');

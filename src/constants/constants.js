@@ -41,7 +41,15 @@ const constants = {
     },
     LOAD_MESSAGES : 'LOAD_MESSAGES',
     LOAD_STATISTICS : 'LOAD_STATISTICS',
-    LOAD_LOGS : 'LOAD_LOGS'
-}
+    LOAD_LOGS : 'LOAD_LOGS',
+    SEVERITY_CLICK_FROM_DASHBOARD: 'SEVERITY_CLICK_FROM_DASHBOARD'
+};
+
+export const periodBtns = [
+    {type: constants.period.THIS_WEEK, caption: 'this week'},
+    {type: constants.period.LAST_WEEK, caption: 'last week'},
+    {type: constants.period.THIS_MONTH, caption: 'this month'},
+    {type: constants.period.LAST_MONTH, caption: 'last month'}
+];
 
 export default constants;

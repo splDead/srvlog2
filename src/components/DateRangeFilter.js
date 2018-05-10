@@ -5,7 +5,7 @@ import constants from '../constants/constants';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import type { LogsTableType } from '../types/types';
+import type { FiltersType } from '../types/types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateRangeFilter.css';
@@ -24,7 +24,7 @@ const options = [
 ];
 
 type Props = {
-    logsTable: LogsTableType,
+    filters?: FiltersType,
     onChangeDateRange: Function,
     onChangeExactlyDateRangeFrom: Function,
     onChangeExactlyDateRangeTo: Function,
@@ -33,7 +33,7 @@ type Props = {
 };
 
 const DateRangeFilter = (props: Props) => {
-    const { filters } = props.logsTable;
+    const { filters } = props;
     const { onChangeDateRange, 
         onChangeExactlyDateRangeFrom,
         onChangeExactlyDateRangeTo,

@@ -18,11 +18,11 @@ export class Messages extends React.Component<Props, StateType> {
         this.props.onLoad();
     }
 
-    render() {        
+    render() {
         const { messages } = this.props;
 
         return (
-            messages.length > 0 ?
+            messages && messages.length > 0 ?
                 messages.map(message => 
                     <Message 
                         key={message.id} 

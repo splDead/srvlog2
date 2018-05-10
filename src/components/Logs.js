@@ -17,10 +17,16 @@ import {
     changeHostFilters, 
     fetchLogs } from '../actions/actions';
 import { getDateRange } from '../utils/MiscUtils';
-import type { LogsTableType, Dispatch, DateRangeType } from '../types/types';
+import type { Dispatch, DateRangeType, LogsType, FiltersType, IndexPaginationType} from '../types/types';
 
 type Props = {
-    logsTable: LogsTableType,
+    logs?: Array<LogsType>,
+    selectedTableSize?: number,
+    indexShowRow?: IndexPaginationType,
+    filters?: FiltersType,
+    severity?: string[],
+    facility?: string[],
+    host?: string[],
     onLoad: Function,
     onChangeTableSizeView: Function,
     onClickPaginationFirst: Function,
@@ -39,7 +45,7 @@ type Props = {
 class Logs extends React.Component<Props> {
 
     componentDidMount() {
-        let period: string = this.props.logsTable.filters && this.props.logsTable.filters.dateRange ? this.props.logsTable.filters.dateRange : constants.period.THIS_MONTH;
+        let period: string = this.props.filters && this.props.filters.dateRange ? this.props.filters.dateRange : constants.period.THIS_MONTH;
         let dateRange: DateRangeType = getDateRange(period);
         this.props.onLoad(dateRange);
     }
