@@ -37,7 +37,7 @@ export class LinearChart extends React.Component<Props> {
             return tooltipDiv;
         };
 
-        const width = target.clientWidth - margin.left - margin.right;
+        const width = target ? target.clientWidth - margin.left - margin.right : 600;
         const height = 400 - margin.top - margin.bottom;
         const parseTime = d3.timeParse('%Y-%m-%d');
 
