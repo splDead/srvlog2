@@ -3,6 +3,7 @@
 import * as React from 'react';
 import constants from '../constants/constants';
 import moment from 'moment';
+import TableSizeRadioButtonGroup from './TableSizeRadioButtonGroup';
 import type { LogsType, IndexPaginationType, FiltersType } from '../types/types';
 
 import './Table.css';
@@ -97,45 +98,23 @@ const Table = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTableSi
 
     let paginationStart: number = indexShow.start ? indexShow.start : 1;
     let paginationEnd: number = indexShow.end ? indexShow.end : 25;
-    let filteredLenghth: number = filteredLogs && filteredLogs.length > 0 ? filteredLogs.length : 0;
+    let filteredLength: number = filteredLogs && filteredLogs.length > 0 ? filteredLogs.length : 0;
 
     return (        
         <div className='w-100'>
             <div className='d-flex justify-content-between mb-3'>
-                <div className='btn-group-toggle'>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.SMALL ? ' active' : ''}`}>
-                        <input 
-                            type='radio' 
-                            value={tableSize.SMALL} 
-                            checked={selectedSize === tableSize.SMALL}
-                            onChange={e => onChangeTableSizeView(Number(e.target.value))} 
-                            />{tableSize.SMALL}
-                    </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.MEDIUM ? 'active' : ''}`}>
-                        <input 
-                            type='radio' 
-                            value={tableSize.MEDIUM} 
-                            checked={selectedSize === tableSize.MEDIUM}
-                            onChange={e => onChangeTableSizeView(Number(e.target.value))}
-                            />{tableSize.MEDIUM}
-                    </label>
-                    <label className={`btn btn-primary btn-sm mr-2 ${selectedSize === tableSize.LARGE ? 'active' : ''}`}>
-                        <input 
-                            type='radio' 
-                            value={tableSize.LARGE} 
-                            checked={selectedSize === tableSize.LARGE}
-                            onChange={e => onChangeTableSizeView(Number(e.target.value))}
-                            />{tableSize.LARGE}
-                    </label>
-                </div>
+                <TableSizeRadioButtonGroup
+                    selectedSize={selectedSize}
+                    tableSize={tableSize}
+                    onChangeTableSizeView={onChangeTableSizeView} />
                 <div>
                     <div className='d-flex align-items-center'>
-                        {filteredLenghth > 0 ?
+                        {filteredLength > 0 ?
                             <div className='mr-3'>                            
                                 <span className='badge badge-pill badge-secondary'>{paginationStart}</span>
                                 <span> - </span>
-                                <span className='badge badge-pill badge-secondary'>{paginationEnd > filteredLenghth ? filteredLenghth : paginationEnd}</span>
-                            </div> : <div className='mr-3'><span className='badge badge-pill badge-secondary'>0</span></div>
+                                <span className='badge badge-pill badge-secondary'>{paginationEnd > filteredLength ? filteredLength : paginationEnd}</span>
+                            </div> : ''
                         }
                         <button 
                             type='button' 
@@ -150,7 +129,7 @@ const Table = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTableSi
                         <button 
                             type='button' 
                             className='btn btn-outline-secondary btn-sm'
-                            disabled={paginationEnd >= filteredLenghth}
+                            disabled={paginationEnd >= filteredLength}
                             onClick={() => onClickPaginationNext(selectedTableSize)}>Next</button>
                     </div>
                 </div>
@@ -189,4 +168,4 @@ const Table = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTableSi
     )
 };
 
-export default Table;    
+export default Table;

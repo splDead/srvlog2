@@ -1,4 +1,3 @@
-import constants from '../constants/constants';
 import messages from './messages';
 import { readMessage, loadMessages } from '../actions/actions';
 

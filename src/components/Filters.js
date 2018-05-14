@@ -75,6 +75,6 @@ const Filters = (props: Props) => {
             </div>
         </div>
     )    
-}
+};
 
 export default Filters;

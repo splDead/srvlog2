@@ -25,7 +25,7 @@ const MainMenu = () =>
                 <NavLink className='nav-link' to='/hosts'>Add hosts</NavLink>
             </li>
         </ul>
-        <button className='btn btn-light'>login</button>
+        <button className='btn btn-light'>Logout</button>
     </nav>
 
 export default MainMenu;

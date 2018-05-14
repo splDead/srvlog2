@@ -11,9 +11,9 @@ const btnClose = {
     fontWeight : 700,
     opacity : 0.7,
     color : 'var(--gray)'
-}
+};
 
-const Message = ({ message, severity, buttons, onClick }: MessageType & {onClick: Function}) =>
+const Message = ({ message, severity, onClick }: MessageType & {onClick: Function}) =>
     <div className={constants.messageSeverity[severity]}>
         <h5>{message.title}</h5>
         <button 
@@ -22,9 +22,8 @@ const Message = ({ message, severity, buttons, onClick }: MessageType & {onClick
             style={btnClose}
             onClick={onClick}>Close</button>
         <p>{message.text}</p>
-        {buttons.map(btn =>
-            <button key={btn.id} type='button' className='btn btn-primary btn-sm mr-2'>{btn.text}</button>
-        )}
-    </div>
+        <button type='button' className='btn btn-primary btn-sm mr-2'>Process unresolved logs</button>
+        <button type='button' className='btn btn-primary btn-sm mr-2'>Show unprocessed hosts</button>
+    </div>;
 
 export default Message;
