@@ -103,21 +103,10 @@ definitions:
         example: WARN
       message:
         $ref: '#/definitions/Message_message'
-      buttons:
-        type: array
-        items:
-          $ref: '#/definitions/Message_buttons'
       id:
         type: string
     example:
       severity: WARN
-      buttons:
-      - text: Process unresolved logs
-        id: id
-        url: url
-      - text: Process unresolved logs
-        id: id
-        url: url
       id: id
       message:
         text: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
@@ -269,19 +258,6 @@ definitions:
     example:
       text: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
       title: Warnings!
-  Message_buttons:
-    properties:
-      url:
-        type: string
-      text:
-        type: string
-        example: Process unresolved logs
-      id:
-        type: string
-    example:
-      text: Process unresolved logs
-      id: id
-      url: url
   LogsTable_indexShowRow:
     properties:
       start:
