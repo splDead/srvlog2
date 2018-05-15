@@ -14,7 +14,7 @@ import {
     changeSeverityFilters,
     changeFacilityFilters,
     changeHostFilters,
-    clickSeverityFromDashboard } from '../actions/actions';
+    clickSeverityFromDashboard } from '../actions/logs';
 import logsTable from './logs';
 
 describe('logs Reducer', () => {

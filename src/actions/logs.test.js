@@ -3,57 +3,14 @@ import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import moment from 'moment';
-import * as actions from './actions';
+import * as actions from './logs';
 import constants from '../constants/constants';
-import { getDateRange } from '../utils/MiscUtils';
+import { getDateRange } from "../utils/MiscUtils";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('async actions', () => {
-
-    it('fetchMessages action', () => {
-
-        const mock = new MockAdapter(axios);
-        const store = mockStore();
-        const messages = [];
-        const expectedActions = [{
-            type: constants.LOAD_MESSAGES,
-            messages
-        }];
-
-        mock.onGet('https://demo0073537.mockable.io/messages').reply(200, {
-            messages: []
-        });
-
-        store.dispatch(actions.fetchMessages()).then(() =>
-            expect(store.getActions()).toEqual(expectedActions)
-        );
-    });
-
-    it('fetctStatistics action', () => {
-        const mock = new MockAdapter(axios);
-        const store = mockStore();
-        const expectedActions = [{
-            type: constants.LOAD_STATISTICS,
-            statistics: {
-                logs: [],
-                summary: []
-            }
-        }];
-        const dateRange = getDateRange(constants.period.THIS_WEEK);
-
-        mock.onPost('https://demo0073537.mockable.io/dashboard', dateRange).reply(200, {
-            statistics: {
-                logs: [],
-                summary: []
-            }
-        });
-
-        store.dispatch(actions.fetctStatistics(dateRange)).then(() =>
-            expect(store.getActions()).toEqual(expectedActions)
-        );
-    });
+describe('logs actions', () => {
 
     it('fetchLogs action', () => {
         const mock = new MockAdapter(axios);
@@ -85,45 +42,6 @@ describe('async actions', () => {
         store.dispatch(actions.fetchLogs(dateRange)).then(() =>
             expect(store.getActions()).toEqual(expectedActions)
         );
-    })
-});
-
-describe('actions', () => {
-
-    it('readMessage action', () => {
-        const id = '1';
-        const expectedAction = {
-            type: constants.READ_MESSAGE,
-            id
-        };
-        expect(actions.readMessage(id)).toEqual(expectedAction);
-    });
-
-    it('loadMessages action', () => {
-        const messages = [];
-        const expectedAction = {
-            type: constants.LOAD_MESSAGES,
-            messages
-        };
-        expect(actions.loadMessages(messages)).toEqual(expectedAction);
-    });
-
-    it('loadStatistics action', () => {
-        const statistics = {};
-        const expectedAction = {
-            type: constants.LOAD_STATISTICS,
-            statistics
-        };
-        expect(actions.loadStatistics(statistics)).toEqual(expectedAction);
-    });
-
-    it('changePeriodLogs action', () => {
-        const period = constants.period.THIS_WEEK;
-        const expectedAction = {
-            type: constants.CHANGE_PERIOD,
-            period
-        };
-        expect(actions.changePeriodLogs(period)).toEqual(expectedAction);
     });
 
     it('loadLogs action', () => {

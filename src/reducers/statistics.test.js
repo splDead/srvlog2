@@ -1,6 +1,6 @@
 import constants from '../constants/constants';
 import statistics from './statistics';
-import { changePeriodLogs, loadStatistics } from '../actions/actions';
+import { changePeriodLogs, loadStatistics } from '../actions/statistics';
 
 describe('statistics Reducer', () => {
 

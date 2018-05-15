@@ -1,21 +1,9 @@
 import messages from './messages';
-import { readMessage, loadMessages } from '../actions/actions';
+import { readMessage, loadMessages } from '../actions/messages';
 
 const initialState = {
     messages: [
         {
-            buttons: [
-                {
-                    id: '1',
-                    text: 'Process unresolved logs',
-                    url: ''
-                },
-                {
-                    id: '2',
-                    text: 'Show unprocessed hosts',
-                    url: ''
-                }
-            ],
             message: {
                 title: 'Warnings!',
                 text: 'There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?'
@@ -45,18 +33,6 @@ describe('messages Reducer', () => {
                 messages: {
                     messages: [
                         {
-                            buttons: [
-                                {
-                                    id: '1',
-                                    text: 'Process unresolved logs',
-                                    url: ''
-                                },
-                                {
-                                    id: '2',
-                                    text: 'Show unprocessed hosts',
-                                    url: ''
-                                }
-                            ],
                             message: {
                                 title: 'Warnings!',
                                 text: 'There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?'

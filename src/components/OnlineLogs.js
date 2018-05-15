@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchOnlineLogs, changeDurationUpdate } from '../actions/actions';
+import { fetchOnlineLogs, changeDurationUpdate } from '../actions/onlineLogs';
 import OnlineTable from './OnlineTable';
 import type { Dispatch, LogsType } from "../types/types";
 
@@ -21,9 +21,9 @@ class OnlineLogs extends React.Component<Props> {
 
     timerID;
 
-    refresh = (host, latestLogs) => {
+    refresh = (host, latestLogs, timeDurationUpdate) => {
         clearInterval(this.timerID);
-        this.timerID = setInterval(() => this.props.onLoad(host, latestLogs), this.props.timeDurationUpdate);
+        this.timerID = setInterval(() => this.props.onLoad(host, latestLogs), timeDurationUpdate * 1000);
     };
 
     componentDidMount() {
@@ -39,20 +39,22 @@ class OnlineLogs extends React.Component<Props> {
 
     handleChangeHosts = (host) => {
         let latestLogs = this.props.latestLogs;
+        let timeDurationUpdate = this.props.timeDurationUpdate;
         this.props.onChangeFilters(host, latestLogs);
-        this.refresh(host, latestLogs);
+        this.refresh(host, latestLogs, timeDurationUpdate);
     };
 
     handleChangeLatestLogs = (latestLogs) => {
         let host = this.props.host;
+        let timeDurationUpdate = this.props.timeDurationUpdate;
         this.props.onChangeFilters(host, latestLogs);
-        this.refresh(host, latestLogs);
+        this.refresh(host, latestLogs, timeDurationUpdate);
     };
 
     handleChangeDuration = (timeDurationUpdate) => {
         let host = this.props.host;
         let latestLogs = this.props.latestLogs;
-        this.refresh(host, latestLogs);
+        this.refresh(host, latestLogs, timeDurationUpdate);
         this.props.onChangeDurationUpdate(timeDurationUpdate);
     };
 

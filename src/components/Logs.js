@@ -15,7 +15,7 @@ import {
     changeSeverityFilters,
     changeFacilityFilters,
     changeHostFilters, 
-    fetchLogs } from '../actions/actions';
+    fetchLogs } from '../actions/logs';
 import { getDateRange } from '../utils/MiscUtils';
 import type { Dispatch, DateRangeType, LogsType, FiltersType, IndexPaginationType} from '../types/types';
 

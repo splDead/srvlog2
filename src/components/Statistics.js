@@ -7,7 +7,8 @@ import { LinearChart } from './LinearChart';
 import PeriodRadioButton from './PeriodRadioButton';
 import SeverityLink from './SeverityLink';
 import constants, { periodBtns } from '../constants/constants';
-import { fetctStatistics, clickSeverityFromDashboard } from '../actions/actions';
+import { fetctStatistics } from '../actions/statistics';
+import { clickSeverityFromDashboard } from '../actions/logs';
 import { getDateRange } from '../utils/MiscUtils';
 import type { StateType, Dispatch, DateRangeType, StatisticsLogType } from '../types/types';
 

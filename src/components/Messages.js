@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Message from './Message';
-import { readMessage, fetchMessages } from '../actions/actions';
+import { readMessage, fetchMessages } from '../actions/messages';
 import type { StateType, MessageType, Dispatch } from '../types/types';
 
 type Props = {
