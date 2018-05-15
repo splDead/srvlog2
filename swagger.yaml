@@ -62,6 +62,25 @@ paths:
           description: ok
           schema:
             $ref: '#/definitions/LogsTable'
+  /online-logs:
+    post:
+      summary: online logs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: OnlineLogsRequest
+        description: data for online logs table
+        required: false
+        schema:
+          $ref: '#/definitions/OnlineLogsRequest'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/OnlineLogsTable'
 definitions:
   Statistics:
     type: object
@@ -157,6 +176,36 @@ definitions:
       facility:
       - facility
       - facility
+  OnlineLogsTable:
+    type: object
+    properties:
+      hostsOptions:
+        type: array
+        items:
+          type: string
+      logs:
+        type: array
+        items:
+          $ref: '#/definitions/Log'
+    example:
+      hostsOptions:
+      - hostsOptions
+      - hostsOptions
+      logs:
+      - date: 2018-03-01 16:10:01
+        severity: INFO
+        host: idao-2
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        program: clamd
+        message: '[1]: Starting User Slice of root.'
+        facility: daemon
+      - date: 2018-03-01 16:10:01
+        severity: INFO
+        host: idao-2
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        program: clamd
+        message: '[1]: Starting User Slice of root.'
+        facility: daemon
   Log:
     type: object
     properties:
@@ -220,6 +269,18 @@ definitions:
     example:
       endDate: 2018-05-07T00:00:00.000Z
       startDate: 2018-05-01T00:00:00.000Z
+  OnlineLogsRequest:
+    type: object
+    properties:
+      host:
+        type: string
+        example: ALL
+      latestLogs:
+        type: integer
+        example: 25
+    example:
+      host: ALL
+      latestLogs: 25
   Statistics_summary:
     properties:
       caption:
