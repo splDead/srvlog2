@@ -4,7 +4,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Search from './Search';
-import Table from './Table';
+import LogsTable from './LogsTable';
 import Filters from './Filters';
 import constants from '../constants/constants';
 import { 
@@ -60,7 +60,7 @@ class Logs extends React.Component<Props> {
             <div className='mb-5'>
                 <Search onSearch={this.handleSearch} />
                 <Filters {...this.props} />
-                <Table {...this.props} />
+                <LogsTable {...this.props} />
             </div>
         )    
     }    

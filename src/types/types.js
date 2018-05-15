@@ -80,6 +80,14 @@ export type LogsTableType = {
     host?: string[]
 };
 
+export type OnlineLogsTableType = {
+    latestLogs: number,
+    timeDurationUpdate: number,
+    logs?: Array<LogsType>,
+    host?: string,
+    hostsOptions?: string[]
+};
+
 export type ReadMessageActionType = {
     type: 'READ_MESSAGE',
     id: string
@@ -191,7 +199,28 @@ export type ClickSeverityFromDashboardType = {
     severity: string[],
     selectedPeriod: string,
     id?: string
-}
+};
+
+export type LoadOnlineLogsActionType = {
+    type: 'LOAD_ONLINE_LOGS',
+    logs: LogsType[],
+    hostsOptions: string[],
+    id?: string
+};
+
+export type ChangeOnlineLogsFiltersActionType = {
+    type: 'CHANGE_ONLINE_LOGS_FILTERS',
+    logs: LogsType[],
+    latestLogs: number,
+    host: string,
+    id?: string
+};
+
+export type ChangeOnlineLogsTimeDurationUpdateActionType = {
+    type: 'CHANGE_DURATION_UPDATE',
+    timeDurationUpdate: number,
+    id?: string
+};
 
 export type ActionType = 
     | ReadMessageActionType
@@ -211,7 +240,10 @@ export type ActionType =
     | ChangeSeverityFiltersActionType
     | ChangeFacilityFiltersActionType
     | ChangeHostFiltersActionType
-    | ClickSeverityFromDashboardType;
+    | ClickSeverityFromDashboardType
+    | LoadOnlineLogsActionType
+    | ChangeOnlineLogsFiltersActionType
+    | ChangeOnlineLogsTimeDurationUpdateActionType;
 
 export type GetState = () => StateType;
 export type PromiseAction = Promise<ActionType>;
