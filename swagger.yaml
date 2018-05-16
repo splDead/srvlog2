@@ -81,6 +81,25 @@ paths:
           description: ok
           schema:
             $ref: '#/definitions/OnlineLogsTable'
+  /hosts:
+    get:
+      summary: get unprocessed hosts
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/inline_response_200'
+    post:
+      summary: add processed hosts
+      consumes:
+      - application/json
+      parameters: []
+      responses:
+        204:
+          description: ok
 definitions:
   Statistics:
     type: object
@@ -281,6 +300,12 @@ definitions:
     example:
       host: ALL
       latestLogs: 25
+  inline_response_200:
+    properties:
+      hosts:
+        type: string
+    example:
+      hosts: hosts
   Statistics_summary:
     properties:
       caption:
