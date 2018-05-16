@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import constants from '../constants/constants';
 import type { MessageType } from '../types/types';
 
@@ -22,8 +23,7 @@ const Message = ({ message, severity, onClick }: MessageType & {onClick: Functio
             style={btnClose}
             onClick={onClick}>Close</button>
         <p>{message.text}</p>
-        <button type='button' className='btn btn-primary btn-sm mr-2'>Process unresolved logs</button>
-        <button type='button' className='btn btn-primary btn-sm mr-2'>Show unprocessed hosts</button>
+        <Link to='/hosts' className='btn btn-primary btn-sm'>Show unprocessed hosts</Link>
     </div>;
 
 export default Message;
