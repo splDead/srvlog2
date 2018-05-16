@@ -15,19 +15,19 @@ type Props = {
     severity?: string[],
     facility?: string[],
     host?: string[],
-    onChangeDateRange: Function,
-    onChangeExactlyDateRangeFrom: Function,
-    onChangeExactlyDateRangeTo: Function,
-    onChangeExactlyTimeRangeFrom: Function,
-    onChangeExactlyTimeRangeTo: Function,
-    onChangeSeverityFilters: Function,
-    onChangeFacilityFilters: Function,
-    onChangeHostFilters: Function
+    changeDateRange: Function,
+    changeSeverity: Function,
+    changeFacility: Function,
+    changeHost: Function,
+    changeExactlyDateRangeFrom: Function,
+    changeExactlyDateRangeTo: Function,
+    changeExactlyTimeRangeFrom: Function,
+    changeExactlyTimeRangeTo: Function
 };
 
 const Filters = (props: Props) => {
     const { filters, severity, facility, host } = props;
-    const { onChangeSeverityFilters, onChangeFacilityFilters, onChangeHostFilters } = props;
+    const { changeSeverity, changeFacility, changeHost } = props;
     const severityOptions = severity && severity.map(el => ({value: el, label: el}));
     const facilityOptions = facility && facility.map(el => ({value: el, label: el}));
     const hostOptions = host && host.map(el => ({value: el, label: el}));
@@ -40,7 +40,7 @@ const Filters = (props: Props) => {
                     Severity:
                     <Select closeOnSelect={true}
                             multi
-                            onChange={onChangeSeverityFilters}
+                            onChange={changeSeverity}
                             options={severityOptions}
                             placeholder='Select severity'
                             removeSelected={true}
@@ -52,7 +52,7 @@ const Filters = (props: Props) => {
                     Facility:
                     <Select closeOnSelect={true}
                             multi
-                            onChange={onChangeFacilityFilters}
+                            onChange={changeFacility}
                             options={facilityOptions}
                             placeholder='Select facility'
                             removeSelected={true}
@@ -64,7 +64,7 @@ const Filters = (props: Props) => {
                     Host:
                     <Select closeOnSelect={true}
                             multi
-                            onChange={onChangeHostFilters}
+                            onChange={changeHost}
                             options={hostOptions}
                             placeholder='Select host'
                             removeSelected={true}

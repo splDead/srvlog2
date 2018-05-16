@@ -2,33 +2,19 @@
 
 import axios from 'axios';
 import moment from 'moment';
-import type { ActionType, DateRangeType, Dispatch, LogsTableType } from "../types/types";
+import type { ActionType, Dispatch, LogsTableType, FiltersType } from "../types/types";
 import constants from "../constants/constants";
 
-export const loadLogs = (logs: LogsTableType): ActionType => ({
+export const loadLogs = (logs: LogsTableType, filters: FiltersType): ActionType => ({
     type : constants.LOAD_LOGS,
-    logs
+    logs,
+    filters
 });
 
-export const fetchLogs = (dateRange: DateRangeType, range?: string) => (dispatch: Dispatch) => {
-    return axios.post('https://demo0073537.mockable.io/logs', dateRange)
+export const fetchLogs = (params: {filters: FiltersType}) => (dispatch: Dispatch) => {
+    return axios.post('https://demo0073537.mockable.io/logs', params)
         .then(response => {
-            if (range) {
-                let date = moment(range.split('/')[1]);
-                if (range.startsWith('EXACTLY_DATE_FROM')) {
-                    dispatch(changeExactlyDateRangeFrom(date, response.data.logsTable))
-                } else if (range.startsWith('EXACTLY_DATE_TO')) {
-                    dispatch(changeExactlyDateRangeTo(date, response.data.logsTable))
-                } else if (range.startsWith('EXACTLY_TIME_FROM')) {
-                    dispatch(changeExactlyTimeRangeFrom(date, response.data.logsTable))
-                } else if (range.startsWith('EXACTLY_TIME_TO')) {
-                    dispatch(changeExactlyTimeRangeTo(date, response.data.logsTable))
-                } else {
-                    dispatch(changeDateRange(range, response.data.logsTable))
-                }
-            } else {
-                dispatch(loadLogs(response.data.logsTable))
-            }
+            dispatch(loadLogs(response.data, params.filters))
         })
         .catch(error => console.log(error));
 };

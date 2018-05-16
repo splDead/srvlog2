@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import moment from 'moment';
 import Search from './Search';
 import LogsTable from './LogsTable';
 import Filters from './Filters';
@@ -12,12 +12,9 @@ import {
     paginationFirst,
     paginationNext,
     paginationPrev,
-    changeSeverityFilters,
-    changeFacilityFilters,
-    changeHostFilters, 
     fetchLogs } from '../actions/logs';
 import { getDateRange } from '../utils/MiscUtils';
-import type { Dispatch, DateRangeType, LogsType, FiltersType, IndexPaginationType} from '../types/types';
+import type { Dispatch, LogsType, FiltersType, IndexPaginationType} from '../types/types';
 
 type Props = {
     logs?: Array<LogsType>,
@@ -31,35 +28,140 @@ type Props = {
     onChangeTableSizeView: Function,
     onClickPaginationFirst: Function,
     onClickPaginationNext: Function,
-    onClickPaginationPrev: Function,
-    onChangeDateRange: Function,
-    onChangeExactlyDateRangeFrom: Function,
-    onChangeExactlyDateRangeTo: Function,
-    onChangeExactlyTimeRangeFrom: Function,
-    onChangeExactlyTimeRangeTo: Function,
-    onChangeSeverityFilters: Function,
-    onChangeFacilityFilters: Function,
-    onChangeHostFilters: Function
+    onClickPaginationPrev: Function
 };
 
 class Logs extends React.Component<Props> {
 
     componentDidMount() {
-        let period: string = this.props.filters && this.props.filters.dateRange ? this.props.filters.dateRange : constants.period.THIS_MONTH;
-        let dateRange: DateRangeType = getDateRange(period);
-        this.props.onLoad(dateRange);
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                ...getDateRange(constants.period.TODAY)
+            }
+        });
     }
 
-    handleSearch = (input) => {        
-        axios.get(`https://p1703.mocklab.io/search?q=${input.value}`)
-            .then(response => alert(response.data));
+    handleSearch = (input: HTMLInputElement) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters
+            },
+            query: input.value
+        });
+    };
+
+    handleChangeDateRange = (range: string) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                dateRange: range,
+                ...getDateRange(range)
+            }
+        });
+    };
+
+    handleChangeSeverity = (severity: string) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                severity: severity !== '' ? severity.split(',') : []
+            }
+        });
+    };
+
+    handleChangeFacility = (facility: string) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                facility: facility !== '' ? facility.split(',') : []
+            }
+        });
+    };
+
+    handleChangeHosts = (host: string) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                host: host !== '' ? host.split(',') : []
+            }
+        });
+    };
+
+    handleChangeExactlyDateRangeFrom = (date: moment) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                ...getDateRange(
+                    constants.period.EXACTLY_DATE,
+                    {
+                        dateStart: date.format('YYYY-MM-DD'),
+                        dateEnd: this.props.filters ? this.props.filters.dateEnd : ''
+                    }
+                )
+            }
+        });
+    };
+
+    handleChangeExactlyDateRangeTo = (date: moment) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                ...getDateRange(
+                    constants.period.EXACTLY_DATE,
+                    {
+                        dateStart: this.props.filters ? this.props.filters.dateStart : '',
+                        dateEnd: date.format('YYYY-MM-DD')
+                    }
+                )
+            }
+        });
+    };
+
+    handleChangeExactlyTimeRangeFrom = (date: moment) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                ...getDateRange(
+                    constants.period.EXACTLY_DATE,
+                    {
+                        dateStart: date.format('YYYY-MM-DD HH:mm'),
+                        dateEnd: this.props.filters ? this.props.filters.dateEnd : ''
+                    }
+                )
+            }
+        });
+    };
+
+    handleChangeExactlyTimeRangeTo = (date: moment) => {
+        this.props.onLoad({
+            filters: {
+                ...this.props.filters,
+                ...getDateRange(
+                    constants.period.EXACTLY_DATE,
+                    {
+                        dateStart: this.props.filters ? this.props.filters.dateStart : '',
+                        dateEnd: date.format('YYYY-MM-DD HH:mm')
+                    }
+                )
+            }
+        });
     };
     
     render() {
         return (
             <div className='mb-5'>
                 <Search onSearch={this.handleSearch} />
-                <Filters {...this.props} />
+                <Filters
+                    {...this.props}
+                    changeDateRange={this.handleChangeDateRange.bind(this)}
+                    changeSeverity={this.handleChangeSeverity.bind(this)}
+                    changeFacility={this.handleChangeFacility.bind(this)}
+                    changeHost={this.handleChangeHosts.bind(this)}
+                    changeExactlyDateRangeFrom={this.handleChangeExactlyDateRangeFrom.bind(this)}
+                    changeExactlyDateRangeTo={this.handleChangeExactlyDateRangeTo.bind(this)}
+                    changeExactlyTimeRangeFrom={this.handleChangeExactlyTimeRangeFrom.bind(this)}
+                    changeExactlyTimeRangeTo={this.handleChangeExactlyTimeRangeTo.bind(this)} />
                 <LogsTable {...this.props} />
             </div>
         )    
@@ -70,8 +172,8 @@ export default connect(
     (state): any => state.logsTable,
     (dispatch: Dispatch) =>
         ({
-            onLoad(dateRange) {
-                dispatch(fetchLogs(dateRange))
+            onLoad(params) {
+                dispatch(fetchLogs(params))
             },
             onChangeTableSizeView(tableSize) {
                 dispatch(changeTableSize(tableSize))
@@ -84,38 +186,6 @@ export default connect(
             },
             onClickPaginationPrev(selectedTableSize) {
                 dispatch(paginationPrev(selectedTableSize))
-            },
-            onChangeDateRange(range) {
-                dispatch(fetchLogs(getDateRange(range), range))
-            },
-            onChangeExactlyDateRangeFrom(date) {
-                dispatch(fetchLogs({
-                    startDate: date.format(this.dateFormat),
-                    endDate: this.endDate.format(this.dateFormat)}, `EXACTLY_DATE_FROM/${date.format(this.dateFormat)}`))
-            },
-            onChangeExactlyDateRangeTo(date) {
-                dispatch(fetchLogs({
-                    startDate: this.startDate.format(this.dateFormat),
-                    endDate: date.format(this.dateFormat)}, `EXACTLY_DATE_TO/${date.format(this.dateFormat)}`))
-            },
-            onChangeExactlyTimeRangeFrom(date) {
-                dispatch(fetchLogs({
-                    startDate: date.format(this.dateFormat),
-                    endDate: this.endDate.format(this.dateFormat)}, `EXACTLY_TIME_FROM/${date.format(this.dateFormat)}`))
-            },
-            onChangeExactlyTimeRangeTo(date) {
-                dispatch(fetchLogs({
-                    startDate: this.startDate.format(this.dateFormat),
-                    endDate: date.format(this.dateFormat)}, `EXACTLY_TIME_TO/${date.format(this.dateFormat)}`))
-            },
-            onChangeSeverityFilters(severity) {
-                dispatch(changeSeverityFilters(severity))
-            },
-            onChangeFacilityFilters(facility) {
-                dispatch(changeFacilityFilters(facility))
-            },
-            onChangeHostFilters(host) {
-                dispatch(changeHostFilters(host))
             }
         })
 )(Logs);

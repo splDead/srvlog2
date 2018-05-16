@@ -8,10 +8,10 @@ import Table from './Table';
 import type { LogsType, IndexPaginationType, FiltersType } from '../types/types';
 
 type Props = {
-    logs?: Array<LogsType>,
+    logs: Array<LogsType>,
     selectedTableSize?: number,
-    indexShowRow?: IndexPaginationType,
-    filters?: FiltersType,
+    indexShowRow: IndexPaginationType,
+    filters: FiltersType,
     severity?: string[],
     facility?: string[],
     host?: string[],
@@ -26,13 +26,12 @@ const LogsTable = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTab
     let log: LogsType[] = logs ? logs : [];
     let selectedSize: number = selectedTableSize ? selectedTableSize : tableSize.SMALL;
     let indexShow: IndexPaginationType = indexShowRow ? indexShowRow : {};
-    let filter: FiltersType = filters ? filters : {};
     let start: string, end: string, filteredLogs = [];
     let paginationStart: number = indexShow.start ? indexShow.start : 1;
     let paginationEnd: number = indexShow.end ? indexShow.end : 25;
 
-    if (filter) {
-        switch (filter.dateRange) {
+    if (filters) {
+        switch (filters.dateRange) {
             case period.TODAY:
                 start = end = moment().format('YYYY-MM-DD');
                 break;
@@ -56,41 +55,41 @@ const LogsTable = ({ logs, selectedTableSize, indexShowRow, filters, onChangeTab
                 end = moment().date(1).subtract(1, 'day').format('YYYY-MM-DD');
                 break;
             case period.EXACTLY_DATE:
-                start = filter.dateStart !== '' ? moment(filter.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
-                end = filter.dateEnd !== '' ? moment(filter.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                start = filters.dateStart !== '' ? moment(filters.dateStart).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
+                end = filters.dateEnd !== '' ? moment(filters.dateEnd).format('YYYY-MM-DD') : moment().format('YYYY-MM-DD');
                 break;
             case period.EXACTLY_TIME:
-                start = filter.dateStart !== '' ? moment(filter.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
-                end = filter.dateEnd !== '' ? moment(filter.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                start = filters.dateStart !== '' ? moment(filters.dateStart, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
+                end = filters.dateEnd !== '' ? moment(filters.dateEnd, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') : moment().format('YYYY-MM-DD');
                 break;
             default:
                 start = end = moment().format('YYYY-MM-DD');
         }
     }
-    
+
     if (logs) {
         filteredLogs = log.filter(log => {
             let date = false, severity = true, facility = true, host = true;
-            let logDate = filter.dateRange === constants.period.EXACTLY_TIME ?
+            let logDate = filters.dateRange === constants.period.EXACTLY_TIME ?
                             moment(log.date, 'YYYY-MM-DD HH:mm') : 
                             moment(log.date, 'YYYY-MM-DD');
 
-            if (filter.dateRange) {
+            if (filters.dateRange) {
                 if (logDate.isSameOrAfter(start) && logDate.isSameOrBefore(end)) {
                     date = true;
                 }
             }
 
-            if (filter.severity && filter.severity.length > 0) {
-                severity = filter.severity.includes(log.severity);
+            if (filters.severity.length > 0) {
+                severity = filters.severity.includes(log.severity);
             }
 
-            if (filter.facility && filter.facility.length > 0) {
-                facility = filter.facility.includes(log.facility);
+            if (filters.facility.length > 0) {
+                facility = filters.facility.includes(log.facility);
             }
 
-            if (filter.host && filter.host.length > 0) {
-                host = filter.host.includes(log.host);
+            if (filters.host.length > 0) {
+                host = filters.host.includes(log.host);
             }
 
             return date && severity && facility && host;

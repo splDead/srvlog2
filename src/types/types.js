@@ -42,8 +42,8 @@ export type StatisticsType = {
 };
 
 export type DateRangeType = {
-    startDate: string,
-    endDate: string
+    dateStart: string,
+    dateEnd: string
 };
 
 export type LogsType = {
@@ -62,19 +62,19 @@ export type IndexPaginationType = {
 };
 
 export type FiltersType = {
-    dateRange?: string,
-    dateStart?: string,
-    dateEnd?: string,
-    severity?: string[],
-    facility?: string[],
-    host?: string[]
+    dateRange: string,
+    dateStart: string,
+    dateEnd: string,
+    severity: string[],
+    facility: string[],
+    host: string[]
 }
 
 export type LogsTableType = {
-    logs?: Array<LogsType>,
+    logs: Array<LogsType>,
     selectedTableSize?: number,
-    indexShowRow?: IndexPaginationType,
-    filters?: FiltersType,
+    indexShowRow: IndexPaginationType,
+    filters: FiltersType,
     severity?: string[],
     facility?: string[],
     host?: string[]
@@ -114,6 +114,7 @@ export type ChangePeriodLogsActionType = {
 export type LoadLogsActionType = {
     type: 'LOAD_LOGS',
     logs: LogsTableType,
+    filters: FiltersType,
     id?: string
 };
 

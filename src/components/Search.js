@@ -17,7 +17,7 @@ const Search = ({ onSearch }: Props) => {
         if (_inputValue) {
             _inputValue.value = '';
         }
-    }
+    };
 
     return (
         <form className='input-group mb-3' onSubmit={search}>
@@ -27,6 +27,6 @@ const Search = ({ onSearch }: Props) => {
             </div>
         </form>
     )    
-}
+};
 
 export default Search;

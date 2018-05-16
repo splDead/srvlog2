@@ -25,20 +25,20 @@ const options = [
 
 type Props = {
     filters?: FiltersType,
-    onChangeDateRange: Function,
-    onChangeExactlyDateRangeFrom: Function,
-    onChangeExactlyDateRangeTo: Function,
-    onChangeExactlyTimeRangeFrom: Function,
-    onChangeExactlyTimeRangeTo: Function
+    changeDateRange: Function,
+    changeExactlyDateRangeFrom: Function,
+    changeExactlyDateRangeTo: Function,
+    changeExactlyTimeRangeFrom: Function,
+    changeExactlyTimeRangeTo: Function
 };
 
 const DateRangeFilter = (props: Props) => {
     const { filters } = props;
-    const { onChangeDateRange, 
-        onChangeExactlyDateRangeFrom,
-        onChangeExactlyDateRangeTo,
-        onChangeExactlyTimeRangeFrom,
-        onChangeExactlyTimeRangeTo } = props;
+    const { changeDateRange,
+        changeExactlyDateRangeFrom,
+        changeExactlyDateRangeTo,
+        changeExactlyTimeRangeFrom,
+        changeExactlyTimeRangeTo } = props;
     const dateStart = filters && filters.dateStart !== '' ? moment(filters.dateStart) : moment();
     const dateEnd = filters && filters.dateEnd !== '' ? moment(filters.dateEnd) : moment();
 
@@ -47,7 +47,7 @@ const DateRangeFilter = (props: Props) => {
             <div className='col-4'>
                 Date range:
                 <Select closeOnSelect={true}
-                        onChange={onChangeDateRange}
+                        onChange={changeDateRange}
                         options={options}
                         placeholder='Select severity'
                         removeSelected={true}
@@ -63,7 +63,7 @@ const DateRangeFilter = (props: Props) => {
                         From:
                         <DatePicker 
                             selected={dateStart} 
-                            onChange={onChangeExactlyDateRangeFrom}
+                            onChange={changeExactlyDateRangeFrom}
                             dateFormat='YYYY-MM-DD'
                             maxDate={moment()}
                             popperPlacement='bottom-end'
@@ -77,7 +77,7 @@ const DateRangeFilter = (props: Props) => {
                         To:
                         <DatePicker 
                             selected={dateEnd} 
-                            onChange={onChangeExactlyDateRangeTo}
+                            onChange={changeExactlyDateRangeTo}
                             dateFormat='YYYY-MM-DD'
                             maxDate={moment()}
                             popperPlacement='bottom-end'
@@ -95,7 +95,7 @@ const DateRangeFilter = (props: Props) => {
                         From:
                         <DatePicker 
                             selected={dateStart} 
-                            onChange={onChangeExactlyTimeRangeFrom}
+                            onChange={changeExactlyTimeRangeFrom}
                             showTimeSelect
                             timeFormat='HH:mm'
                             timeIntervals={15}
@@ -112,7 +112,7 @@ const DateRangeFilter = (props: Props) => {
                         To:
                         <DatePicker 
                             selected={dateEnd}
-                            onChange={onChangeExactlyTimeRangeTo}
+                            onChange={changeExactlyTimeRangeTo}
                             showTimeSelect
                             timeFormat='HH:mm'
                             timeIntervals={15}
