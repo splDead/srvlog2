@@ -13,7 +13,7 @@ class Hosts extends React.Component<{}> {
         if (this._inputValue) {
             this._inputValue.value = '';
         }
-        axios.post('https://demo0073537.mockable.io/add-hosts', {hosts: value})
+        axios.post('https://demo0073537.mockable.io/hosts', {hosts: value})
             .catch(error => console.log(error));
     };
 
