@@ -11,9 +11,9 @@ const initialState: StatisticsType = {
 };
 
 const filterLogs = (state, period = constants.period.THIS_MONTH) => {
-    let { startDate, endDate } = getDateRange(period);
+    let { dateStart, dateEnd } = getDateRange(period);
     let filteredLogs = state.logs && state.logs.filter(log =>
-        moment(log.date).isSameOrAfter(startDate) && moment(log.date).isSameOrBefore(endDate)
+        moment(log.date).isSameOrAfter(dateStart) && moment(log.date).isSameOrBefore(dateEnd)
     );
 
     let summary = [];
@@ -31,7 +31,7 @@ const filterLogs = (state, period = constants.period.THIS_MONTH) => {
     return {filteredLogs, summary};
 };
 
-const statistics = (state: StatisticsType = initialState, action: ActionType): StatisticsType => {
+const dashboard = (state: StatisticsType = initialState, action: ActionType): StatisticsType => {
     switch (action.type) {
         case constants.CHANGE_PERIOD:
             return {
@@ -52,4 +52,4 @@ const statistics = (state: StatisticsType = initialState, action: ActionType): S
     }
 };
 
-export default statistics;
+export default dashboard;

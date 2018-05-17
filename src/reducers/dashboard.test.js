@@ -1,12 +1,12 @@
 import constants from '../constants/constants';
-import statistics from './statistics';
-import { changePeriodLogs, loadStatistics } from '../actions/statistics';
+import dashboard from './dashboard';
+import { changePeriodLogs, loadStatistics } from '../actions/dashboard';
 
-describe('statistics Reducer', () => {
+describe('dashboard Reducer', () => {
 
     it('CHANGE_PERIOD success', () => {
         const action = changePeriodLogs(constants.period.THIS_WEEK);
-        const result = statistics({}, action);
+        const result = dashboard({}, action);
         expect(result)
             .toEqual({
                 selectedPeriod: constants.period.THIS_WEEK,
@@ -16,7 +16,7 @@ describe('statistics Reducer', () => {
 
     it('LOAD_STATISTICS success', () => {
         const action = loadStatistics({});
-        const result = statistics({}, action);
+        const result = dashboard({}, action);
         expect(result)
             .toEqual({
                 summary: []

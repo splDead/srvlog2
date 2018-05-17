@@ -1,4 +1,4 @@
-import * as actions from './statistics';
+import * as actions from './dashboard';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
@@ -9,7 +9,7 @@ import constants from '../constants/constants';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('statistics actions', () => {
+describe('dashboard actions', () => {
 
     it('fetctStatistics action', () => {
         const mock = new MockAdapter(axios);

@@ -1,7 +1,6 @@
 // @flow
 
 import axios from 'axios';
-import moment from 'moment';
 import type { ActionType, Dispatch, LogsTableType, FiltersType } from "../types/types";
 import constants from "../constants/constants";
 
@@ -37,51 +36,6 @@ export const paginationNext = (selectedTableSize: number): ActionType => ({
 export const paginationPrev = (selectedTableSize: number): ActionType => ({
     type : constants.PAGINATION_PREV,
     selectedTableSize
-});
-
-export const changeDateRange = (range: string, logs: LogsTableType): ActionType => ({
-    type : constants.CHANGE_DATE_RANGE,
-    range,
-    logs
-});
-
-export const changeExactlyDateRangeFrom = (date: moment, logs: LogsTableType): ActionType => ({
-    type : constants.CHANGE_EXACTLY_DATE_RANGE_FROM,
-    date,
-    logs
-});
-
-export const changeExactlyDateRangeTo = (date: moment, logs: LogsTableType): ActionType => ({
-    type : constants.CHANGE_EXACTLY_DATE_RANGE_TO,
-    date,
-    logs
-});
-
-export const changeExactlyTimeRangeFrom = (date: moment, logs: LogsTableType): ActionType => ({
-    type : constants.CHANGE_EXACTLY_TIME_RANGE_FROM,
-    date,
-    logs
-});
-
-export const changeExactlyTimeRangeTo = (date: moment, logs: LogsTableType): ActionType => ({
-    type : constants.CHANGE_EXACTLY_TIME_RANGE_TO,
-    date,
-    logs
-});
-
-export const changeSeverityFilters = (severity: string[]): ActionType => ({
-    type : constants.CHANGE_SEVERITY_FILTERS,
-    severity
-});
-
-export const changeFacilityFilters = (facility: string[]): ActionType => ({
-    type : constants.CHANGE_FACILITY_FILTERS,
-    facility
-});
-
-export const changeHostFilters = (host: string[]): ActionType => ({
-    type : constants.CHANGE_HOST_FILTERS,
-    host
 });
 
 export const clickSeverityFromDashboard = (severity: string[], selectedPeriod: string): ActionType => ({

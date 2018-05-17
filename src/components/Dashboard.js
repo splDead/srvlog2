@@ -7,12 +7,12 @@ import { LinearChart } from './LinearChart';
 import PeriodRadioButton from './PeriodRadioButton';
 import SeverityLink from './SeverityLink';
 import constants, { periodBtns } from '../constants/constants';
-import { fetctStatistics } from '../actions/statistics';
+import { fetctStatistics } from '../actions/dashboard';
 import { clickSeverityFromDashboard } from '../actions/logs';
 import { getDateRange } from '../utils/MiscUtils';
 import type { StateType, Dispatch, DateRangeType, StatisticsLogType } from '../types/types';
 
-import './Statistics.css';
+import './Dashboard.css';
 
 type Props = {
     selectedPeriod: string,
@@ -27,7 +27,7 @@ type Props = {
     onClickSeverity: Function
 };
 
-class Statistics extends React.Component<Props, StateType> {
+class Dashboard extends React.Component<Props, StateType> {
 
     severityClickHandler = (e) => {
         let severity = [e.target.getAttribute('data-severity')];
@@ -94,4 +94,4 @@ export default connect(
                 dispatch(clickSeverityFromDashboard(severity, selectedPeriod))
             }
         })
-)(Statistics);
+)(Dashboard);

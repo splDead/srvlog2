@@ -20,7 +20,12 @@
             "NOTICE",
             "DEBUG",
             "INFO"
-        ]
+        ],
+        "selectedTableSize": 25,
+        "indexShowRow": {
+            "start": 1,
+            "end": 25
+        }
     },
     "onlineLogs": {
         "latestLogs": 25,

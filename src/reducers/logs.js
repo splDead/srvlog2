@@ -6,10 +6,8 @@ import defaults from '../data/defaults';
 
 const initialState: LogsTableType = {
     logs: [],
-    indexShowRow: {
-        start: 1,
-        end: 25
-    },
+    indexShowRow: defaults.logsTable.indexShowRow,
+    selectedTableSize: defaults.logsTable.selectedTableSize,
     filters: defaults.logsTable.filters,
     severity: defaults.logsTable.severity
 };
@@ -22,8 +20,7 @@ const logsTable = (state: LogsTableType = initialState, action: ActionType): Log
             return {
                 ...state,
                 ...action.logs,
-                filters: action.filters,
-                severity: state.severity
+                filters: action.filters
             };
         case constants.TABLE_SIZE:
             return {
@@ -45,8 +42,12 @@ const logsTable = (state: LogsTableType = initialState, action: ActionType): Log
         case constants.PAGINATION_PREV:
             let paginationIndexStart = state.indexShowRow && state.indexShowRow.start ? state.indexShowRow.start : 1;
             let paginationIndexEnd = state.indexShowRow && state.indexShowRow.end ? state.indexShowRow.end : 25;
-            start = Math.max(paginationIndexStart - action.selectedTableSize, 1);
-            end = Math.max(paginationIndexEnd - action.selectedTableSize, action.selectedTableSize);
+            start = paginationIndexStart - action.selectedTableSize < 1 ?
+                1 :
+                paginationIndexStart - action.selectedTableSize;
+            end = paginationIndexEnd - action.selectedTableSize < action.selectedTableSize ?
+                action.selectedTableSize :
+                paginationIndexEnd - action.selectedTableSize;
             return {
                 ...state,
                 indexShowRow : {
@@ -55,8 +56,12 @@ const logsTable = (state: LogsTableType = initialState, action: ActionType): Log
                 }
             };
         case constants.PAGINATION_NEXT:
-            start = Math.min(state.logs.length - action.selectedTableSize, state.indexShowRow.start + action.selectedTableSize);
-            end = Math.min(state.logs.length, state.indexShowRow.end + action.selectedTableSize);
+            start = state.indexShowRow && state.indexShowRow.start && state.logs && state.logs.length && state.indexShowRow.start + action.selectedTableSize > state.logs.length - action.selectedTableSize ?
+                state.logs.length - action.selectedTableSize :
+                state.indexShowRow && state.indexShowRow.start + action.selectedTableSize;
+            end = state.indexShowRow && state.indexShowRow.end && state.logs && state.logs.length && state.indexShowRow.end + action.selectedTableSize > state.logs.length ?
+                state.logs.length :
+                state.indexShowRow && state.indexShowRow.end + action.selectedTableSize;
             return {
                 ...state,
                 indexShowRow : {

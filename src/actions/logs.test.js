@@ -2,7 +2,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
-import moment from 'moment';
 import * as actions from './logs';
 import constants from '../constants/constants';
 import { getDateRange } from "../utils/MiscUtils";
@@ -29,14 +28,12 @@ describe('logs actions', () => {
         const dateRange = getDateRange(constants.period.TODAY);
 
         mock.onPost('https://demo0073537.mockable.io/logs', dateRange).reply(200, {
-            logsTable: {
-                facility: [],
-                filters: {},
-                host: [],
-                indexShowRow: {},
-                logs: [],
-                severity: []
-            }
+            facility: [],
+            filters: {},
+            host: [],
+            indexShowRow: {},
+            logs: [],
+            severity: []
         });
 
         store.dispatch(actions.fetchLogs(dateRange)).then(() =>
@@ -45,12 +42,14 @@ describe('logs actions', () => {
     });
 
     it('loadLogs action', () => {
-        const logs = [];
+        const logs = {};
+        const filters = {};
         const expectedAction = {
             type: constants.LOAD_LOGS,
-            logs
+            logs,
+            filters
         };
-        expect(actions.loadLogs(logs)).toEqual(expectedAction);
+        expect(actions.loadLogs(logs, filters)).toEqual(expectedAction);
     });
 
     it('changeTableSize action', () => {
@@ -87,88 +86,6 @@ describe('logs actions', () => {
             selectedTableSize
         };
         expect(actions.paginationPrev(selectedTableSize)).toEqual(expectedAction);
-    });
-
-    it('changeDateRange action', () => {
-        const range = constants.period.THIS_WEEK;
-        const logs = [];
-        const expectedAction = {
-            type : constants.CHANGE_DATE_RANGE,
-            range,
-            logs
-        };
-        expect(actions.changeDateRange(range, logs)).toEqual(expectedAction);
-    });
-
-    it('changeExactlyDateRangeFrom action', () => {
-        const date = moment();
-        const logs = [];
-        const expectedAction = {
-            type : constants.CHANGE_EXACTLY_DATE_RANGE_FROM,
-            date,
-            logs
-        };
-        expect(actions.changeExactlyDateRangeFrom(date, logs)).toEqual(expectedAction);
-    });
-
-    it('changeExactlyDateRangeTo action', () => {
-        const date = moment();
-        const logs = [];
-        const expectedAction = {
-            type : constants.CHANGE_EXACTLY_DATE_RANGE_TO,
-            date,
-            logs
-        };
-        expect(actions.changeExactlyDateRangeTo(date, logs)).toEqual(expectedAction);
-    });
-
-    it('changeExactlyTimeRangeFrom action', () => {
-        const date = moment();
-        const logs = [];
-        const expectedAction = {
-            type : constants.CHANGE_EXACTLY_TIME_RANGE_FROM,
-            date,
-            logs
-        };
-        expect(actions.changeExactlyTimeRangeFrom(date, logs)).toEqual(expectedAction);
-    });
-
-    it('changeExactlyTimeRangeTo action', () => {
-        const date = moment();
-        const logs = [];
-        const expectedAction = {
-            type : constants.CHANGE_EXACTLY_TIME_RANGE_TO,
-            date,
-            logs
-        };
-        expect(actions.changeExactlyTimeRangeTo(date, logs)).toEqual(expectedAction);
-    });
-
-    it('changeSeverityFilters action', () => {
-        const severity = ['ALERT'];
-        const expectedAction = {
-            type : constants.CHANGE_SEVERITY_FILTERS,
-            severity
-        };
-        expect(actions.changeSeverityFilters(severity)).toEqual(expectedAction);
-    });
-
-    it('changeFacilityFilters action', () => {
-        const facility = ['user'];
-        const expectedAction = {
-            type : constants.CHANGE_FACILITY_FILTERS,
-            facility
-        };
-        expect(actions.changeFacilityFilters(facility)).toEqual(expectedAction);
-    });
-
-    it('changeHostFilters action', () => {
-        const host = ['ALERT'];
-        const expectedAction = {
-            type : constants.CHANGE_HOST_FILTERS,
-            host
-        };
-        expect(actions.changeHostFilters(host)).toEqual(expectedAction);
     });
 
     it('clickSeverityFromDashboard action', () => {

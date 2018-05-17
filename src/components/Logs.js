@@ -20,7 +20,7 @@ type Props = {
     logs?: Array<LogsType>,
     selectedTableSize?: number,
     indexShowRow?: IndexPaginationType,
-    filters?: FiltersType,
+    filters: FiltersType,
     severity?: string[],
     facility?: string[],
     host?: string[],
@@ -37,7 +37,7 @@ class Logs extends React.Component<Props> {
         this.props.onLoad({
             filters: {
                 ...this.props.filters,
-                ...getDateRange(constants.period.TODAY)
+                ...getDateRange(this.props.filters.dateRange)
             }
         });
     }
