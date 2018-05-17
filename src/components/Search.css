@@ -1,3 +1,32 @@
 .input-group-append .btn.special-z-index {
     z-index: auto;
 }
+
+.custom-form-container {
+    position: relative;
+}
+
+.clear-search {
+    position: absolute;
+    right: 85px;
+    font-size: 18px;
+    width: 17px;
+    color: #999;
+    line-height: 38px;
+    text-align: center;
+    z-index: 4;
+}
+
+.clear-search:hover {
+    cursor: pointer;
+    color: #D0021B;
+}
+
+.pattern-hint {
+    color: #999;
+}
+
+.pattern-hint:hover {
+    cursor: pointer;
+    color: #D0021B;
+}
