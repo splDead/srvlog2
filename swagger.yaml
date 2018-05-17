@@ -1,11 +1,8 @@
 ---
 swagger: "2.0"
 info:
-  description: srvlog API
   version: 1.0.0
   title: SRVLOG API
-  contact:
-    email: sgoryachev@payneteasy.com
 host: virtserver.swaggerhub.com
 basePath: /spld/srvlog/1.0.0
 schemes:
@@ -14,7 +11,7 @@ schemes:
 paths:
   /dashboard:
     post:
-      summary: statistics and graph
+      summary: Dashboard summary info and graph
       consumes:
       - application/json
       produces:
@@ -28,24 +25,37 @@ paths:
           $ref: '#/definitions/DashboardRequest'
       responses:
         200:
-          description: ok
+          description: List of logs and summary info
           schema:
             $ref: '#/definitions/Statistics'
+        400:
+          description: Invalid request parameters
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
   /messages:
     get:
-      summary: messages
-      description: messages
+      summary: Messages list
       parameters: []
       responses:
         200:
-          description: ok
+          description: Messages list
           schema:
             type: array
             items:
               $ref: '#/definitions/Message'
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
   /logs:
     post:
-      summary: logs table
+      summary: Logs table data
       consumes:
       - application/json
       produces:
@@ -53,7 +63,7 @@ paths:
       parameters:
       - in: body
         name: LogsRequest
-        description: data for logs table
+        description: Data for logs table
         required: false
         schema:
           $ref: '#/definitions/LogsRequest'
@@ -62,9 +72,17 @@ paths:
           description: ok
           schema:
             $ref: '#/definitions/LogsTable'
+        400:
+          description: Invalid request parameters
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
   /online-logs:
     post:
-      summary: online logs
+      summary: Online logs data
       consumes:
       - application/json
       produces:
@@ -72,7 +90,7 @@ paths:
       parameters:
       - in: body
         name: OnlineLogsRequest
-        description: data for online logs table
+        description: Data for online logs table
         required: false
         schema:
           $ref: '#/definitions/OnlineLogsRequest'
@@ -81,6 +99,14 @@ paths:
           description: ok
           schema:
             $ref: '#/definitions/OnlineLogsTable'
+        400:
+          description: Invalid request parameters
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
   /hosts:
     get:
       summary: get unprocessed hosts
@@ -92,6 +118,12 @@ paths:
           description: ok
           schema:
             $ref: '#/definitions/inline_response_200'
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
     post:
       summary: add processed hosts
       consumes:
@@ -100,6 +132,14 @@ paths:
       responses:
         204:
           description: ok
+        400:
+          description: Invalid request parameters
+        403:
+          description: User is not authenticated/authorized
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
 definitions:
   Statistics:
     type: object
@@ -156,11 +196,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Log'
-      selectedTableSize:
-        type: integer
-        example: 25
-      indexShowRow:
-        $ref: '#/definitions/LogsTable_indexShowRow'
       facility:
         type: array
         items:
@@ -170,10 +205,6 @@ definitions:
         items:
           type: string
     example:
-      indexShowRow:
-        start: 1
-        end: 25
-      selectedTableSize: 25
       host:
       - host
       - host
@@ -257,6 +288,13 @@ definitions:
       program: clamd
       message: '[1]: Starting User Slice of root.'
       facility: daemon
+  ErrorResponse:
+    type: object
+    required:
+    - error
+    properties:
+      error:
+        $ref: '#/definitions/ErrorResponse_error'
   DashboardRequest:
     type: object
     required:
@@ -274,22 +312,73 @@ definitions:
     example:
       endDate: 2018-05-07T00:00:00.000Z
       startDate: 2018-05-01T00:00:00.000Z
-  LogsRequest:
-    type: object
+  logs_filters:
     properties:
-      startDate:
+      dateStart:
         type: string
         format: date
         example: 2018-05-01T00:00:00.000Z
-      endDate:
+      dateEnd:
         type: string
         format: date
         example: 2018-05-07T00:00:00.000Z
+      dateRange:
+        type: string
+        example: TODAY
+      facility:
+        type: array
+        items:
+          type: string
+      severity:
+        type: array
+        items:
+          type: string
+      host:
+        type: array
+        items:
+          type: string
     example:
-      endDate: 2018-05-07T00:00:00.000Z
-      startDate: 2018-05-01T00:00:00.000Z
+      severity:
+      - severity
+      - severity
+      dateStart: 2018-05-01T00:00:00.000Z
+      dateRange: TODAY
+      host:
+      - host
+      - host
+      dateEnd: 2018-05-07T00:00:00.000Z
+      facility:
+      - facility
+      - facility
+  LogsRequest:
+    type: object
+    required:
+    - filters
+    properties:
+      filters:
+        $ref: '#/definitions/logs_filters'
+      query:
+        type: string
+    example:
+      query: query
+      filters:
+        severity:
+        - severity
+        - severity
+        dateStart: 2018-05-01T00:00:00.000Z
+        dateRange: TODAY
+        host:
+        - host
+        - host
+        dateEnd: 2018-05-07T00:00:00.000Z
+        facility:
+        - facility
+        - facility
   OnlineLogsRequest:
     type: object
+    required:
+    - host
+    - latestLogs
     properties:
       host:
         type: string
@@ -344,14 +433,11 @@ definitions:
     example:
       text: There are logs with unresolved hosts. Please add required hosts and press "Process unresolved logs"?
       title: Warnings!
-  LogsTable_indexShowRow:
+  ErrorResponse_error:
+    required:
+    - errorId
     properties:
-      start:
-        type: integer
-        example: 1
-      end:
-        type: integer
-        example: 25
-    example:
-      start: 1
-      end: 25
+      errorId:
+        type: string
+        format: uuid
+        description: Random Error ID in stacktrace log to localize erro
