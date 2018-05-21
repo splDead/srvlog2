@@ -140,6 +140,19 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
+  /detailed-logs:
+    post:
+      summary: Detailed logs data
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/DetailedLogsTable'
 definitions:
   Statistics:
     type: object
@@ -295,6 +308,83 @@ definitions:
     properties:
       error:
         $ref: '#/definitions/ErrorResponse_error'
+  DetailedLogsTable:
+    type: object
+    properties:
+      table:
+        $ref: '#/definitions/DetailedLogsTable_table'
+      typeData:
+        type: string
+    example:
+      typeData: typeData
+      table:
+        FIREWALL_ALERT_DATA:
+        - count: 0
+          class: class
+        - count: 0
+          class: class
+        OSSEC_ALERT_DATA:
+        - count: 5
+          type: type
+        - count: 5
+          type: type
+        FIREWALL_DROP_DATA:
+        - protocol: protocol
+          count: 6
+          destination:
+            port: 1
+            ip: ip
+          source:
+            port: 1
+            ip: ip
+        - protocol: protocol
+          count: 6
+          destination:
+            port: 1
+            ip: ip
+          source:
+            port: 1
+            ip: ip
+  FirewallAlertDataItem:
+    type: object
+    properties:
+      class:
+        type: string
+      count:
+        type: integer
+    example:
+      count: 0
+      class: class
+  FirewallDropDataItem:
+    type: object
+    properties:
+      count:
+        type: integer
+      destination:
+        $ref: '#/definitions/FirewallDropDataItem_destination'
+      source:
+        $ref: '#/definitions/FirewallDropDataItem_destination'
+      protocol:
+        type: string
+    example:
+      protocol: protocol
+      count: 6
+      destination:
+        port: 1
+        ip: ip
+      source:
+        port: 1
+        ip: ip
+  OssecAlertDataItem:
+    type: object
+    properties:
+      type:
+        type: string
+      count:
+        type: integer
+    example:
+      count: 5
+      type: type
   DashboardRequest:
     type: object
     required:
@@ -441,3 +531,54 @@ definitions:
         type: string
         format: uuid
         description: Random Error ID in stacktrace log to localize erro
+  DetailedLogsTable_table:
+    properties:
+      FIREWALL_ALERT_DATA:
+        type: array
+        items:
+          $ref: '#/definitions/FirewallAlertDataItem'
+      FIREWALL_DROP_DATA:
+        type: array
+        items:
+          $ref: '#/definitions/FirewallDropDataItem'
+      OSSEC_ALERT_DATA:
+        type: array
+        items:
+          $ref: '#/definitions/OssecAlertDataItem'
+    example:
+      FIREWALL_ALERT_DATA:
+      - count: 0
+        class: class
+      - count: 0
+        class: class
+      OSSEC_ALERT_DATA:
+      - count: 5
+        type: type
+      - count: 5
+        type: type
+      FIREWALL_DROP_DATA:
+      - protocol: protocol
+        count: 6
+        destination:
+          port: 1
+          ip: ip
+        source:
+          port: 1
+          ip: ip
+      - protocol: protocol
+        count: 6
+        destination:
+          port: 1
+          ip: ip
+        source:
+          port: 1
+          ip: ip
+  FirewallDropDataItem_destination:
+    properties:
+      ip:
+        type: string
+      port:
+        type: integer
+    example:
+      port: 1
+      ip: ip
