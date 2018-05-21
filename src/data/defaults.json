@@ -31,5 +31,12 @@
         "latestLogs": 25,
         "timeDurationUpdate": 10000,
         "host": "ALL"
+    },
+    "detailedLogs": {
+        "tableHeaders": {
+            "FirewallAlertData": ["Class", "Count"],
+            "FirewallDropData": ["Source ip", "Source port", "Destination ip", "Destination port", "Protocol", "Drop count"],
+            "OssecAlertData": ["Type", "Count"]
+        }
     }
 }

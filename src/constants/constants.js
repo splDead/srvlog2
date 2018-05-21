@@ -45,7 +45,50 @@ const constants = {
     SEVERITY_CLICK_FROM_DASHBOARD: 'SEVERITY_CLICK_FROM_DASHBOARD',
     LOAD_ONLINE_LOGS : 'LOAD_ONLINE_LOGS',
     CHANGE_ONLINE_LOGS_FILTERS: 'CHANGE_ONLINE_LOGS_FILTERS',
-    CHANGE_DURATION_UPDATE: 'CHANGE_DURATION_UPDATE'
+    CHANGE_DURATION_UPDATE: 'CHANGE_DURATION_UPDATE',
+    LOAD_DETAILED_LOGS: 'LOAD_DETAILED_LOGS',
+    CHANGE_DETAILED_LOGS_TYPE_DATA: 'CHANGE_DETAILED_LOGS_TYPE_DATA',
+    CHANGE_DETAILED_LOGS_DATE: 'CHANGE_DETAILED_LOGS_DATE'
+};
+
+export const detailedLogsTypeData = {
+    FIREWALL_ALERT_DATA: 'FIREWALL_ALERT_DATA',
+    FIREWALL_DROP_DATA: 'FIREWALL_DROP_DATA',
+    OSSEC_ALERT_DATA: 'OSSEC_ALERT_DATA'
+};
+
+export const detailedLogsType = [
+    {
+        type: detailedLogsTypeData.FIREWALL_ALERT_DATA,
+        caption: 'Firewall alert data'
+    },
+    {
+        type: detailedLogsTypeData.FIREWALL_DROP_DATA,
+        caption: 'Firewall drop data'
+    },
+    {
+        type: detailedLogsTypeData.OSSEC_ALERT_DATA,
+        caption: 'Ossec alert data'
+    }
+];
+
+export const detailedLogsTableHeaders = {
+    FIREWALL_ALERT_DATA: [
+        'Class',
+        'Count'
+    ],
+    FIREWALL_DROP_DATA: [
+        'Source ip',
+        'Source port',
+        'Destination ip',
+        'Destination port',
+        'Protocol',
+        'Drop count'
+    ],
+    OSSEC_ALERT_DATA: [
+        'Type',
+        'Count'
+    ]
 };
 
 export const periodBtns = [

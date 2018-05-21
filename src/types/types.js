@@ -223,6 +223,57 @@ export type ChangeOnlineLogsTimeDurationUpdateActionType = {
     id?: string
 };
 
+export type DetailedLogsType = {
+    selectedType: string,
+    date: string,
+    table: DetailedLogsTableType
+};
+
+export type DetailedLogsTableType = {
+    FIREWALL_ALERT_DATA?: FirewallAlertDataType[],
+    FIREWALL_DROP_DATA?: FirewallDropData[],
+    OSSEC_ALERT_DATA?: OssecAlertData[]
+};
+
+export type FirewallAlertDataType = {
+    class: string,
+    count: number
+};
+
+export type FirewallDropData = {
+    source: {
+        ip: string,
+        port: number
+    },
+    destination: {
+        ip: string,
+        port: number
+    },
+    'protocol': string,
+    'count': number
+};
+
+export type OssecAlertData = {
+    type: string,
+    count: number
+};
+
+export type LoadDetailedLogsType = {
+    type: 'LOAD_DETAILED_LOGS',
+    table: DetailedLogsTableType,
+    typeData: string
+};
+
+export type ChangeDetailedLogsDataType = {
+    type: 'CHANGE_DETAILED_LOGS_TYPE_DATA',
+    typeData: string
+};
+
+export type ChangeDetailedLogsDateType = {
+    type: 'CHANGE_DETAILED_LOGS_DATE',
+    date: string
+}
+
 export type ActionType = 
     | ReadMessageActionType
     | LoadMessagesActionType
@@ -244,7 +295,10 @@ export type ActionType =
     | ClickSeverityFromDashboardType
     | LoadOnlineLogsActionType
     | ChangeOnlineLogsFiltersActionType
-    | ChangeOnlineLogsTimeDurationUpdateActionType;
+    | ChangeOnlineLogsTimeDurationUpdateActionType
+    | LoadDetailedLogsType
+    | ChangeDetailedLogsDataType
+    | ChangeDetailedLogsDateType;
 
 export type GetState = () => StateType;
 export type PromiseAction = Promise<ActionType>;
