@@ -27,7 +27,8 @@
     "react-router-dom": "^4.2.2",
     "react-select": "^1.2.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "snyk": "^1.161.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,6 +37,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "flow": "flow"
-  }
+    "flow": "flow",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
